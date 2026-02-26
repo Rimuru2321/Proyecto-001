@@ -117,7 +117,7 @@ if (buscador) {
 // === 7. NASA APOD ===
 const apodContainer = document.getElementById('apod-container');
 if (apodContainer) {
-  const API_KEY = 'DEMO_KEY'; // Reemplazar con tu clave
+  const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX';
   fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
@@ -611,4 +611,5 @@ document.addEventListener('DOMContentLoaded', function() {
   cargarNoticias();
   
   console.log('Componentes inicializados.');
+
 });
