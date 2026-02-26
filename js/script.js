@@ -594,7 +594,7 @@ var disqus_config = function () {
 };
 (function() {
   var d = document, s = d.createElement('script');
-  s.src = 'https://cosmos-astronomia.disqus.com/embed.js'; // Cambia por tu shortname
+  s.src = 'https://cosmos-astronomia-1.disqus.com/embed.js'; // Cambia por tu shortname
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
 })();
