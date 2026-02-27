@@ -625,3 +625,26 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+// === BOTÓN FLOTANTE QR ===
+const qrToggle = document.getElementById('qr-toggle');
+const qrContenido = document.getElementById('qr-contenido');
+
+if (qrToggle && qrContenido) {
+  qrToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    qrContenido.classList.toggle('mostrar');
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!qrToggle.contains(e.target) && !qrContenido.contains(e.target)) {
+      qrContenido.classList.remove('mostrar');
+    }
+  });
+
+  // Evitar que el clic dentro del contenido lo cierre
+  qrContenido.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+}
