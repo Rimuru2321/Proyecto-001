@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Cosmos">
-<link rel="apple-touch-icon" href="img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cosmos">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
   <title>COSMOS</title>
   <!-- Enlace al CSS externo -->
   <link rel="stylesheet" href="css/styles.css">
@@ -34,12 +34,14 @@
           <a href="#galaxia-datos" data-i18n="nav_datos">Datos</a>
           <a href="#planetas" data-i18n="nav_planetas">Planetas</a>
           <a href="#sistema-solar" data-i18n="nav_sistema_solar">Sistema Solar</a>
+          <a href="#luna" data-i18n="nav_luna">Luna</a>
           <a href="#agujero-negro" data-i18n="nav_agujero_negro">Agujero Negro</a>
           <a href="#nebulosas" data-i18n="nav_nebulosas">Nebulosas</a>
           <a href="#misiones" data-i18n="nav_misiones">Misiones</a>
           <a href="#glosario" data-i18n="nav_glosario">Glosario</a>
           <a href="#constelaciones" data-i18n="nav_constelaciones">Constelaciones</a>
           <a href="#curiosidades" data-i18n="nav_curiosidades">Curiosidades</a>
+          <a href="#calculadora-edad" data-i18n="nav_calculadora">Edad Planetaria</a>
           <a href="#timeline" data-i18n="nav_timeline">Línea de Tiempo</a>
           <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
           <a href="#clima-espacial" data-i18n="nav_clima">Clima Espacial</a>
@@ -81,6 +83,8 @@
         <li><kbd>M</kbd> - Misiones</li>
         <li><kbd>W</kbd> - Clima Espacial</li>
         <li><kbd>R</kbd> - Noticias</li>
+        <li><kbd>E</kbd> - Edad Planetaria</li>
+        <li><kbd>L</kbd> - Luna</li>
       </ul>
     </div>
   </div>
@@ -270,6 +274,112 @@
           <p class="planet-desc" data-i18n="planeta_neptuno_desc">El más lejano y ventoso: tormentas de 2,100 km/h. Un año neptuniano dura 165 años terrestres. Tiene 16 lunas conocidas.</p>
           <span class="planet-tag" style="background:rgba(60,80,220,0.2);color:#8090f5;">4.50B km del Sol</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRA LUNA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="luna">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Nuestra Luna')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Nuestra Luna')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Nuestra Luna')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🌕 02.5 — Nuestra Luna</p>
+    <h2 class="section-title">El satélite que <span>nos acompaña</span></h2>
+    <div class="divider"></div>
+
+    <div class="luna-grid reveal">
+      <div class="luna-image">
+        <img src="img/luna.jpg" alt="La Luna llena sobre la superficie terrestre" loading="lazy"/>
+      </div>
+      <div class="luna-datos">
+        <div class="luna-stat">
+          <span class="luna-num">384,400 km</span>
+          <span class="luna-label">Distancia media desde la Tierra</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">3,474 km</span>
+          <span class="luna-label">Diámetro</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">27.3 días</span>
+          <span class="luna-label">Período orbital</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">-23°C (día) / -233°C (noche)</span>
+          <span class="luna-label">Temperatura superficial</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="luna-texto reveal">
+      <p>
+        La <strong>Luna</strong> es el único satélite natural de la Tierra y el quinto más grande del sistema solar. 
+        Su superficie está cubierta de cráteres, mares de basalto y montañas. Se formó hace unos 4,500 millones de años, 
+        probablemente tras el impacto de un cuerpo del tamaño de Marte contra la Tierra primitiva.
+      </p>
+      <p>
+        Su influencia sobre nuestro planeta es enorme: regula las mareas, estabiliza el eje de rotación terrestre 
+        y ha sido fuente de mitos, calendarios y exploración. En 1969, la misión <strong>Apolo 11</strong> dejó la 
+        primera huella humana en su superficie.
+      </p>
+    </div>
+
+    <h3 style="color:var(--cyan); font-family:'Orbitron'; margin: 40px 0 20px;">Fases de la Luna</h3>
+    <div class="fases-grid reveal">
+      <div class="fase-card">
+        <img src="img/nueva.avif" alt="Luna nueva" loading="lazy">
+        <p>Luna nueva</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/creciente.webp" alt="Luna creciente" loading="lazy">
+        <p>Creciente</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/cuarto.jpg" alt="Cuarto creciente" loading="lazy">
+        <p>Cuarto creciente</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/llena.jpg" alt="Luna llena" loading="lazy">
+        <p>Luna llena</p>
+      </div>
+    </div>
+
+    <!-- LUNA ROJA (LUNA DE SANGRE) -->
+    <div class="luna-roja-container reveal">
+      <h3 style="color:var(--nebula3); font-family:'Orbitron'; margin: 60px 0 20px; text-align: center;">
+        🌑 LUNA DE SANGRE 🌑
+      </h3>
+      <div class="luna-roja-grid">
+        <div class="luna-roja-card ciencia">
+          <h4>🔬 ¿Por qué se ve roja?</h4>
+          <p>
+            Durante un <strong>eclipse lunar total</strong>, la Tierra se interpone entre el Sol y la Luna. 
+            La luz solar atraviesa la atmósfera terrestre, que dispersa los colores azules y verdes (como en el atardecer), 
+            pero deja pasar la luz roja, que se refracta hacia la superficie lunar. Por eso la Luna adquiere ese tono cobrizo o rojizo.
+          </p>
+          <p>
+            No es un evento mágico ni sobrenatural, sino un fenómeno óptico causado por nuestra atmósfera. 
+            Mientras más partículas de polvo o ceniza haya en el aire (como después de una erupción volcánica), más intenso será el rojo.
+          </p>
+        </div>
+        <div class="luna-roja-card mitos">
+          <h4>📜 Mitos y leyendas</h4>
+          <ul>
+            <li><strong>Incas:</strong> Creían que un jaguar atacaba a la Luna y hacía que sangrara. Para espantarlo, agitaban lanzas y hacían ruido.</li>
+            <li><strong>Mesopotámicos:</strong> Pensaban que siete demonios atacaban la Luna, y sustituían temporalmente al rey para protegerlo.</li>
+            <li><strong>Mayas:</strong> Veían la Luna roja como una lucha entre dioses y un augurio de guerra.</li>
+            <li><strong>Hupa (California):</strong> Creían que las mascotas hambrientas de la Luna (pumas y serpientes) la atacaban si no las alimentaban.</li>
+            <li><strong>Tradición judeocristiana:</strong> En la Biblia se menciona como señal del fin de los tiempos: <em>"El sol se convertirá en tinieblas, y la luna en sangre"</em> (Joel 2:31, Hechos 2:20).</li>
+            <li><strong>Supersticiones populares:</strong> Se dice que las embarazadas no deben mirarla para evitar malformaciones, que cortarse el pelo esa noche lo fortalece, o que puede aumentar la fertilidad y la pasión.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="luna-roja-dato">
+        <p>✨ <strong>¿Sabías que...?</strong> Cristóbal Colón utilizó un eclipse lunar (Luna de sangre) en 1504 para asustar a los nativos de Jamaica y conseguir alimentos. Sabía que ocurriría por sus tablas astronómicas y lo usó a su favor.</p>
       </div>
     </div>
   </section>
@@ -631,6 +741,30 @@
     </div>
   </section>
 
+  <!-- CALCULADORA DE EDAD PLANETARIA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="calculadora-edad">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Calculadora de edad planetaria')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de edad planetaria')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de edad planetaria')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">✨ ¿Cuántos años tendrías en otros planetas?</p>
+    <h2 class="section-title">Calculadora de <span>Edad Planetaria</span></h2>
+    <div class="divider"></div>
+    <div class="calculadora-container reveal">
+      <div class="calculadora-input">
+        <label for="edad-terrestre">Ingresa tu edad en años terrestres:</label>
+        <input type="number" id="edad-terrestre" min="0" max="150" value="25" step="1">
+        <button id="calcular-edad" class="btn btn-primary">Calcular</button>
+      </div>
+      <div class="calculadora-resultados" id="resultados-edad">
+        <!-- Aquí se mostrarán los resultados -->
+      </div>
+    </div>
+  </section>
+
   <!-- LÍNEA DE TIEMPO -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="timeline">
@@ -729,7 +863,7 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </section>
 
-    <!-- Botón flotante de QR -->
+  <!-- Botón flotante de QR -->
   <div class="qr-panel" id="qr-panel">
     <button class="qr-toggle" id="qr-toggle">📱 Compartir</button>
     <div class="qr-contenido" id="qr-contenido">
@@ -739,11 +873,31 @@
     </div>
   </div>
 
-  <!-- FOOTER ACTUALIZADO con enlace a Política de Comentarios -->
+  <!-- FOOTER con Fecha/Hora y Fase Lunar -->
   <footer>
-    <p class="footer-logo">✦ COSMOS</p>
-    <p data-i18n="footer_texto">Explorando el universo, una estrella a la vez</p>
-    <p data-i18n="footer_imagenes">Imágenes: NASA · ESA · Hubble Space Telescope · Wikipedia Commons</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 20px;">
+      <!-- Columna izquierda: fecha y hora -->
+      <div style="flex: 1; min-width: 200px; text-align: left;">
+        <div id="fecha-actual" style="font-family: 'Orbitron'; color: var(--cyan); font-size: 1.2rem;"></div>
+        <div id="hora-actual" style="font-family: 'Space Mono'; color: var(--text); font-size: 1rem;"></div>
+      </div>
+      <!-- Columna central: logo y textos -->
+      <div style="flex: 1; min-width: 200px; text-align: center;">
+        <p class="footer-logo">✦ COSMOS</p>
+        <p data-i18n="footer_texto">Explorando el universo, una estrella a la vez</p>
+        <p data-i18n="footer_imagenes">Imágenes: NASA · ESA · Hubble Space Telescope · Wikipedia Commons</p>
+      </div>
+      <!-- Columna derecha: fase lunar actual -->
+      <div style="flex: 1; min-width: 200px; text-align: right;" id="fase-lunar-container">
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+          <div id="fase-lunar-icono" style="font-size: 2.5rem;">🌑</div>
+          <div>
+            <div id="fase-lunar-nombre" style="font-family: 'Orbitron'; color: var(--cyan);">Cargando...</div>
+            <div id="fase-lunar-detalle" style="font-size: 0.8rem; color: var(--text);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p style="margin-top:16px;">© 2025 Cosmos — Una ventana al universo</p>
     <p>
       <a href="legal.html" target="_blank" style="color:var(--cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
