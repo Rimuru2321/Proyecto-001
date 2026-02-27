@@ -196,18 +196,114 @@ document.querySelectorAll('.planet-card').forEach(card => {
   });
 });
 
-// ========== FUNCIONES PRINCIPALES (TIMELINE Y QUIZ) ==========
-// (Se inicializarán después de cargar el DOM)
+// === 11. LÍNEA DE TIEMPO (con soporte i18n) ===
+const timelineEvents = [
+  { year: "-13.8 Ga", eventKey: "timeline_bigbang", descKey: "timeline_bigbang_desc" },
+  { year: "-13.6 Ga", eventKey: "timeline_estrellas", descKey: "timeline_estrellas_desc" },
+  { year: "-13.5 Ga", eventKey: "timeline_galaxias", descKey: "timeline_galaxias_desc" },
+  { year: "-4.6 Ga", eventKey: "timeline_sol", descKey: "timeline_sol_desc" },
+  { year: "1969", eventKey: "timeline_luna", descKey: "timeline_luna_desc" },
+  { year: "2022", eventKey: "timeline_sgr", descKey: "timeline_sgr_desc" }
+];
 
-// Variables globales para idioma
+function construirTimeline() {
+  const track = document.querySelector('.timeline-track');
+  const info = document.getElementById('timeline-desc');
+  if (!track) return;
+  track.innerHTML = '';
+  timelineEvents.forEach((ev, index) => {
+    const btn = document.createElement('div');
+    btn.className = 'timeline-event';
+    btn.dataset.index = index;
+    btn.dataset.eventKey = ev.eventKey;
+    btn.dataset.descKey = ev.descKey;
+    btn.dataset.year = ev.year;
+    btn.textContent = translations[currentLang]?.[ev.eventKey] || ev.eventKey;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.timeline-event').forEach(el => el.classList.remove('activo'));
+      btn.classList.add('activo');
+      info.innerHTML = `<strong>${ev.year}</strong>: ${translations[currentLang]?.[ev.descKey] || ev.descKey}`;
+    });
+    track.appendChild(btn);
+  });
+  if (timelineEvents.length) {
+    track.firstChild.classList.add('activo');
+    info.innerHTML = `<strong>${timelineEvents[0].year}</strong>: ${translations[currentLang]?.[timelineEvents[0].descKey] || timelineEvents[0].descKey}`;
+  }
+}
+
+// === 12. QUIZ (con soporte i18n) ===
+const preguntasQuiz = [
+  { preguntaKey: "quiz_pregunta1", opcionesKey: ["quiz_opcion1_1","quiz_opcion1_2","quiz_opcion1_3","quiz_opcion1_4"], respuesta: 1 },
+  { preguntaKey: "quiz_pregunta2", opcionesKey: ["quiz_opcion2_1","quiz_opcion2_2","quiz_opcion2_3","quiz_opcion2_4"], respuesta: 1 },
+  { preguntaKey: "quiz_pregunta3", opcionesKey: ["quiz_opcion3_1","quiz_opcion3_2","quiz_opcion3_3","quiz_opcion3_4"], respuesta: 1 },
+  { preguntaKey: "quiz_pregunta4", opcionesKey: ["quiz_opcion4_1","quiz_opcion4_2","quiz_opcion4_3","quiz_opcion4_4"], respuesta: 3 },
+  { preguntaKey: "quiz_pregunta5", opcionesKey: ["quiz_opcion5_1","quiz_opcion5_2","quiz_opcion5_3","quiz_opcion5_4"], respuesta: 0 },
+  { preguntaKey: "quiz_pregunta6", opcionesKey: ["quiz_opcion6_1","quiz_opcion6_2","quiz_opcion6_3","quiz_opcion6_4"], respuesta: 1 },
+  { preguntaKey: "quiz_pregunta7", opcionesKey: ["quiz_opcion7_1","quiz_opcion7_2","quiz_opcion7_3","quiz_opcion7_4"], respuesta: 2 }
+];
+
+let preguntaActual = 0;
+let aciertos = 0;
+
+function cargarPregunta() {
+  const contenedor = document.getElementById('pregunta-actual');
+  const opcionesDiv = document.getElementById('opciones-container');
+  const puntuacion = document.getElementById('puntuacion');
+  const siguienteBtn = document.getElementById('siguiente-pregunta');
+  const reiniciarBtn = document.getElementById('reiniciar-quiz');
+  if (!contenedor) return;
+
+  if (preguntaActual >= preguntasQuiz.length) {
+    contenedor.innerHTML = `¡Quiz completado! Puntuación: ${aciertos}/${preguntasQuiz.length}`;
+    opcionesDiv.innerHTML = '';
+    siguienteBtn.style.display = 'none';
+    reiniciarBtn.style.display = 'inline-block';
+    puntuacion.textContent = `${translations[currentLang]?.quiz_puntuacion || 'Aciertos:'} ${aciertos}/${preguntasQuiz.length}`;
+    return;
+  }
+
+  const q = preguntasQuiz[preguntaActual];
+  contenedor.textContent = translations[currentLang]?.[q.preguntaKey] || q.preguntaKey;
+  opcionesDiv.innerHTML = '';
+  q.opcionesKey.forEach((key, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opcion-btn';
+    btn.textContent = translations[currentLang]?.[key] || key;
+    btn.dataset.indice = idx;
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.opcion-btn').forEach(b => b.disabled = true);
+      if (idx === q.respuesta) {
+        btn.classList.add('correcta');
+        aciertos++;
+      } else {
+        btn.classList.add('incorrecta');
+        document.querySelectorAll('.opcion-btn')[q.respuesta].classList.add('correcta');
+      }
+      puntuacion.textContent = `${translations[currentLang]?.quiz_puntuacion || 'Aciertos:'} ${aciertos}/${preguntasQuiz.length}`;
+      siguienteBtn.style.display = 'inline-block';
+    });
+    opcionesDiv.appendChild(btn);
+  });
+  puntuacion.textContent = `${translations[currentLang]?.quiz_puntuacion || 'Aciertos:'} ${aciertos}/${preguntasQuiz.length}`;
+  siguienteBtn.style.display = 'none';
+  reiniciarBtn.style.display = 'none';
+}
+
+document.getElementById('siguiente-pregunta')?.addEventListener('click', () => {
+  preguntaActual++;
+  cargarPregunta();
+});
+document.getElementById('reiniciar-quiz')?.addEventListener('click', () => {
+  preguntaActual = 0;
+  aciertos = 0;
+  cargarPregunta();
+});
+
+// ========== IDIOMA (i18n) ==========
 let currentLang = localStorage.getItem('idioma') || 'es';
 let translations = { es: {}, en: {} };
 
-// Eventos de cambio de idioma
-document.getElementById('lang-es')?.addEventListener('click', () => cargarIdioma('es'));
-document.getElementById('lang-en')?.addEventListener('click', () => cargarIdioma('en'));
-
-// Función para cargar archivo de idioma
 async function cargarIdioma(lang) {
   try {
     const response = await fetch(`lang/${lang}.json`);
@@ -218,12 +314,10 @@ async function cargarIdioma(lang) {
     localStorage.setItem('idioma', lang);
     document.querySelectorAll('.idioma-btn').forEach(btn => btn.classList.remove('activo'));
     document.getElementById(`lang-${lang}`)?.classList.add('activo');
-    // Reconstruir componentes que dependen del idioma
     construirTimeline();
     cargarPregunta();
   } catch (error) {
     console.error('Error cargando idioma:', error);
-    // Si falla, usar textos por defecto (los del HTML)
   }
 }
 
@@ -245,205 +339,9 @@ function aplicarTraducciones(lang) {
   }
 }
 
-// ========== LÍNEA DE TIEMPO ==========
-const timelineEvents = [
-  { year: "-13.8 Ga", eventKey: "timeline_bigbang", descKey: "timeline_bigbang_desc" },
-  { year: "-13.6 Ga", eventKey: "timeline_estrellas", descKey: "timeline_estrellas_desc" },
-  { year: "-13.5 Ga", eventKey: "timeline_galaxias", descKey: "timeline_galaxias_desc" },
-  { year: "-4.6 Ga", eventKey: "timeline_sol", descKey: "timeline_sol_desc" },
-  { year: "1969", eventKey: "timeline_luna", descKey: "timeline_luna_desc" },
-  { year: "2022", eventKey: "timeline_sgr", descKey: "timeline_sgr_desc" }
-];
-
-function construirTimeline() {
-  const track = document.querySelector('.timeline-track');
-  const info = document.getElementById('timeline-desc');
-  
-  if (!track) {
-    console.error('No se encontró el elemento .timeline-track');
-    return;
-  }
-  if (!info) {
-    console.error('No se encontró el elemento #timeline-desc');
-    return;
-  }
-
-  track.innerHTML = ''; // Limpiar
-
-  timelineEvents.forEach((ev, index) => {
-    const btn = document.createElement('div');
-    btn.className = 'timeline-event';
-    btn.dataset.index = index;
-    // Usar traducción si existe, si no, usar el eventKey como texto (pero mejor mostrar algo legible)
-    let texto = translations[currentLang]?.[ev.eventKey];
-    if (!texto) {
-      // Texto por defecto si no hay traducción
-      const defaultTexts = {
-        timeline_bigbang: 'Big Bang',
-        timeline_estrellas: 'Primeras estrellas',
-        timeline_galaxias: 'Primeras galaxias',
-        timeline_sol: 'Nacimiento del Sol',
-        timeline_luna: 'Llegada a la Luna',
-        timeline_sgr: 'Imagen de Sgr A*'
-      };
-      texto = defaultTexts[ev.eventKey] || ev.eventKey;
-    }
-    btn.textContent = texto;
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.timeline-event').forEach(el => el.classList.remove('activo'));
-      btn.classList.add('activo');
-      let desc = translations[currentLang]?.[ev.descKey];
-      if (!desc) {
-        const defaultDescs = {
-          timeline_bigbang_desc: 'El universo comienza con una singularidad.',
-          timeline_estrellas_desc: 'Las primeras estrellas se forman.',
-          timeline_galaxias_desc: 'Las galaxias primitivas se ensamblan.',
-          timeline_sol_desc: 'Se forma el Sol y el Sistema Solar.',
-          timeline_luna_desc: 'Apolo 11 llega a la Luna.',
-          timeline_sgr_desc: 'Primera imagen del agujero negro central.'
-        };
-        desc = defaultDescs[ev.descKey] || ev.descKey;
-      }
-      info.innerHTML = `<strong>${ev.year}</strong>: ${desc}`;
-    });
-    track.appendChild(btn);
-  });
-
-  // Activar el primer evento
-  if (track.firstChild) {
-    track.firstChild.classList.add('activo');
-    let primerDesc = translations[currentLang]?.[timelineEvents[0].descKey];
-    if (!primerDesc) {
-      primerDesc = 'El universo comienza con una singularidad.';
-    }
-    info.innerHTML = `<strong>${timelineEvents[0].year}</strong>: ${primerDesc}`;
-  }
-}
-
-// ========== QUIZ ==========
-const preguntasQuiz = [
-  { preguntaKey: "quiz_pregunta1", opcionesKey: ["quiz_opcion1_1","quiz_opcion1_2","quiz_opcion1_3","quiz_opcion1_4"], respuesta: 1 },
-  { preguntaKey: "quiz_pregunta2", opcionesKey: ["quiz_opcion2_1","quiz_opcion2_2","quiz_opcion2_3","quiz_opcion2_4"], respuesta: 1 },
-  { preguntaKey: "quiz_pregunta3", opcionesKey: ["quiz_opcion3_1","quiz_opcion3_2","quiz_opcion3_3","quiz_opcion3_4"], respuesta: 1 },
-  { preguntaKey: "quiz_pregunta4", opcionesKey: ["quiz_opcion4_1","quiz_opcion4_2","quiz_opcion4_3","quiz_opcion4_4"], respuesta: 3 },
-  { preguntaKey: "quiz_pregunta5", opcionesKey: ["quiz_opcion5_1","quiz_opcion5_2","quiz_opcion5_3","quiz_opcion5_4"], respuesta: 0 },
-  { preguntaKey: "quiz_pregunta6", opcionesKey: ["quiz_opcion6_1","quiz_opcion6_2","quiz_opcion6_3","quiz_opcion6_4"], respuesta: 1 },
-  { preguntaKey: "quiz_pregunta7", opcionesKey: ["quiz_opcion7_1","quiz_opcion7_2","quiz_opcion7_3","quiz_opcion7_4"], respuesta: 2 }
-];
-
-let preguntaActual = 0;
-let aciertos = 0;
-
-function cargarPregunta() {
-  const contenedor = document.getElementById('pregunta-actual');
-  const opcionesDiv = document.getElementById('opciones-container');
-  const puntuacion = document.getElementById('puntuacion');
-  const siguienteBtn = document.getElementById('siguiente-pregunta');
-  const reiniciarBtn = document.getElementById('reiniciar-quiz');
-
-  if (!contenedor || !opcionesDiv || !puntuacion) {
-    console.error('No se encontraron elementos del quiz');
-    return;
-  }
-
-  // Si no hay más preguntas, mostrar final
-  if (preguntaActual >= preguntasQuiz.length) {
-    contenedor.innerHTML = `¡Quiz completado! Puntuación: ${aciertos}/${preguntasQuiz.length}`;
-    opcionesDiv.innerHTML = '';
-    if (siguienteBtn) siguienteBtn.style.display = 'none';
-    if (reiniciarBtn) reiniciarBtn.style.display = 'inline-block';
-    puntuacion.textContent = `Aciertos: ${aciertos}/${preguntasQuiz.length}`;
-    return;
-  }
-
-  const q = preguntasQuiz[preguntaActual];
-  // Obtener texto de la pregunta
-  let preguntaTexto = translations[currentLang]?.[q.preguntaKey];
-  if (!preguntaTexto) {
-    const defaultPreguntas = {
-      quiz_pregunta1: "¿Cuál es el agujero negro supermasivo en el centro de la Vía Láctea?",
-      quiz_pregunta2: "¿Aproximadamente cuántas estrellas se estima que contiene la Vía Láctea?",
-      quiz_pregunta3: "¿En qué año el ser humano pisó la Luna por primera vez?",
-      quiz_pregunta4: "¿Qué planeta tiene los anillos más famosos?",
-      quiz_pregunta5: "¿Cómo se llama la galaxia más cercana a la Vía Láctea?",
-      quiz_pregunta6: "¿Qué tipo de nebulosa son los 'Pilares de la Creación'?",
-      quiz_pregunta7: "¿Cuál es la temperatura aproximada del núcleo del Sol?"
-    };
-    preguntaTexto = defaultPreguntas[q.preguntaKey] || q.preguntaKey;
-  }
-  contenedor.textContent = preguntaTexto;
-
-  opcionesDiv.innerHTML = '';
-  q.opcionesKey.forEach((key, idx) => {
-    let opcionTexto = translations[currentLang]?.[key];
-    if (!opcionTexto) {
-      const defaultOpciones = {
-        quiz_opcion1_1: "M87*",
-        quiz_opcion1_2: "Sagitario A*",
-        quiz_opcion1_3: "Cygnus X-1",
-        quiz_opcion1_4: "TON 618",
-        quiz_opcion2_1: "100 mil millones",
-        quiz_opcion2_2: "300 mil millones",
-        quiz_opcion2_3: "1 billón",
-        quiz_opcion2_4: "10 mil millones",
-        quiz_opcion3_1: "1965",
-        quiz_opcion3_2: "1969",
-        quiz_opcion3_3: "1972",
-        quiz_opcion3_4: "1958",
-        quiz_opcion4_1: "Júpiter",
-        quiz_opcion4_2: "Urano",
-        quiz_opcion4_3: "Neptuno",
-        quiz_opcion4_4: "Saturno",
-        quiz_opcion5_1: "Andrómeda",
-        quiz_opcion5_2: "Triángulo",
-        quiz_opcion5_3: "Nube de Magallanes",
-        quiz_opcion5_4: "Sombrero",
-        quiz_opcion6_1: "Nebulosa planetaria",
-        quiz_opcion6_2: "Nebulosa de emisión",
-        quiz_opcion6_3: "Remanente de supernova",
-        quiz_opcion6_4: "Nebulosa oscura",
-        quiz_opcion7_1: "5.500 °C",
-        quiz_opcion7_2: "1 millón °C",
-        quiz_opcion7_3: "15 millones °C",
-        quiz_opcion7_4: "100 millones °C"
-      };
-      opcionTexto = defaultOpciones[key] || key;
-    }
-    const btn = document.createElement('button');
-    btn.className = 'opcion-btn';
-    btn.textContent = opcionTexto;
-    btn.dataset.indice = idx;
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.opcion-btn').forEach(b => b.disabled = true);
-      if (idx === q.respuesta) {
-        btn.classList.add('correcta');
-        aciertos++;
-      } else {
-        btn.classList.add('incorrecta');
-        const correctBtn = document.querySelectorAll('.opcion-btn')[q.respuesta];
-        if (correctBtn) correctBtn.classList.add('correcta');
-      }
-      puntuacion.textContent = `Aciertos: ${aciertos}/${preguntasQuiz.length}`;
-      if (siguienteBtn) siguienteBtn.style.display = 'inline-block';
-    });
-    opcionesDiv.appendChild(btn);
-  });
-
-  puntuacion.textContent = `Aciertos: ${aciertos}/${preguntasQuiz.length}`;
-  if (siguienteBtn) siguienteBtn.style.display = 'none';
-  if (reiniciarBtn) reiniciarBtn.style.display = 'none';
-}
-
-// Eventos de los botones del quiz
-document.getElementById('siguiente-pregunta')?.addEventListener('click', () => {
-  preguntaActual++;
-  cargarPregunta();
-});
-document.getElementById('reiniciar-quiz')?.addEventListener('click', () => {
-  preguntaActual = 0;
-  aciertos = 0;
-  cargarPregunta();
-});
+document.getElementById('lang-es')?.addEventListener('click', () => cargarIdioma('es'));
+document.getElementById('lang-en')?.addEventListener('click', () => cargarIdioma('en'));
+cargarIdioma(currentLang);
 
 // ========== ALTO CONTRASTE ==========
 const contrasteToggle = document.getElementById('contraste-toggle');
@@ -476,6 +374,7 @@ document.addEventListener('keydown', (e) => {
     case 'm': targetId = 'misiones'; break;
     case 'w': targetId = 'clima-espacial'; break;
     case 'r': targetId = 'noticias'; break;
+    case 'e': targetId = 'calculadora-edad'; break;
     default: return;
   }
   const target = document.getElementById(targetId);
@@ -499,12 +398,26 @@ if (atajosToggle && atajosContenido) {
   });
 }
 
+// ========== BOTÓN QR ==========
+const qrToggle = document.getElementById('qr-toggle');
+const qrContenido = document.getElementById('qr-contenido');
+if (qrToggle && qrContenido) {
+  qrToggle.addEventListener('click', () => {
+    qrContenido.classList.toggle('mostrar');
+  });
+  document.addEventListener('click', (e) => {
+    if (!qrToggle.contains(e.target) && !qrContenido.contains(e.target)) {
+      qrContenido.classList.remove('mostrar');
+    }
+  });
+}
+
 // ========== CLIMA ESPACIAL ==========
 async function cargarClimaEspacial() {
   const container = document.getElementById('clima-container');
   if (!container) return;
   try {
-    const API_KEY = 'DEMO_KEY'; // Reemplazar con tu API key de NASA
+    const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX'; // Reemplazar con tu API key de NASA
     const solarWindRes = await fetch(`https://api.nasa.gov/DONKI/notifications?api_key=${API_KEY}`);
     const solarWindData = await solarWindRes.json();
     const alertsRes = await fetch(`https://api.nasa.gov/DONKI/GST?api_key=${API_KEY}`);
@@ -587,6 +500,41 @@ window.shareOnLinkedIn = function(titulo) {
   window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, '_blank');
 };
 
+// ========== CALCULADORA DE EDAD PLANETARIA ==========
+const planetasEdad = [
+  { nombre: 'Mercurio', factor: 0.2408467 },
+  { nombre: 'Venus', factor: 0.61519726 },
+  { nombre: 'Tierra', factor: 1 },
+  { nombre: 'Marte', factor: 1.8808158 },
+  { nombre: 'Júpiter', factor: 11.862615 },
+  { nombre: 'Saturno', factor: 29.447498 },
+  { nombre: 'Urano', factor: 84.016846 },
+  { nombre: 'Neptuno', factor: 164.79132 }
+];
+
+function calcularEdades() {
+  const input = document.getElementById('edad-terrestre');
+  const contenedor = document.getElementById('resultados-edad');
+  if (!input || !contenedor) return;
+  const edad = parseFloat(input.value);
+  if (isNaN(edad) || edad < 0) {
+    contenedor.innerHTML = '<p style="color: var(--nebula3);">Por favor ingresa una edad válida</p>';
+    return;
+  }
+  let html = '';
+  planetasEdad.forEach(p => {
+    const edadPlaneta = (edad / p.factor).toFixed(2);
+    html += `<div class="resultado-card"><h4>${p.nombre}</h4><div class="edad">${edadPlaneta} años</div></div>`;
+  });
+  contenedor.innerHTML = html;
+}
+
+document.getElementById('calcular-edad')?.addEventListener('click', calcularEdades);
+// Calcular al cargar con valor por defecto
+if (document.getElementById('edad-terrestre')) {
+  setTimeout(calcularEdades, 500);
+}
+
 // ========== DISQUS ==========
 var disqus_config = function () {
   this.page.url = window.location.href;
@@ -594,57 +542,64 @@ var disqus_config = function () {
 };
 (function() {
   var d = document, s = d.createElement('script');
-  s.src = 'https://cosmos-astronomia-1.disqus.com/embed.js'; // Cambia por tu shortname
+  s.src = 'https://cosmos-astronomia-1.disqus.com/embed.js'; // Tu shortname
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
 })();
 
+// ========== FECHA Y HORA EN TIEMPO REAL ==========
+function actualizarFechaHora() {
+  const ahora = new Date();
+  
+  const dia = String(ahora.getDate()).padStart(2, '0');
+  const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+  const año = ahora.getFullYear();
+  const fechaEl = document.getElementById('fecha-actual');
+  if (fechaEl) fechaEl.textContent = `${dia}/${mes}/${año}`;
+  
+  const horas = String(ahora.getHours()).padStart(2, '0');
+  const minutos = String(ahora.getMinutes()).padStart(2, '0');
+  const segundos = String(ahora.getSeconds()).padStart(2, '0');
+  const horaEl = document.getElementById('hora-actual');
+  if (horaEl) horaEl.textContent = `${horas}:${minutos}:${segundos}`;
+}
+
+setInterval(actualizarFechaHora, 1000);
+
+// ========== FASE LUNAR ACTUAL (API farmsense) ==========
+async function obtenerFaseLunar() {
+  try {
+    const respuesta = await fetch('https://api.farmsense.net/v1/moonphases/');
+    const datos = await respuesta.json();
+    if (datos && datos.length > 0) {
+      const fase = datos[0];
+      const nombreFase = fase.Phase;
+      
+      let icono = '🌕';
+      if (nombreFase.includes('New')) icono = '🌑';
+      else if (nombreFase.includes('Waxing Crescent')) icono = '🌒';
+      else if (nombreFase.includes('First Quarter')) icono = '🌓';
+      else if (nombreFase.includes('Waxing Gibbous')) icono = '🌔';
+      else if (nombreFase.includes('Full')) icono = '🌕';
+      else if (nombreFase.includes('Waning Gibbous')) icono = '🌖';
+      else if (nombreFase.includes('Last Quarter')) icono = '🌗';
+      else if (nombreFase.includes('Waning Crescent')) icono = '🌘';
+      
+      const iconoEl = document.getElementById('fase-icono');
+      const nombreEl = document.getElementById('fase-nombre');
+      if (iconoEl) iconoEl.textContent = icono;
+      if (nombreEl) nombreEl.textContent = nombreFase;
+    }
+  } catch (error) {
+    console.error('Error al obtener fase lunar:', error);
+  }
+}
+
+obtenerFaseLunar();
+setInterval(obtenerFaseLunar, 3600000); // cada hora
+
 // ========== INICIALIZACIÓN GENERAL ==========
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM cargado, inicializando componentes...');
-  
-  // Inicializar idioma (esto dispara timeline y quiz)
-  cargarIdioma(currentLang);
-  
-  // Cargar clima y noticias
   cargarClimaEspacial();
   cargarNoticias();
-  
-  console.log('Componentes inicializados.');
 });
-
-// Registrar Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/proyecto-001/service-worker.js')
-      .then(registration => {
-        console.log('Service Worker registrado con éxito:', registration.scope);
-      })
-      .catch(error => {
-        console.log('Error al registrar el Service Worker:', error);
-      });
-  });
-}
-
-// === BOTÓN FLOTANTE QR ===
-const qrToggle = document.getElementById('qr-toggle');
-const qrContenido = document.getElementById('qr-contenido');
-
-if (qrToggle && qrContenido) {
-  qrToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    qrContenido.classList.toggle('mostrar');
-  });
-
-  // Cerrar al hacer clic fuera
-  document.addEventListener('click', (e) => {
-    if (!qrToggle.contains(e.target) && !qrContenido.contains(e.target)) {
-      qrContenido.classList.remove('mostrar');
-    }
-  });
-
-  // Evitar que el clic dentro del contenido lo cierre
-  qrContenido.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-}
