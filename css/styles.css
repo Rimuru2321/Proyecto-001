@@ -2543,3 +2543,264 @@ footer a:hover {
     text-align: left;
   }
 }
+
+/* ===== EVENTOS 2026 ===== */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.evento-card {
+  background: rgba(5,5,32,0.7);
+  border: 1px solid var(--nebula2);
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.evento-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cyan);
+  box-shadow: 0 15px 30px rgba(0,229,255,0.2);
+}
+
+.evento-mes {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  padding-bottom: 8px;
+}
+
+.evento-destacado {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.evento-icon {
+  font-size: 2rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.evento-fecha {
+  font-size: 0.85rem;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.evento-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.evento-desc {
+  font-size: 0.9rem;
+  color: rgba(200,216,240,0.8);
+  line-height: 1.5;
+}
+
+.eventos-nota {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: rgba(200,216,240,0.6);
+  font-style: italic;
+}
+
+/* ===== MITOS Y LEYENDAS ===== */
+.subsection-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  color: var(--cyan);
+  margin: 40px 0 20px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0,229,255,0.3);
+}
+
+/* Constelaciones */
+.mitos-constelaciones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.mito-card {
+  background: rgba(5,5,32,0.7);
+  border: 1px solid var(--nebula2);
+  border-radius: 20px;
+  padding: 20px;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mito-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cyan);
+  box-shadow: 0 15px 30px rgba(0,229,255,0.2);
+}
+
+.mito-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid var(--gold);
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.mito-card:hover img {
+  transform: scale(1.02);
+}
+
+.mito-card h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.mito-card p {
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.mito-dato {
+  font-size: 0.9rem;
+  color: var(--cyan);
+  background: rgba(0,229,255,0.1);
+  padding: 8px 12px;
+  border-radius: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Eclipses */
+.eclipses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.eclipse-card {
+  background: rgba(108,10,239,0.1);
+  border: 1px solid var(--nebula3);
+  border-radius: 20px;
+  padding: 20px;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eclipse-card:hover {
+  transform: scale(1.02);
+  border-color: var(--cyan);
+  background: rgba(108,10,239,0.2);
+}
+
+.eclipse-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.eclipse-card h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--nebula3);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.eclipse-card p {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Nombres de planetas */
+.planetas-nombres-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.nombre-card {
+  background: rgba(5,5,32,0.6);
+  border: 1px solid var(--cyan);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nombre-card:hover {
+  transform: translateY(-5px);
+  background: rgba(0,229,255,0.1);
+  box-shadow: 0 0 20px var(--cyan);
+}
+
+.nombre-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.nombre-card h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.nombre-card p {
+  font-size: 0.9rem;
+  color: rgba(200,216,240,0.9);
+  line-height: 1.5;
+}
+
+.mitos-nota {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: rgba(200,216,240,0.6);
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .mitos-constelaciones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .planetas-nombres-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .mitos-constelaciones-grid,
+  .planetas-nombres-grid {
+    grid-template-columns: 1fr;
+  }
+  .subsection-title {
+    font-size: 1.4rem;
+  }
+}
