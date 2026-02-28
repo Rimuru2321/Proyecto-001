@@ -16,6 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
   <!-- Font Awesome para iconos de redes sociales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- SunCalc.js para cálculos astronómicos -->
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.min.js"></script>
 </head>
 <body>
 
@@ -32,9 +34,13 @@
           <a href="#galaxia-que-es" data-i18n="nav_galaxia">Vía Láctea</a>
           <a href="#galaxia-estructura" data-i18n="nav_estructura">Estructura</a>
           <a href="#galaxia-datos" data-i18n="nav_datos">Datos</a>
+          <a href="#tipos-galaxias" data-i18n="nav_tipos_galaxias">Tipos de galaxias</a>
+          <a href="#datos-via-lactea" data-i18n="nav_datos_via">Datos Vía Láctea</a>
+          <a href="#galaxias-primitivas" data-i18n="nav_galaxias_primitivas">Galaxias primitivas</a>
+          <a href="#sonificacion" data-i18n="nav_sonificacion">Sonificación</a>
+          <a href="#curiosidades-extra" data-i18n="nav_curiosidades_extra">Curiosidades extra</a>
           <a href="#planetas" data-i18n="nav_planetas">Planetas</a>
           <a href="#sistema-solar" data-i18n="nav_sistema_solar">Sistema Solar</a>
-          <a href="#luna" data-i18n="nav_luna">Luna</a>
           <a href="#agujero-negro" data-i18n="nav_agujero_negro">Agujero Negro</a>
           <a href="#nebulosas" data-i18n="nav_nebulosas">Nebulosas</a>
           <a href="#misiones" data-i18n="nav_misiones">Misiones</a>
@@ -42,6 +48,7 @@
           <a href="#constelaciones" data-i18n="nav_constelaciones">Constelaciones</a>
           <a href="#curiosidades" data-i18n="nav_curiosidades">Curiosidades</a>
           <a href="#calculadora-edad" data-i18n="nav_calculadora">Edad Planetaria</a>
+          <a href="#calculadora-peso" data-i18n="nav_peso">Peso Planetario</a>
           <a href="#timeline" data-i18n="nav_timeline">Línea de Tiempo</a>
           <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
           <a href="#clima-espacial" data-i18n="nav_clima">Clima Espacial</a>
@@ -84,7 +91,7 @@
         <li><kbd>W</kbd> - Clima Espacial</li>
         <li><kbd>R</kbd> - Noticias</li>
         <li><kbd>E</kbd> - Edad Planetaria</li>
-        <li><kbd>L</kbd> - Luna</li>
+        <li><kbd>K</kbd> - Peso Planetario</li>
       </ul>
     </div>
   </div>
@@ -123,7 +130,7 @@
     </div>
   </div>
 
-  <!-- GALAXIA -->
+  <!-- GALAXIA (original) -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="galaxia">
     <div class="share-section">
@@ -173,6 +180,160 @@
           <span class="stat-num">13.600M</span>
           <span class="stat-label" data-i18n="stat_edad">Años de antigüedad</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOS DE GALAXIAS (con imágenes) -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="tipos-galaxias">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Tipos de galaxias')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Tipos de galaxias')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Tipos de galaxias')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🌌 Tipos de galaxias</p>
+    <h2 class="section-title">Más allá de la <span>espiral</span></h2>
+    <div class="divider"></div>
+    <div class="galaxy-types-grid reveal">
+      <div class="type-card">
+        <img src="img/galaxia-espiral.jpg" alt="Galaxia espiral" loading="lazy">
+        <h3>🌀 Espirales</h3>
+        <p>Como nuestra Vía Láctea. Tienen un núcleo central brillante y brazos curvos envueltos en polvo y gas donde nacen estrellas.</p>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-eliptica.jpg" alt="Galaxia elíptica" loading="lazy">
+        <h3>⚪ Elípticas</h3>
+        <p>Forma ovalada, sin brazos definidos. Contienen estrellas viejas y poco gas. Van desde formas casi esféricas hasta alargadas.</p>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-irregular.jpg" alt="Galaxia irregular" loading="lazy">
+        <h3>🔮 Irregulares</h3>
+        <p>Sin forma definida. Suelen ser el resultado de perturbaciones gravitacionales o colisiones con otras galaxias.</p>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-lenticular.jpg" alt="Galaxia lenticular" loading="lazy">
+        <h3>🔄 Lenticulares</h3>
+        <p>Una mezcla entre espirales y elípticas: tienen disco pero sin brazos espirales evidentes.</p>
+      </div>
+    </div>
+    <p class="type-note">* Se estima que en el universo observable hay entre <strong>200 mil millones y 2 billones de galaxias</strong>.</p>
+  </section>
+
+  <!-- DATOS SORPRENDENTES DE LA VÍA LÁCTEA (con imágenes) -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="datos-via-lactea">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Datos de la Vía Láctea')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Datos de la Vía Láctea')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Datos de la Vía Láctea')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🔍 Datos sorprendentes</p>
+    <h2 class="section-title">Secretos de <span>nuestra galaxia</span></h2>
+    <div class="divider"></div>
+    <div class="milkyway-facts-grid reveal">
+      <div class="fact-item">
+        <img src="img/via-lactea-plana.jpg" alt="Vía Láctea plana" loading="lazy">
+        <h3>📏 Prácticamente plana</h3>
+        <p>100.000 años luz de ancho pero solo <strong>1.000 años luz de espesor</strong>. ¡Es como un CD gigante!</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/ano-galactico.jpg" alt="Año galáctico" loading="lazy">
+        <h3>⏱️ El año galáctico</h3>
+        <p>El Sol tarda entre <strong>225 y 250 millones de años</strong> en dar una vuelta completa al centro de la galaxia. La última vez que el Sol estuvo en esta posición, los dinosaurios dominaban la Tierra.</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/burbujas-fermi.jpg" alt="Burbujas de Fermi" loading="lazy">
+        <h3>🫀 Latidos del centro</h3>
+        <p>El centro galáctico genera <strong>burbujas de Fermi</strong>: enormes estructuras de gas caliente que se extienden por encima y debajo del plano galáctico, alimentadas por vientos de 2 millones de millas por hora.</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/galaxia-canibal.jpg" alt="Galaxia caníbal" loading="lazy">
+        <h3>🍽️ Galaxia caníbal</h3>
+        <p>La Vía Láctea ha crecido "tragándose" galaxias enanas. Ciertas estrellas antiguas son evidencia de estas fusiones pasadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALAXIAS DEL UNIVERSO PRIMITIVO (con imágenes) -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="galaxias-primitivas">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Galaxias primitivas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Galaxias primitivas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Galaxias primitivas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🌠 El estirón cósmico</p>
+    <h2 class="section-title">Galaxias del <span>universo primitivo</span></h2>
+    <div class="divider"></div>
+    <div class="primitive-container reveal">
+      <img src="img/galaxia-primitiva.jpg" alt="Galaxia del universo primitivo" loading="lazy">
+      <p>Cuando el universo tenía solo entre <strong>1.000 y 1.500 millones de años</strong> (apenas el 10% de su edad actual), las galaxias experimentaron un "estirón" masivo, adquiriendo la mayor parte de su masa estelar y polvo.</p>
+      <div class="primitive-highlight">
+        <h4>🔭 Descubrimiento sorprendente (ALMA)</h4>
+        <p>Estudios recientes de 118 galaxias distantes revelaron que muchas eran mucho más maduras de lo esperado: cerca del <strong>20% ya contenía grandes cantidades de polvo</strong> y elementos pesados, considerados subproductos de estrellas moribundas.</p>
+        <p>Algunas ya mostraban discos giratorios que eventualmente formarían estructuras espirales, desafiando la teoría de que todas las galaxias primitivas estaban "maltrechas" por colisiones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SONIFICACIÓN (con imágenes) -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="sonificacion">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Sonificación de galaxias')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Sonificación de galaxias')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Sonificación de galaxias')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🎵 ¿A qué suena una galaxia?</p>
+    <h2 class="section-title">El universo <span>sonoro</span></h2>
+    <div class="divider"></div>
+    <div class="sonificacion-container reveal">
+      <img src="img/sonificacion.webp" alt="Representación de sonificación" loading="lazy">
+      <p>Gracias a la <strong>sonificación</strong>, una técnica que convierte datos científicos en sonidos, podemos "escuchar" las galaxias. Más que una curiosidad, esta herramienta permite detectar patrones ocultos en grandes volúmenes de datos y hacer la ciencia más accesible para personas con discapacidad visual.</p>
+      <div class="sonificacion-tech">
+        <h4>🎧 ViewCube y SoniCube</h4>
+        <p>Estas aplicaciones traducen cubos de datos espectroscópicos en sonidos, usando <strong>sonido binaural</strong> que simula cómo percibimos el sonido en 3D. Así, al "escuchar" una galaxia, podemos identificar variaciones en la edad de sus estrellas en diferentes regiones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURIOSIDADES EXTRA (con imágenes) -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="curiosidades-extra">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Más curiosidades')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Más curiosidades')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Más curiosidades')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">✨ Datos alucinantes</p>
+    <h2 class="section-title">El cosmos <span>insólito</span></h2>
+    <div class="divider"></div>
+    <div class="extra-curiosidades-grid reveal">
+      <div class="extra-card">
+        <img src="img/nube-alcohol.webp" alt="Nube de alcohol en el espacio" loading="lazy">
+        <h3>🍺 Nubes de alcohol</h3>
+        <p>Sagitario B, una nube gigante en la Vía Láctea a 26.000 años luz, contiene <strong>10 trillones de litros de alcohol</strong>.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/oceanos-cosmicos.jpg" alt="Océanos cósmicos" loading="lazy">
+        <h3>💧 Océanos cósmicos</h3>
+        <p>Se estima que hay <strong>140 trillones de veces más agua</strong> en el universo que en todos los océanos de la Tierra.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/nebulosa-boomerang.jpg" alt="Nebulosa Boomerang" loading="lazy">
+        <h3>❄️ El lugar más frío</h3>
+        <p>La Nebulosa Boomerang alcanza los <strong>-272°C</strong>, solo un grado por encima del cero absoluto.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/cmb.jpg" alt="Radiación cósmica de fondo" loading="lazy">
+        <h3>📺 El eco del Big Bang</h3>
+        <p>El 1% de la "nieve" en televisores analógicos es interferencia de la <strong>radiación cósmica de fondo</strong>, el eco del Big Bang.</p>
       </div>
     </div>
   </section>
@@ -292,9 +453,11 @@
     <div class="divider"></div>
 
     <div class="luna-grid reveal">
+      <!-- Columna izquierda: imagen principal -->
       <div class="luna-image">
         <img src="img/luna.png" alt="La Luna llena sobre la superficie terrestre" loading="lazy"/>
       </div>
+      <!-- Columna derecha: datos clave -->
       <div class="luna-datos">
         <div class="luna-stat">
           <span class="luna-num">384,400 km</span>
@@ -315,6 +478,7 @@
       </div>
     </div>
 
+    <!-- Texto explicativo -->
     <div class="luna-texto reveal">
       <p>
         La <strong>Luna</strong> es el único satélite natural de la Tierra y el quinto más grande del sistema solar. 
@@ -328,6 +492,7 @@
       </p>
     </div>
 
+    <!-- Galería de fases lunares -->
     <h3 style="color:var(--cyan); font-family:'Orbitron'; margin: 40px 0 20px;">Fases de la Luna</h3>
     <div class="fases-grid reveal">
       <div class="fase-card">
@@ -354,6 +519,7 @@
         🌑 LUNA DE SANGRE 🌑
       </h3>
       <div class="luna-roja-grid">
+        <!-- Columna izquierda: explicación científica -->
         <div class="luna-roja-card ciencia">
           <h4>🔬 ¿Por qué se ve roja?</h4>
           <p>
@@ -366,6 +532,7 @@
             Mientras más partículas de polvo o ceniza haya en el aire (como después de una erupción volcánica), más intenso será el rojo.
           </p>
         </div>
+        <!-- Columna derecha: mitos y leyendas -->
         <div class="luna-roja-card mitos">
           <h4>📜 Mitos y leyendas</h4>
           <ul>
@@ -378,6 +545,7 @@
           </ul>
         </div>
       </div>
+      <!-- Dato curioso adicional -->
       <div class="luna-roja-dato">
         <p>✨ <strong>¿Sabías que...?</strong> Cristóbal Colón utilizó un eclipse lunar (Luna de sangre) en 1504 para asustar a los nativos de Jamaica y conseguir alimentos. Sabía que ocurriría por sus tablas astronómicas y lo usó a su favor.</p>
       </div>
@@ -765,6 +933,118 @@
     </div>
   </section>
 
+  <!-- CALCULADORA DE PESO EN OTROS PLANETAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="calculadora-peso">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Calculadora de peso planetario')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de peso planetario')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de peso planetario')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">⚖️ ¿Cuánto pesarías en otros mundos?</p>
+    <h2 class="section-title">Calculadora de <span>peso planetario</span></h2>
+    <div class="divider"></div>
+    <div class="calculadora-container reveal">
+      <div class="calculadora-input">
+        <label for="peso-terrestre">Ingresa tu peso en la Tierra (kg):</label>
+        <input type="number" id="peso-terrestre" min="0" max="500" value="70" step="0.1">
+        <button id="calcular-peso" class="btn btn-primary">Calcular</button>
+      </div>
+      <div class="calculadora-resultados" id="resultados-peso">
+        <!-- Aquí se mostrarán los resultados -->
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARADOR DE TAMAÑOS DE PLANETAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="comparador">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Comparador de tamaños de planetas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Comparador de tamaños de planetas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Comparador de tamaños de planetas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🪐 Comparador cósmico</p>
+    <h2 class="section-title">Tamaños de <span>planetas</span></h2>
+    <div class="divider"></div>
+    <div class="comparador-container reveal">
+      <div class="comparador-controles">
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showSun" checked> <label for="showSun">☀️ Sol</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showMercurio" checked> <label for="showMercurio">☿ Mercurio</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showVenus" checked> <label for="showVenus">♀️ Venus</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showTierra" checked> <label for="showTierra">🌍 Tierra</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showMarte" checked> <label for="showMarte">♂️ Marte</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showJupiter" checked> <label for="showJupiter">♃ Júpiter</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showSaturno" checked> <label for="showSaturno">🪐 Saturno</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showUrano" checked> <label for="showUrano">⛢ Urano</label>
+        </div>
+        <div class="comparador-checkbox">
+          <input type="checkbox" id="showNeptuno" checked> <label for="showNeptuno">♆ Neptuno</label>
+        </div>
+      </div>
+      <div class="comparador-btns">
+        <button id="comparador-actualizar" class="btn btn-primary">Actualizar comparación</button>
+        <button id="comparador-todos" class="btn btn-outline">Seleccionar todos</button>
+        <button id="comparador-ninguno" class="btn btn-outline">Deseleccionar todos</button>
+      </div>
+      <div class="comparador-canvas-wrapper">
+        <canvas id="comparador-canvas" width="800" height="400"></canvas>
+      </div>
+      <p class="comparador-escala">* Tamaños relativos (escala logarítmica para visualización). El Sol está reducido para que quepa.</p>
+    </div>
+  </section>
+
+  <!-- HOY EN LA HISTORIA DE LA ASTRONOMÍA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="historia-hoy">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Hoy en la historia astronómica')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Hoy en la historia astronómica')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Hoy en la historia astronómica')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">✨ Hoy en la historia</p>
+    <h2 class="section-title">Astronomía <span>en este día</span></h2>
+    <div class="divider"></div>
+    <div id="historia-container" class="historia-container reveal">
+      <div class="historia-cargando">Cargando eventos históricos...</div>
+    </div>
+  </section>
+
+  <!-- EFEMÉRIDES ASTRONÓMICAS DEL DÍA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="efemerides">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Efemérides astronómicas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Efemérides astronómicas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Efemérides astronómicas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">🌍 Efemérides del día</p>
+    <h2 class="section-title">Sol, Luna y <span>planetas visibles</span></h2>
+    <div class="divider"></div>
+    <div id="efemerides-container" class="efemerides-container reveal">
+      <p class="efemerides-cargando">Solicitando ubicación para calcular las efemérides...</p>
+    </div>
+  </section>
+
   <!-- LÍNEA DE TIEMPO -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="timeline">
@@ -873,36 +1153,28 @@
     </div>
   </div>
 
-  <!-- FOOTER con Fecha/Hora y Fase Lunar -->
+  <!-- FOOTER (centrado) -->
   <footer>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 20px;">
-      <!-- Columna izquierda: fecha y hora -->
-      <div style="flex: 1; min-width: 200px; text-align: left;">
-        <div id="fecha-actual" style="font-family: 'Orbitron'; color: var(--cyan); font-size: 1.2rem;"></div>
-        <div id="hora-actual" style="font-family: 'Space Mono'; color: var(--text); font-size: 1rem;"></div>
-      </div>
-      <!-- Columna central: logo y textos -->
-      <div style="flex: 1; min-width: 200px; text-align: center;">
+    <div class="footer-content">
+      <div class="footer-info">
         <p class="footer-logo">✦ COSMOS</p>
         <p data-i18n="footer_texto">Explorando el universo, una estrella a la vez</p>
         <p data-i18n="footer_imagenes">Imágenes: NASA · ESA · Hubble Space Telescope · Wikipedia Commons</p>
       </div>
-      <!-- Columna derecha: fase lunar actual -->
-      <div style="flex: 1; min-width: 200px; text-align: right;" id="fase-lunar-container">
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
-          <div id="fase-lunar-icono" style="font-size: 2.5rem;">🌑</div>
-          <div>
-            <div id="fase-lunar-nombre" style="font-family: 'Orbitron'; color: var(--cyan);">Cargando...</div>
-            <div id="fase-lunar-detalle" style="font-size: 0.8rem; color: var(--text);"></div>
-          </div>
-        </div>
+      <div class="footer-lunar" id="footer-lunar">
+        <div style="font-size: 2.5rem; margin-bottom: 5px;" id="fase-icono">🌕</div>
+        <div style="font-weight: 600; color: #fff;" id="fase-nombre">Fase lunar</div>
+        <div style="font-size: 0.9rem; color: var(--cyan); margin: 5px 0;" id="fecha-actual">--/--/----</div>
+        <div style="font-size: 1.2rem; font-family: 'Orbitron'; letter-spacing: 2px;" id="hora-actual">--:--:--</div>
       </div>
     </div>
-    <p style="margin-top:16px;">© 2025 Cosmos — Una ventana al universo</p>
-    <p>
-      <a href="legal.html" target="_blank" style="color:var(--cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
-      <a href="comment-policy.html" target="_blank" style="color:var(--cyan);">Política de Comentarios</a>
-    </p>
+    <div class="footer-legal">
+      <p>© 2025 Cosmos — Una ventana al universo</p>
+      <p>
+        <a href="legal.html" target="_blank" style="color:var(--cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
+        <a href="comment-policy.html" target="_blank" style="color:var(--cyan);">Política de Comentarios</a>
+      </p>
+    </div>
   </footer>
 
   <!-- Audio oculto -->
