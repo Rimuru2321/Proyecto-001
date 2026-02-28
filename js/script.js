@@ -117,7 +117,7 @@ if (buscador) {
 // === 7. NASA APOD ===
 const apodContainer = document.getElementById('apod-container');
 if (apodContainer) {
-  const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX'; // Reemplazar con tu clave
+  const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX';
   fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
@@ -375,6 +375,7 @@ document.addEventListener('keydown', (e) => {
     case 'w': targetId = 'clima-espacial'; break;
     case 'r': targetId = 'noticias'; break;
     case 'e': targetId = 'calculadora-edad'; break;
+    case 'k': targetId = 'calculadora-peso'; break;
     default: return;
   }
   const target = document.getElementById(targetId);
@@ -412,28 +413,34 @@ if (qrToggle && qrContenido) {
   });
 }
 
-// ========== CLIMA ESPACIAL ==========
+// ========== CLIMA ESPACIAL MEJORADO (con tu API key) ==========
 async function cargarClimaEspacial() {
   const container = document.getElementById('clima-container');
   if (!container) return;
+  
+  container.innerHTML = '<p class="clima-cargando">Cargando datos del clima espacial...</p>';
+  
   try {
-    const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX'; // Reemplazar con tu API key de NASA
+    const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX';
     const solarWindRes = await fetch(`https://api.nasa.gov/DONKI/notifications?api_key=${API_KEY}`);
+    if (!solarWindRes.ok) throw new Error('Error en la respuesta de NASA');
+    
     const solarWindData = await solarWindRes.json();
     const alertsRes = await fetch(`https://api.nasa.gov/DONKI/GST?api_key=${API_KEY}`);
     const alertsData = await alertsRes.json();
     
     const latestNotification = solarWindData[0] || {};
-    const latestAlert = alertsData[0] || {};
     
     let html = '<div class="clima-grid">';
-    const solarWindSpeed = latestNotification?.messageBody?.match(/(\d+)\s*km\/s/)?.[1] || '450';
+    
+    // Extraer datos con expresiones regulares
+    const solarWindSpeed = latestNotification?.messageBody?.match(/(\d+)\s*km\/s/)?.[1] || '420';
     html += `<div class="clima-card"><h3>🌬️ Viento Solar</h3><div class="clima-valor">${solarWindSpeed} km/s</div><div class="clima-unidad">velocidad media</div></div>`;
     
-    const bzValue = latestNotification?.messageBody?.match(/Bz[:\s]*([-\d.]+)/i)?.[1] || '-2.5';
+    const bzValue = latestNotification?.messageBody?.match(/Bz[:\s]*([-\d.]+)/i)?.[1] || '-1.8';
     html += `<div class="clima-card"><h3>🧲 Campo Magnético Bz</h3><div class="clima-valor">${bzValue} nT</div><div class="clima-unidad">nanoTeslas</div></div>`;
     
-    const density = latestNotification?.messageBody?.match(/densidad[:\s]*(\d+)/i)?.[1] || '5.2';
+    const density = latestNotification?.messageBody?.match(/densidad[:\s]*(\d+)/i)?.[1] || '6.3';
     html += `<div class="clima-card"><h3>⚡ Densidad de protones</h3><div class="clima-valor">${density} cm⁻³</div><div class="clima-unidad">partículas por cm³</div></div>`;
     html += '</div>';
     
@@ -446,40 +453,254 @@ async function cargarClimaEspacial() {
     } else {
       html += '<div class="clima-alertas"><h4>✅ No hay alertas activas</h4></div>';
     }
+    
     container.innerHTML = html;
   } catch (error) {
-    console.error('Error cargando clima espacial:', error);
-    container.innerHTML = '<p class="clima-error">Error al cargar datos del clima espacial</p>';
+    console.error('Error cargando clima espacial, usando datos simulados:', error);
+    container.innerHTML = `
+      <div class="clima-grid">
+        <div class="clima-card"><h3>🌬️ Viento Solar</h3><div class="clima-valor">420 km/s</div><div class="clima-unidad">velocidad media (simulada)</div></div>
+        <div class="clima-card"><h3>🧲 Campo Magnético Bz</h3><div class="clima-valor">-1.8 nT</div><div class="clima-unidad">nanoTeslas (simulado)</div></div>
+        <div class="clima-card"><h3>⚡ Densidad de protones</h3><div class="clima-valor">6.3 cm⁻³</div><div class="clima-unidad">partículas por cm³ (simulado)</div></div>
+      </div>
+      <div class="clima-alertas"><h4>ℹ️ Datos simulados (la API no respondió)</h4></div>
+    `;
   }
 }
 
-// ========== NOTICIAS DESDE RSS DE NASA ==========
+// ========== NOTICIAS MEJORADAS (con respaldo) ==========
 async function cargarNoticias() {
   const container = document.getElementById('noticias-container');
   if (!container) return;
+  
+  container.innerHTML = '<p class="noticias-cargando">Cargando noticias...</p>';
+  
+  const noticiasRespaldo = [
+    {
+      title: "James Webb descubre galaxias tempranas",
+      pubDate: "2025-02-25",
+      description: "El telescopio James Webb ha observado galaxias que se formaron solo 300 millones de años después del Big Bang.",
+      link: "https://www.nasa.gov"
+    },
+    {
+      title: "Perseverance encuentra rocas con posibles signos de vida",
+      pubDate: "2025-02-20",
+      description: "El rover de la NASA en Marte ha recolectado muestras que contienen compuestos orgánicos complejos.",
+      link: "https://www.nasa.gov"
+    },
+    {
+      title: "Eclipse lunar total visible en América",
+      pubDate: "2025-02-15",
+      description: "La Luna de sangre podrá observarse en todo el continente americano esta noche.",
+      link: "https://www.nasa.gov"
+    }
+  ];
+  
   try {
     const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.nasa.gov/rss/dyn/breaking_news.rss';
     const response = await fetch(rssUrl);
     const data = await response.json();
-    if (data.status === 'ok' && data.items) {
+    
+    if (data.status === 'ok' && data.items && data.items.length > 0) {
       let html = '';
       data.items.slice(0, 6).forEach(item => {
         html += `
           <div class="noticia-card">
             <h3 class="noticia-titulo">${item.title}</h3>
             <span class="noticia-fecha">${new Date(item.pubDate).toLocaleDateString()}</span>
-            <p class="noticia-descripcion">${item.description.substring(0, 150)}...</p>
+            <p class="noticia-descripcion">${item.description.replace(/<[^>]*>/g, '').substring(0, 150)}...</p>
             <a href="${item.link}" target="_blank" class="noticia-enlace">Leer más →</a>
           </div>
         `;
       });
       container.innerHTML = html;
     } else {
-      container.innerHTML = '<p>No hay noticias disponibles</p>';
+      throw new Error('No se obtuvieron noticias');
     }
   } catch (error) {
-    console.error('Error cargando noticias:', error);
-    container.innerHTML = '<p>Error al cargar noticias</p>';
+    console.error('Error cargando noticias, usando respaldo:', error);
+    let html = '';
+    noticiasRespaldo.forEach(item => {
+      html += `
+        <div class="noticia-card">
+          <h3 class="noticia-titulo">${item.title}</h3>
+          <span class="noticia-fecha">${new Date(item.pubDate).toLocaleDateString()}</span>
+          <p class="noticia-descripcion">${item.description}</p>
+          <a href="${item.link}" target="_blank" class="noticia-enlace">Leer más →</a>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+}
+
+// ========== HOY EN LA HISTORIA DE LA ASTRONOMÍA ==========
+async function cargarHistoriaHoy() {
+  const container = document.getElementById('historia-container');
+  if (!container) return;
+  
+  container.innerHTML = '<div class="historia-cargando">Cargando eventos históricos...</div>';
+  
+  try {
+    const respuesta = await fetch('data/astronomy-events.json');
+    const data = await respuesta.json();
+    
+    const hoy = new Date();
+    const mesActual = hoy.getMonth() + 1;
+    const diaActual = hoy.getDate();
+    
+    const eventosHoy = data.eventos.filter(e => e.mes === mesActual && e.dia === diaActual);
+    
+    if (eventosHoy.length === 0) {
+      container.innerHTML = '<div class="historia-vacio">Hoy no hay eventos registrados. ¡Vuelve mañana!</div>';
+      return;
+    }
+    
+    let html = '<div class="historia-eventos">';
+    eventosHoy.forEach(e => {
+      html += `
+        <div class="historia-evento">
+          <div class="historia-fecha">${e.year}</div>
+          <div class="historia-desc">${e.descripcion}</div>
+        </div>
+      `;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    
+  } catch (error) {
+    console.error('Error cargando eventos históricos:', error);
+    container.innerHTML = '<div class="historia-vacio">No se pudieron cargar los eventos históricos.</div>';
+  }
+}
+
+// ========== EFEMÉRIDES ASTRONÓMICAS CON GEOLOCALIZACIÓN ==========
+async function cargarEfemerides() {
+  const container = document.getElementById('efemerides-container');
+  if (!container) return;
+
+  container.innerHTML = '<p class="efemerides-cargando">Solicitando ubicación para calcular las efemérides...</p>';
+
+  const obtenerUbicacion = () => {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject(new Error('Geolocalización no soportada'));
+      } else {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          timeout: 10000,
+          maximumAge: 600000
+        });
+      }
+    });
+  };
+
+  try {
+    const pos = await obtenerUbicacion();
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+
+    const ahora = new Date();
+    const sunTimes = SunCalc.getTimes(ahora, lat, lng);
+    const moonTimes = SunCalc.getMoonTimes(ahora, lat, lng);
+    const moonIllum = SunCalc.getMoonIllumination(ahora);
+
+    const formatTime = (date) => {
+      if (!date || isNaN(date.getTime())) return '--:--';
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
+    const getPlanetVisibility = (planeta) => {
+      const hora = ahora.getHours();
+      if (hora > 18 || hora < 6) {
+        const visibles = ['Venus', 'Júpiter', 'Saturno'];
+        return visibles.includes(planeta) ? 'Posiblemente visible' : 'No visible';
+      } else {
+        return 'No visible (día)';
+      }
+    };
+
+    let html = `
+      <div class="efemerides-ubicacion">
+        📍 Lat: ${lat.toFixed(4)}° | Lon: ${lng.toFixed(4)}°
+      </div>
+      <div class="efemerides-grid">
+        <div class="efemerides-card">
+          <h3>☀️ Sol</h3>
+          <div class="efemerides-item"><span class="label">Salida:</span> <span class="value">${formatTime(sunTimes.sunrise)}</span></div>
+          <div class="efemerides-item"><span class="label">Puesta:</span> <span class="value">${formatTime(sunTimes.sunset)}</span></div>
+          <div class="efemerides-item"><span class="label">Culminación:</span> <span class="value">${formatTime(sunTimes.solarNoon)}</span></div>
+        </div>
+        <div class="efemerides-card">
+          <h3>🌙 Luna</h3>
+          <div class="efemerides-item"><span class="label">Salida:</span> <span class="value">${formatTime(moonTimes.rise)}</span></div>
+          <div class="efemerides-item"><span class="label">Puesta:</span> <span class="value">${formatTime(moonTimes.set)}</span></div>
+          <div class="efemerides-item"><span class="label">Iluminación:</span> <span class="value">${(moonIllum.fraction * 100).toFixed(1)}%</span></div>
+        </div>
+        <div class="efemerides-card">
+          <h3>🪐 Planetas visibles</h3>
+          <p style="color: rgba(200,216,240,0.8); margin-bottom: 10px;">(Datos aproximados)</p>
+          <div class="efemerides-item"><span class="label">Mercurio:</span> <span class="value">${getPlanetVisibility('Mercurio')}</span></div>
+          <div class="efemerides-item"><span class="label">Venus:</span> <span class="value">${getPlanetVisibility('Venus')}</span></div>
+          <div class="efemerides-item"><span class="label">Marte:</span> <span class="value">${getPlanetVisibility('Marte')}</span></div>
+          <div class="efemerides-item"><span class="label">Júpiter:</span> <span class="value">${getPlanetVisibility('Júpiter')}</span></div>
+          <div class="efemerides-item"><span class="label">Saturno:</span> <span class="value">${getPlanetVisibility('Saturno')}</span></div>
+        </div>
+      </div>
+      <div class="efemerides-nota">
+        ⏱️ Horas en zona horaria local. Los planetas son visibles si están por encima del horizonte al anochecer.
+      </div>
+    `;
+
+    container.innerHTML = html;
+
+  } catch (error) {
+    console.warn('No se pudo obtener la ubicación, usando coordenadas por defecto (Madrid):', error);
+    const lat = 40.4168;
+    const lng = -3.7038;
+    mostrarEfemeridesPorDefecto(lat, lng, container);
+  }
+}
+
+async function mostrarEfemeridesPorDefecto(lat, lng, container) {
+  try {
+    const ahora = new Date();
+    const sunTimes = SunCalc.getTimes(ahora, lat, lng);
+    const moonTimes = SunCalc.getMoonTimes(ahora, lat, lng);
+    const moonIllum = SunCalc.getMoonIllumination(ahora);
+
+    const formatTime = (date) => {
+      if (!date || isNaN(date.getTime())) return '--:--';
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
+    let html = `
+      <div class="efemerides-ubicacion">
+        📍 Ubicación por defecto: Madrid (coordenadas aproximadas)
+      </div>
+      <div class="efemerides-grid">
+        <div class="efemerides-card">
+          <h3>☀️ Sol</h3>
+          <div class="efemerides-item"><span class="label">Salida:</span> <span class="value">${formatTime(sunTimes.sunrise)}</span></div>
+          <div class="efemerides-item"><span class="label">Puesta:</span> <span class="value">${formatTime(sunTimes.sunset)}</span></div>
+        </div>
+        <div class="efemerides-card">
+          <h3>🌙 Luna</h3>
+          <div class="efemerides-item"><span class="label">Salida:</span> <span class="value">${formatTime(moonTimes.rise)}</span></div>
+          <div class="efemerides-item"><span class="label">Puesta:</span> <span class="value">${formatTime(moonTimes.set)}</span></div>
+          <div class="efemerides-item"><span class="label">Iluminación:</span> <span class="value">${(moonIllum.fraction * 100).toFixed(1)}%</span></div>
+        </div>
+        <div class="efemerides-card">
+          <h3>🪐 Planetas</h3>
+          <p style="color: rgba(200,216,240,0.8);">Datos no disponibles sin ubicación precisa.</p>
+        </div>
+      </div>
+      <div class="efemerides-nota">
+        ℹ️ Para obtener datos precisos de tu ubicación, activa la geolocalización.
+      </div>
+    `;
+    container.innerHTML = html;
+  } catch (e) {
+    container.innerHTML = '<p class="efemerides-error">Error al calcular efemérides.</p>';
   }
 }
 
@@ -530,9 +751,128 @@ function calcularEdades() {
 }
 
 document.getElementById('calcular-edad')?.addEventListener('click', calcularEdades);
-// Calcular al cargar con valor por defecto
 if (document.getElementById('edad-terrestre')) {
   setTimeout(calcularEdades, 500);
+}
+
+// ========== CALCULADORA DE PESO EN OTROS PLANETAS ==========
+const pesosData = [
+  { nombre: 'Sol', gravedad: 274, color: '#ffaa00', emoji: '☀️' },
+  { nombre: 'Mercurio', gravedad: 3.7, color: '#a5a5a5', emoji: '☿' },
+  { nombre: 'Venus', gravedad: 8.87, color: '#e6b800', emoji: '♀️' },
+  { nombre: 'Tierra', gravedad: 9.81, color: '#2e86c1', emoji: '🌍' },
+  { nombre: 'Luna', gravedad: 1.62, color: '#cccccc', emoji: '🌙' },
+  { nombre: 'Marte', gravedad: 3.71, color: '#c1440e', emoji: '♂️' },
+  { nombre: 'Júpiter', gravedad: 24.79, color: '#b07d5e', emoji: '♃' },
+  { nombre: 'Saturno', gravedad: 10.44, color: '#e0bb87', emoji: '🪐' },
+  { nombre: 'Urano', gravedad: 8.69, color: '#4fd0e7', emoji: '⛢' },
+  { nombre: 'Neptuno', gravedad: 11.15, color: '#4b70dd', emoji: '♆' }
+];
+
+function calcularPeso() {
+  const input = document.getElementById('peso-terrestre');
+  const contenedor = document.getElementById('resultados-peso');
+  if (!input || !contenedor) return;
+  const peso = parseFloat(input.value);
+  if (isNaN(peso) || peso < 0) {
+    contenedor.innerHTML = '<p style="color: var(--nebula3);">Por favor ingresa un peso válido</p>';
+    return;
+  }
+  const gravedadTierra = 9.81;
+  let html = '';
+  pesosData.forEach(p => {
+    const pesoPlaneta = (peso / gravedadTierra) * p.gravedad;
+    html += `<div class="resultado-card" style="border-color: ${p.color};"><h4>${p.emoji} ${p.nombre}</h4><div class="edad">${pesoPlaneta.toFixed(2)} kg</div></div>`;
+  });
+  contenedor.innerHTML = html;
+}
+
+document.getElementById('calcular-peso')?.addEventListener('click', calcularPeso);
+if (document.getElementById('peso-terrestre')) {
+  setTimeout(calcularPeso, 500);
+}
+
+// ========== COMPARADOR DE TAMAÑOS DE PLANETAS ==========
+const planetasData = [
+  { id: 'showSun', nombre: 'Sol', radio: 695700, color: '#ffaa00' },
+  { id: 'showMercurio', nombre: 'Mercurio', radio: 2440, color: '#a5a5a5' },
+  { id: 'showVenus', nombre: 'Venus', radio: 6052, color: '#e6b800' },
+  { id: 'showTierra', nombre: 'Tierra', radio: 6371, color: '#2e86c1' },
+  { id: 'showMarte', nombre: 'Marte', radio: 3390, color: '#c1440e' },
+  { id: 'showJupiter', nombre: 'Júpiter', radio: 69911, color: '#b07d5e' },
+  { id: 'showSaturno', nombre: 'Saturno', radio: 58232, color: '#e0bb87' },
+  { id: 'showUrano', nombre: 'Urano', radio: 25362, color: '#4fd0e7' },
+  { id: 'showNeptuno', nombre: 'Neptuno', radio: 24622, color: '#4b70dd' }
+];
+
+function dibujarComparador() {
+  const canvas = document.getElementById('comparador-canvas');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Fondo
+  ctx.fillStyle = 'rgba(0,0,0,0.3)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Calcular el radio máximo seleccionado
+  let maxRadio = 0;
+  planetasData.forEach(p => {
+    const checkbox = document.getElementById(p.id);
+    if (checkbox && checkbox.checked) {
+      maxRadio = Math.max(maxRadio, p.radio);
+    }
+  });
+  
+  // Escala para que el más grande tenga 130px de radio
+  const escala = 130 / maxRadio;
+  
+  const startX = 100;
+  const stepX = 140;
+  let index = 0;
+  
+  planetasData.forEach(p => {
+    const checkbox = document.getElementById(p.id);
+    if (!checkbox || !checkbox.checked) return;
+    
+    const radioPx = p.radio * escala;
+    const radioFinal = Math.max(radioPx, 5); // mínimo 5px para que se vea
+    const radioDibujo = Math.min(radioFinal, 150);
+    
+    const x = startX + index * stepX;
+    const y = canvas.height / 2;
+    
+    ctx.beginPath();
+    ctx.arc(x, y, radioDibujo, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.shadowColor = 'rgba(255,255,255,0.5)';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    ctx.font = 'bold 14px "Orbitron", sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.fillText(p.nombre, x, y + radioDibujo + 25);
+    
+    ctx.font = '12px "Rajdhani", sans-serif';
+    ctx.fillStyle = 'rgba(200,216,240,0.9)';
+    ctx.fillText(`${p.radio * 2} km`, x, y + radioDibujo + 45);
+    
+    index++;
+  });
+  
+  if (index === 0) {
+    ctx.font = '18px "Orbitron", sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.fillText('Selecciona al menos un planeta', canvas.width/2, canvas.height/2);
+  }
 }
 
 // ========== DISQUS ==========
@@ -542,7 +882,7 @@ var disqus_config = function () {
 };
 (function() {
   var d = document, s = d.createElement('script');
-  s.src = 'https://cosmos-astronomia-1.disqus.com/embed.js'; // Tu shortname
+  s.src = 'https://cosmos-astronomia-1.disqus.com/embed.js';
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
 })();
@@ -566,10 +906,12 @@ function actualizarFechaHora() {
 
 setInterval(actualizarFechaHora, 1000);
 
-// ========== FASE LUNAR ACTUAL (API farmsense) ==========
+// ========== FASE LUNAR MEJORADA ==========
 async function obtenerFaseLunar() {
   try {
     const respuesta = await fetch('https://api.farmsense.net/v1/moonphases/');
+    if (!respuesta.ok) throw new Error('Error en la API de fase lunar');
+    
     const datos = await respuesta.json();
     if (datos && datos.length > 0) {
       const fase = datos[0];
@@ -585,21 +927,56 @@ async function obtenerFaseLunar() {
       else if (nombreFase.includes('Last Quarter')) icono = '🌗';
       else if (nombreFase.includes('Waning Crescent')) icono = '🌘';
       
-      const iconoEl = document.getElementById('fase-icono');
-      const nombreEl = document.getElementById('fase-nombre');
-      if (iconoEl) iconoEl.textContent = icono;
-      if (nombreEl) nombreEl.textContent = nombreFase;
+      document.getElementById('fase-icono').textContent = icono;
+      document.getElementById('fase-nombre').textContent = nombreFase;
+    } else {
+      throw new Error('Datos vacíos');
     }
   } catch (error) {
-    console.error('Error al obtener fase lunar:', error);
+    console.error('Error al obtener fase lunar, usando valor por defecto:', error);
+    document.getElementById('fase-icono').textContent = '🌖';
+    document.getElementById('fase-nombre').textContent = 'Fase no disponible';
   }
 }
 
 obtenerFaseLunar();
-setInterval(obtenerFaseLunar, 3600000); // cada hora
+setInterval(obtenerFaseLunar, 3600000);
 
 // ========== INICIALIZACIÓN GENERAL ==========
 document.addEventListener('DOMContentLoaded', function() {
   cargarClimaEspacial();
   cargarNoticias();
+  cargarHistoriaHoy();
+  cargarEfemerides();
+  
+  // Inicializar comparador
+  const btnActualizar = document.getElementById('comparador-actualizar');
+  const btnTodos = document.getElementById('comparador-todos');
+  const btnNinguno = document.getElementById('comparador-ninguno');
+  
+  if (btnActualizar) {
+    btnActualizar.addEventListener('click', dibujarComparador);
+  }
+  
+  if (btnTodos) {
+    btnTodos.addEventListener('click', function() {
+      planetasData.forEach(p => {
+        const chk = document.getElementById(p.id);
+        if (chk) chk.checked = true;
+      });
+      dibujarComparador();
+    });
+  }
+  
+  if (btnNinguno) {
+    btnNinguno.addEventListener('click', function() {
+      planetasData.forEach(p => {
+        const chk = document.getElementById(p.id);
+        if (chk) chk.checked = false;
+      });
+      dibujarComparador();
+    });
+  }
+  
+  setTimeout(dibujarComparador, 500);
 });
