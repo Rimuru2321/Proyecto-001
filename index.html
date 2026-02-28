@@ -10,6 +10,7 @@
   <meta name="apple-mobile-web-app-title" content="Cosmos">
   <link rel="apple-touch-icon" href="img/icon-192.png">
   <title>COSMOS</title>
+  <!-- Enlace al CSS externo -->
   <link rel="stylesheet" href="css/styles.css">
   <!-- Fuentes de Google -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
@@ -22,6 +23,7 @@
 
   <!-- Canvas para estrellas animadas -->
   <canvas id="stars-canvas"></canvas>
+
   <!-- NAVBAR -->
   <nav>
     <a href="#inicio" class="logo">✦ COSMOS</a>
@@ -37,6 +39,8 @@
           <a href="#galaxias-primitivas" data-i18n="nav_galaxias_primitivas">Galaxias primitivas</a>
           <a href="#sonificacion" data-i18n="nav_sonificacion">Sonificación</a>
           <a href="#curiosidades-extra" data-i18n="nav_curiosidades_extra">Curiosidades extra</a>
+          <a href="#mitos-leyendas" data-i18n="nav_mitos">Mitos y leyendas</a>
+          <a href="#eventos-2026" data-i18n="nav_eventos">Eventos 2026</a>
           <a href="#planetas" data-i18n="nav_planetas">Planetas</a>
           <a href="#sistema-solar" data-i18n="nav_sistema_solar">Sistema Solar</a>
           <a href="#agujero-negro" data-i18n="nav_agujero_negro">Agujero Negro</a>
@@ -90,6 +94,8 @@
         <li><kbd>R</kbd> - Noticias</li>
         <li><kbd>E</kbd> - Edad Planetaria</li>
         <li><kbd>K</kbd> - Peso Planetario</li>
+        <li><kbd>6</kbd> - Eventos 2026</li>
+        <li><kbd>Y</kbd> - Mitos y leyendas</li>
       </ul>
     </div>
   </div>
@@ -128,7 +134,7 @@
     </div>
   </div>
 
-  <!-- GALAXIA -->
+  <!-- GALAXIA (original) -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="galaxia">
     <div class="share-section">
@@ -334,6 +340,291 @@
         <p>El 1% de la "nieve" en televisores analógicos es interferencia de la <strong>radiación cósmica de fondo</strong>, el eco del Big Bang.</p>
       </div>
     </div>
+  </section>
+
+  <!-- MITOS Y LEYENDAS AMPLIADA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="mitos-leyendas">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Mitos y leyendas del cosmos')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Mitos y leyendas del cosmos')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Mitos y leyendas del cosmos')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">📜 Sabiduría ancestral</p>
+    <h2 class="section-title">Mitos y <span>leyendas</span></h2>
+    <div class="divider"></div>
+
+    <!-- Mitología de constelaciones -->
+    <h3 class="subsection-title">🌌 Constelaciones y sus historias</h3>
+    <div class="mitos-constelaciones-grid reveal">
+      <!-- Orión -->
+      <div class="mito-card">
+        <img src="img/orion-mito.png" alt="Orión el cazador" loading="lazy">
+        <h4>Orión</h4>
+        <p>En la mitología griega, Orión era un gigante cazador, hijo de Poseidón. Fue colocado en el cielo por Zeus después de su muerte. Lo acompaña su perro Sirio (la estrella más brillante).</p>
+        <div class="mito-dato">🔭 Estrella principal: Betelgeuse (roja) y Rigel (azul).</div>
+      </div>
+      <!-- Casiopea -->
+      <div class="mito-card">
+        <img src="img/casiopea-mito.jpg" alt="Reina Casiopea" loading="lazy">
+        <h4>Casiopea</h4>
+        <p>Reina de Etiopía, vanidosa y presumida, fue castigada por Poseidón a dar vueltas alrededor del polo norte, sentada en un trono, a veces boca abajo como castigo.</p>
+        <div class="mito-dato">🌟 Forma una "W" o "M" en el cielo según la época.</div>
+      </div>
+      <!-- Andrómeda -->
+      <div class="mito-card">
+        <img src="img/andromeda-mito.webp" alt="Andrómeda encadenada" loading="lazy">
+        <h4>Andrómeda</h4>
+        <p>Princesa encadenada a una roca como sacrificio para un monstruo marino. Fue rescatada por Perseo, quien la convirtió en constelación junto a sus padres Cefeo y Casiopea.</p>
+        <div class="mito-dato">🌌 Alberga la galaxia de Andrómeda (M31), la más cercana a la Vía Láctea.</div>
+      </div>
+    </div>
+
+    <!-- Leyendas de eclipses -->
+    <h3 class="subsection-title" style="margin-top: 60px;">🌑 Eclipses en las culturas del mundo</h3>
+    <div class="eclipses-grid reveal">
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🐉</span>
+        <h4>China: El dragón devora el Sol</h4>
+        <p>Creían que un dragón celestial atacaba al Sol durante un eclipse. La gente tocaba tambores y hacía ruido para asustarlo y salvarlo.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌕🐆</span>
+        <h4>Incas: Jaguar lunar</h4>
+        <p>Pensaban que un jaguar atacaba a la Luna, haciéndola sangrar (de ahí el color rojo). Para espantarlo, agitaban lanzas y gritaban.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">👹</span>
+        <h4>Mesopotamia: Demonios atacan</h4>
+        <p>Creían que siete demonios causaban los eclipses. El rey era sustituido temporalmente por un sustituto para protegerlo.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌍🔥</span>
+        <h4>Hindúes: El demonio Rahu</h4>
+        <p>Según la mitología hindú, el demonio Rahu intenta tragarse el Sol y la Luna, pero al ser decapitado, la cabeza escapa y causa los eclipses.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🦅</span>
+        <h4>Nórdicos: Lobos Sköll y Hati</h4>
+        <p>Los lobos gigantes Sköll (persigue al Sol) y Hati (persigue a la Luna) atrapan a sus presas durante los eclipses.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌿</span>
+        <h4>Mayas: Lucha de dioses</h4>
+        <p>Los eclipses eran vistos como una lucha entre dioses, un augurio de guerra o cambio dinástico.</p>
+      </div>
+    </div>
+
+    <!-- Origen de los nombres de los planetas -->
+    <h3 class="subsection-title" style="margin-top: 60px;">🪐 Nombres de los planetas</h3>
+    <div class="planetas-nombres-grid reveal">
+      <div class="nombre-card">
+        <span class="nombre-icon">☿</span>
+        <h4>Mercurio</h4>
+        <p>Dios romano del comercio, los viajeros y los ladrones. Rápido como el planeta en su órbita. (Equivalente griego: Hermes).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♀️</span>
+        <h4>Venus</h4>
+        <p>Diosa del amor y la belleza. El planeta más brillante, asociado a la feminidad. (Afrodita).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">🌍</span>
+        <h4>Tierra</h4>
+        <p>Del latín "Terra", diosa primigenia de la tierra. No proviene de la mitología clásica, sino de la personificación del planeta.</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♂️</span>
+        <h4>Marte</h4>
+        <p>Dios de la guerra. Su color rojo recuerda a la sangre y a la violencia. (Ares).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♃</span>
+        <h4>Júpiter</h4>
+        <p>Rey de los dioses. El planeta más grande, soberano del sistema solar. (Zeus).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">🪐</span>
+        <h4>Saturno</h4>
+        <p>Dios de la agricultura y el tiempo. Padre de Júpiter, devoraba a sus hijos. (Cronos).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">⛢</span>
+        <h4>Urano</h4>
+        <p>Dios del cielo, esposo de Gea (la Tierra). Padre de los titanes. (Urano en griego es Ouranos).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♆</span>
+        <h4>Neptuno</h4>
+        <p>Dios de los mares. Su color azul evoca el océano. (Poseidón).</p>
+      </div>
+    </div>
+    <p class="mitos-nota">* Los nombres romanos fueron adoptados por la astronomía occidental y se mantienen hasta hoy.</p>
+  </section>
+
+  <!-- EVENTOS 2026 -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="eventos-2026">
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Eventos astronómicos 2026')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Eventos astronómicos 2026')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Eventos astronómicos 2026')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">📅 No te pierdas nada</p>
+    <h2 class="section-title">Calendario <span>2026</span></h2>
+    <div class="divider"></div>
+    <div class="eventos-grid reveal">
+      <!-- Enero -->
+      <div class="evento-card">
+        <div class="evento-mes">ENERO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🔭</span>
+          <div>
+            <div class="evento-fecha">10 de enero</div>
+            <div class="evento-titulo">Oposición de Júpiter</div>
+            <div class="evento-desc">El gigante gaseoso alcanza su máximo brillo y tamaño, ideal para observar con telescopio.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Febrero -->
+      <div class="evento-card">
+        <div class="evento-mes">FEBRERO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🪐</span>
+          <div>
+            <div class="evento-fecha">28 de febrero</div>
+            <div class="evento-titulo">Gran alineación planetaria</div>
+            <div class="evento-desc">Seis planetas (Mercurio, Venus, Marte, Júpiter, Saturno y Urano) se alinearán en el cielo.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Marzo -->
+      <div class="evento-card">
+        <div class="evento-mes">MARZO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌑</span>
+          <div>
+            <div class="evento-fecha">3 de marzo</div>
+            <div class="evento-titulo">Eclipse lunar total</div>
+            <div class="evento-desc">"Luna de Sangre" visible en el Pacífico y zonas cercanas. La Luna se teñirá de rojo.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Abril -->
+      <div class="evento-card">
+        <div class="evento-mes">ABRIL</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">☄️</span>
+          <div>
+            <div class="evento-fecha">Abril (fecha variable)</div>
+            <div class="evento-titulo">Cometa C/2025 R3 (PANSTARRS)</div>
+            <div class="evento-desc">Posiblemente el cometa más brillante del año, visible a simple vista.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Mayo -->
+      <div class="evento-card">
+        <div class="evento-mes">MAYO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌕</span>
+          <div>
+            <div class="evento-fecha">31 de mayo</div>
+            <div class="evento-titulo">Blue Micromoon</div>
+            <div class="evento-desc">Luna llena más pequeña del año (microluna) y además "azul" (segunda luna llena del mes).</div>
+          </div>
+        </div>
+      </div>
+      <!-- Junio -->
+      <div class="evento-card">
+        <div class="evento-mes">JUNIO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌌</span>
+          <div>
+            <div class="evento-fecha">21 de junio</div>
+            <div class="evento-titulo">Solsticio de verano</div>
+            <div class="evento-desc">Día más largo del año en el hemisferio norte. Noches cortas pero ideales para observar planetas.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Julio -->
+      <div class="evento-card">
+        <div class="evento-mes">JULIO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🪐</span>
+          <div>
+            <div class="evento-fecha">Julio (todo el mes)</div>
+            <div class="evento-titulo">Visibilidad de Saturno</div>
+            <div class="evento-desc">Saturno en oposición (mejor momento para observar sus anillos).</div>
+          </div>
+        </div>
+      </div>
+      <!-- Agosto -->
+      <div class="evento-card">
+        <div class="evento-mes">AGOSTO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌑☄️</span>
+          <div>
+            <div class="evento-fecha">12 de agosto</div>
+            <div class="evento-titulo">Eclipse solar total</div>
+            <div class="evento-desc">Visible en España y Portugal. ¡Un evento histórico!</div>
+            <div class="evento-fecha" style="margin-top:8px;">Agosto (mediados)</div>
+            <div class="evento-titulo">Perseidas</div>
+            <div class="evento-desc">Hasta 90 meteoros por hora, sin interferencia lunar.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Septiembre -->
+      <div class="evento-card">
+        <div class="evento-mes">SEPTIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌍</span>
+          <div>
+            <div class="evento-fecha">22 de septiembre</div>
+            <div class="evento-titulo">Equinoccio de otoño</div>
+            <div class="evento-desc">Noche y día de igual duración. Inicio del otoño en el hemisferio norte.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Octubre -->
+      <div class="evento-card">
+        <div class="evento-mes">OCTUBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🔭</span>
+          <div>
+            <div class="evento-fecha">Octubre (todo el mes)</div>
+            <div class="evento-titulo">Observación de galaxias</div>
+            <div class="evento-desc">Andrómeda (M31) visible a simple vista en cielos oscuros.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Noviembre -->
+      <div class="evento-card">
+        <div class="evento-mes">NOVIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">☄️</span>
+          <div>
+            <div class="evento-fecha">17-18 de noviembre</div>
+            <div class="evento-titulo">Lluvia de Leónidas</div>
+            <div class="evento-desc">Hasta 15 meteoros por hora, con luna en cuarto creciente.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Diciembre -->
+      <div class="evento-card">
+        <div class="evento-mes">DICIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">❄️</span>
+          <div>
+            <div class="evento-fecha">13-14 de diciembre</div>
+            <div class="evento-titulo">Geminidas</div>
+            <div class="evento-desc">Una de las mejores lluvias de meteoros del año (hasta 120 por hora).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="eventos-nota">* Las fechas y visibilidad pueden variar según tu ubicación. Consulta aplicaciones de astronomía para detalles locales.</p>
   </section>
 
   <!-- PLANETAS -->
@@ -734,7 +1025,7 @@
         <img src="img/estacion.jpg" alt="Estación Espacial Internacional en órbita terrestre" class="mision-img" loading="lazy">
         <h3 data-i18n="mision_iss">Estación Espacial Internacional</h3>
         <p class="mision-fecha">1998-presente</p>
-        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se estudia la vida en el espacio.</p>
+        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se studia la vida en el espacio.</p>
       </div>
       <div class="mision-card">
         <img src="img/james.jpg" alt="Telescopio espacial James Webb" class="mision-img" loading="lazy">
@@ -950,6 +1241,7 @@
         <button id="calcular-peso" class="btn btn-primary">Calcular</button>
       </div>
       <div class="calculadora-resultados" id="resultados-peso">
+        <!-- Aquí se mostrarán los resultados -->
       </div>
     </div>
   </section>
@@ -1174,7 +1466,7 @@
     </div>
   </footer>
 
-  <!-- Audio -->
+  <!-- Audio oculto -->
   <audio id="sonido-ambiente" loop preload="auto" style="display: none;">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
