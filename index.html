@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-title" content="Cosmos">
   <link rel="apple-touch-icon" href="img/icon-192.png">
   <title>COSMOS</title>
-  <meta name="google-site-verification" content="VvKqtNLVIk5QXzgtY774RtOfY7JJ5xtBObTEJ7UUok0" />
+  <!-- Enlace al CSS externo -->
   <link rel="stylesheet" href="css/styles.css">
   <!-- Fuentes de Google -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
@@ -20,6 +20,15 @@
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.min.js"></script>
 </head>
 <body>
+
+  <!-- AVISO MODO ESCRITORIO (solo para móviles) -->
+  <div id="aviso-modo-escritorio" class="aviso-escritorio" style="display: none;">
+    <div class="aviso-contenido">
+      <span class="aviso-icono">📱</span>
+      <p>Para una mejor experiencia, activa el <strong>modo escritorio</strong> en tu navegador.</p>
+      <button class="aviso-cerrar" onclick="cerrarAviso()">✕</button>
+    </div>
+  </div>
 
   <!-- Canvas para estrellas animadas -->
   <canvas id="stars-canvas"></canvas>
@@ -1025,7 +1034,7 @@
         <img src="img/estacion.jpg" alt="Estación Espacial Internacional en órbita terrestre" class="mision-img" loading="lazy">
         <h3 data-i18n="mision_iss">Estación Espacial Internacional</h3>
         <p class="mision-fecha">1998-presente</p>
-        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se studia la vida en el espacio.</p>
+        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se estudia la vida en el espacio.</p>
       </div>
       <div class="mision-card">
         <img src="img/james.jpg" alt="Telescopio espacial James Webb" class="mision-img" loading="lazy">
