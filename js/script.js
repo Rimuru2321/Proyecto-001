@@ -376,6 +376,8 @@ document.addEventListener('keydown', (e) => {
     case 'r': targetId = 'noticias'; break;
     case 'e': targetId = 'calculadora-edad'; break;
     case 'k': targetId = 'calculadora-peso'; break;
+    case '6': targetId = 'eventos-2026'; break;
+    case 'y': targetId = 'mitos-leyendas'; break;
     default: return;
   }
   const target = document.getElementById(targetId);
@@ -837,7 +839,7 @@ function dibujarComparador() {
     if (!checkbox || !checkbox.checked) return;
     
     const radioPx = p.radio * escala;
-    const radioFinal = Math.max(radioPx, 5); // mínimo 5px para que se vea
+    const radioFinal = Math.max(radioPx, 5);
     const radioDibujo = Math.min(radioFinal, 150);
     
     const x = startX + index * stepX;
@@ -941,6 +943,51 @@ async function obtenerFaseLunar() {
 
 obtenerFaseLunar();
 setInterval(obtenerFaseLunar, 3600000);
+
+// ========== AVISO MODO ESCRITORIO ==========
+
+// Función para detectar si es un dispositivo móvil (por User Agent y ancho de pantalla)
+function esDispositivoMovil() {
+  // Detección por User Agent (más fiable)
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const mobileKeywords = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(ua);
+  
+  // Detección por ancho de pantalla (por si acaso)
+  const isSmallScreen = window.innerWidth <= 1024;
+  
+  // Detección por eventos táctiles
+  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  return mobileKeywords || (isSmallScreen && hasTouch);
+}
+
+// Mostrar el aviso si es móvil y no se ha cerrado antes
+function mostrarAvisoMovil() {
+  const aviso = document.getElementById('aviso-modo-escritorio');
+  if (!aviso) return;
+
+  // Comprobar si el usuario ya cerró el aviso antes
+  const avisoCerrado = localStorage.getItem('avisoEscritorioCerrado');
+
+  if (esDispositivoMovil() && !avisoCerrado) {
+    aviso.style.display = 'block';
+  } else {
+    aviso.style.display = 'none';
+  }
+}
+
+// Función para cerrar el aviso (se llama desde el botón)
+window.cerrarAviso = function() {
+  const aviso = document.getElementById('aviso-modo-escritorio');
+  if (aviso) {
+    aviso.classList.add('oculto');
+    localStorage.setItem('avisoEscritorioCerrado', 'true');
+  }
+};
+
+// Ejecutar cuando el DOM esté listo y al cambiar el tamaño de la pantalla
+document.addEventListener('DOMContentLoaded', mostrarAvisoMovil);
+window.addEventListener('resize', mostrarAvisoMovil);
 
 // ========== INICIALIZACIÓN GENERAL ==========
 document.addEventListener('DOMContentLoaded', function() {
