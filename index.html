@@ -10,18 +10,14 @@
   <meta name="apple-mobile-web-app-title" content="Cosmos">
   <link rel="apple-touch-icon" href="img/icon-192.png">
   <title>COSMOS</title>
-  <!-- Enlace al CSS externo -->
   <link rel="stylesheet" href="css/styles.css">
-  <!-- Fuentes de Google -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
-  <!-- Font Awesome para iconos de redes sociales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- SunCalc.js para cálculos astronómicos -->
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.min.js"></script>
 </head>
 <body>
 
-  <!-- AVISO MODO ESCRITORIO (solo para móviles) -->
+  <!-- AVISO MODO ESCRITORIO (para móviles) -->
   <div id="aviso-modo-escritorio" class="aviso-escritorio" style="display: none;">
     <div class="aviso-contenido">
       <span class="aviso-icono">📱</span>
@@ -40,31 +36,52 @@
       <li class="dropdown">
         <a href="#galaxia" data-i18n="nav_explorar">Explorar ▾</a>
         <div class="dropdown-menu">
-          <a href="#galaxia-que-es" data-i18n="nav_galaxia">Vía Láctea</a>
-          <a href="#galaxia-estructura" data-i18n="nav_estructura">Estructura</a>
-          <a href="#galaxia-datos" data-i18n="nav_datos">Datos</a>
-          <a href="#tipos-galaxias" data-i18n="nav_tipos_galaxias">Tipos de galaxias</a>
-          <a href="#datos-via-lactea" data-i18n="nav_datos_via">Datos Vía Láctea</a>
-          <a href="#galaxias-primitivas" data-i18n="nav_galaxias_primitivas">Galaxias primitivas</a>
-          <a href="#sonificacion" data-i18n="nav_sonificacion">Sonificación</a>
-          <a href="#curiosidades-extra" data-i18n="nav_curiosidades_extra">Curiosidades extra</a>
-          <a href="#mitos-leyendas" data-i18n="nav_mitos">Mitos y leyendas</a>
-          <a href="#eventos-2026" data-i18n="nav_eventos">Eventos 2026</a>
-          <a href="#planetas" data-i18n="nav_planetas">Planetas</a>
-          <a href="#sistema-solar" data-i18n="nav_sistema_solar">Sistema Solar</a>
-          <a href="#agujero-negro" data-i18n="nav_agujero_negro">Agujero Negro</a>
-          <a href="#nebulosas" data-i18n="nav_nebulosas">Nebulosas</a>
-          <a href="#misiones" data-i18n="nav_misiones">Misiones</a>
-          <a href="#glosario" data-i18n="nav_glosario">Glosario</a>
-          <a href="#constelaciones" data-i18n="nav_constelaciones">Constelaciones</a>
-          <a href="#curiosidades" data-i18n="nav_curiosidades">Curiosidades</a>
-          <a href="#calculadora-edad" data-i18n="nav_calculadora">Edad Planetaria</a>
-          <a href="#calculadora-peso" data-i18n="nav_peso">Peso Planetario</a>
-          <a href="#timeline" data-i18n="nav_timeline">Línea de Tiempo</a>
-          <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
-          <a href="#clima-espacial" data-i18n="nav_clima">Clima Espacial</a>
-          <a href="#noticias" data-i18n="nav_noticias">Noticias</a>
-          <a href="#comentarios" data-i18n="nav_comentarios">Comentarios</a>
+
+          <!-- SECCIÓN 01: La Galaxia y sus derivados -->
+          <div class="dropdown-category">🌌 LA GALAXIA</div>
+          <a href="#galaxia-que-es" data-i18n="nav_galaxia">01. Vía Láctea</a>
+          <a href="#galaxia-estructura" data-i18n="nav_estructura">01.1 Estructura</a>
+          <a href="#galaxia-datos" data-i18n="nav_datos">01.2 Datos</a>
+          <a href="#tipos-galaxias" data-i18n="nav_tipos_galaxias">01.3 Tipos de galaxias</a>
+          <a href="#datos-via-lactea" data-i18n="nav_datos_via">01.4 Datos Vía Láctea</a>
+          <a href="#galaxias-primitivas" data-i18n="nav_galaxias_primitivas">01.5 Galaxias primitivas</a>
+          <a href="#sonificacion" data-i18n="nav_sonificacion">01.6 Sonificación</a>
+          <a href="#curiosidades-extra" data-i18n="nav_curiosidades_extra">01.7 Curiosidades extra</a>
+
+          <!-- SECCIÓN 02: Sistema Solar -->
+          <div class="dropdown-category">🪐 SISTEMA SOLAR</div>
+          <a href="#planetas" data-i18n="nav_planetas">02. Planetas</a>
+          <a href="#luna" data-i18n="nav_luna">02.5 Luna</a>
+          <a href="#agujero-negro" data-i18n="nav_agujero_negro">03. Agujero Negro</a>
+          <a href="#sistema-solar" data-i18n="nav_sistema_solar">04. Sistema Solar</a>
+          <a href="#nebulosas" data-i18n="nav_nebulosas">05. Nebulosas</a>
+
+          <!-- SECCIÓN 03: Exploración -->
+          <div class="dropdown-category">🚀 EXPLORACIÓN</div>
+          <a href="#misiones" data-i18n="nav_misiones">06. Misiones</a>
+          <a href="#glosario" data-i18n="nav_glosario">07. Glosario</a>
+          <a href="#constelaciones" data-i18n="nav_constelaciones">08. Constelaciones</a>
+          <a href="#curiosidades" data-i18n="nav_curiosidades">09. Curiosidades</a>
+
+          <!-- SECCIÓN 04: Mitos y Eventos -->
+          <div class="dropdown-category">📜 CULTURA</div>
+          <a href="#mitos-leyendas" data-i18n="nav_mitos">10. Mitos y leyendas</a>
+          <a href="#eventos-2026" data-i18n="nav_eventos">11. Eventos 2026</a>
+          <!-- SECCIÓN 05: Herramientas -->
+          <div class="dropdown-category">🛠️ HERRAMIENTAS</div>
+          <a href="#calculadora-edad" data-i18n="nav_calculadora">12. Edad Planetaria</a>
+          <a href="#calculadora-peso" data-i18n="nav_peso">13. Peso Planetario</a>
+          <a href="#comparador" data-i18n="nav_comparador">14. Comparador de tamaños</a>
+          <a href="#historia-hoy" data-i18n="nav_historia">15. Hoy en la historia</a>
+          <a href="#efemerides" data-i18n="nav_efemerides">16. Efemérides</a>
+          <a href="#timeline" data-i18n="nav_timeline">17. Línea de Tiempo</a>
+          <a href="#quiz" data-i18n="nav_quiz">18. Quiz</a>
+          <!-- SECCIÓN 06: Actualidad -->
+          <div class="dropdown-category">🌍 ACTUALIDAD</div>
+          <a href="#clima-espacial" data-i18n="nav_clima">19. Clima Espacial</a>
+          <a href="#noticias" data-i18n="nav_noticias">20. Noticias</a>
+          <a href="#apod" data-i18n="nav_apod">21. NASA APOD</a>
+          <a href="#comentarios" data-i18n="nav_comentarios">22. Comentarios</a>
         </div>
       </li>
       <li><a href="#planetas" data-i18n="nav_planetas">Planetas</a></li>
@@ -85,7 +102,7 @@
     </div>
   </nav>
 
-  <!-- Panel de atajos de teclado rapido -->
+  <!-- Panel de atajos de teclado -->
   <div class="atajos-panel" id="atajos-panel">
     <button class="atajos-toggle" id="atajos-toggle">⌨️ Atajos</button>
     <div class="atajos-contenido" id="atajos-contenido">
@@ -105,6 +122,9 @@
         <li><kbd>K</kbd> - Peso Planetario</li>
         <li><kbd>6</kbd> - Eventos 2026</li>
         <li><kbd>Y</kbd> - Mitos y leyendas</li>
+        <li><kbd>F</kbd> - Efemérides</li>
+        <li><kbd>O</kbd> - Comparador</li>
+        <li><kbd>U</kbd> - Hoy en la historia</li>
       </ul>
     </div>
   </div>
@@ -206,7 +226,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Tipos de galaxias')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Tipos de galaxias')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🌌 Tipos de galaxias</p>
+    <p class="section-label">01.1 — Tipos de galaxias</p>
     <h2 class="section-title">Más allá de la <span>espiral</span></h2>
     <div class="divider"></div>
     <div class="galaxy-types-grid reveal">
@@ -243,7 +263,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Datos de la Vía Láctea')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Datos de la Vía Láctea')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🔍 Datos sorprendentes</p>
+    <p class="section-label">01.2 — Datos sorprendentes</p>
     <h2 class="section-title">Secretos de <span>nuestra galaxia</span></h2>
     <div class="divider"></div>
     <div class="milkyway-facts-grid reveal">
@@ -279,7 +299,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Galaxias primitivas')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Galaxias primitivas')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🌠 El estirón cósmico</p>
+    <p class="section-label">01.3 — Galaxias primitivas</p>
     <h2 class="section-title">Galaxias del <span>universo primitivo</span></h2>
     <div class="divider"></div>
     <div class="primitive-container reveal">
@@ -302,7 +322,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Sonificación de galaxias')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Sonificación de galaxias')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🎵 ¿A qué suena una galaxia?</p>
+    <p class="section-label">01.4 — Sonificación</p>
     <h2 class="section-title">El universo <span>sonoro</span></h2>
     <div class="divider"></div>
     <div class="sonificacion-container reveal">
@@ -324,7 +344,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Más curiosidades')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Más curiosidades')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">✨ Datos alucinantes</p>
+    <p class="section-label">01.5 — Datos alucinantes</p>
     <h2 class="section-title">El cosmos <span>insólito</span></h2>
     <div class="divider"></div>
     <div class="extra-curiosidades-grid reveal">
@@ -360,7 +380,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Mitos y leyendas del cosmos')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Mitos y leyendas del cosmos')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">📜 Sabiduría ancestral</p>
+    <p class="section-label">1.6 — Mitos y leyendas</p>
     <h2 class="section-title">Mitos y <span>leyendas</span></h2>
     <div class="divider"></div>
 
@@ -481,8 +501,8 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Eventos astronómicos 2026')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Eventos astronómicos 2026')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">📅 No te pierdas nada</p>
-    <h2 class="section-title">Calendario <span>2026</span></h2>
+    <p class="section-label">1.7 — Calendario 2026</p>
+    <h2 class="section-title">Eventos <span>astronómicos</span></h2>
     <div class="divider"></div>
     <div class="eventos-grid reveal">
       <!-- Enero -->
@@ -746,7 +766,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Nuestra Luna')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Nuestra Luna')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🌕 02.5 — Nuestra Luna</p>
+    <p class="section-label">02.5 — Nuestra Luna</p>
     <h2 class="section-title">El satélite que <span>nos acompaña</span></h2>
     <div class="divider"></div>
 
@@ -1034,7 +1054,7 @@
         <img src="img/estacion.jpg" alt="Estación Espacial Internacional en órbita terrestre" class="mision-img" loading="lazy">
         <h3 data-i18n="mision_iss">Estación Espacial Internacional</h3>
         <p class="mision-fecha">1998-presente</p>
-        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se estudia la vida en el espacio.</p>
+        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se studia la vida en el espacio.</p>
       </div>
       <div class="mision-card">
         <img src="img/james.jpg" alt="Telescopio espacial James Webb" class="mision-img" loading="lazy">
@@ -1216,7 +1236,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de edad planetaria')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de edad planetaria')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">✨ ¿Cuántos años tendrías en otros planetas?</p>
+    <p class="section-label">10 — Calculadora de Edad</p>
     <h2 class="section-title">Calculadora de <span>Edad Planetaria</span></h2>
     <div class="divider"></div>
     <div class="calculadora-container reveal">
@@ -1240,7 +1260,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de peso planetario')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de peso planetario')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">⚖️ ¿Cuánto pesarías en otros mundos?</p>
+    <p class="section-label">11 — Calculadora de Peso</p>
     <h2 class="section-title">Calculadora de <span>peso planetario</span></h2>
     <div class="divider"></div>
     <div class="calculadora-container reveal">
@@ -1264,7 +1284,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Comparador de tamaños de planetas')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Comparador de tamaños de planetas')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🪐 Comparador cósmico</p>
+    <p class="section-label">12 — Comparador de tamaños</p>
     <h2 class="section-title">Tamaños de <span>planetas</span></h2>
     <div class="divider"></div>
     <div class="comparador-container reveal">
@@ -1318,7 +1338,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Hoy en la historia astronómica')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Hoy en la historia astronómica')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">✨ Hoy en la historia</p>
+    <p class="section-label">13 — Hoy en la historia</p>
     <h2 class="section-title">Astronomía <span>en este día</span></h2>
     <div class="divider"></div>
     <div id="historia-container" class="historia-container reveal">
@@ -1335,7 +1355,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Efemérides astronómicas')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Efemérides astronómicas')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">🌍 Efemérides del día</p>
+    <p class="section-label">14 — Efemérides</p>
     <h2 class="section-title">Sol, Luna y <span>planetas visibles</span></h2>
     <div class="divider"></div>
     <div id="efemerides-container" class="efemerides-container reveal">
@@ -1352,7 +1372,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Línea de tiempo del universo')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Línea de tiempo del universo')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">10 — Línea de Tiempo Cósmica</p>
+    <p class="section-label">15 — Línea de Tiempo</p>
     <h2 class="section-title" data-i18n="timeline_titulo">Historia del <span>Universo</span></h2>
     <div class="divider"></div>
     <div class="timeline-container reveal">
@@ -1372,7 +1392,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Quiz astronómico')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Quiz astronómico')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">11 — Pon a prueba tus conocimientos</p>
+    <p class="section-label">16— Quiz</p>
     <h2 class="section-title" data-i18n="quiz_titulo">Quiz <span>Galáctico</span></h2>
     <div class="divider"></div>
     <div class="quiz-container reveal">
@@ -1395,7 +1415,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Clima espacial en tiempo real')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Clima espacial en tiempo real')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">12 — Clima Espacial</p>
+    <p class="section-label">17 — Clima Espacial</p>
     <h2 class="section-title">Tormentas Solares y <span>Viento Solar</span></h2>
     <div class="divider"></div>
     <div id="clima-container" class="clima-container reveal">
@@ -1412,7 +1432,7 @@
       <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Últimas noticias astronómicas')"><i class="fab fa-facebook"></i></a>
       <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Últimas noticias astronómicas')"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p class="section-label">13 — Noticias</p>
+    <p class="section-label">18 — Noticias</p>
     <h2 class="section-title">Descubrimientos <span>Recientes</span></h2>
     <div class="divider"></div>
     <div id="noticias-container" class="noticias-grid reveal">
@@ -1423,7 +1443,13 @@
   <!-- APOD (NASA) -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="apod">
-    <p class="section-label">✨ NASA APOD</p>
+    <div class="share-section">
+      <span>Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('NASA APOD')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('NASA APOD')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('NASA APOD')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label">19 — NASA APOD</p>
     <h2 class="section-title" data-i18n="apod_titulo">Astronomy Picture <span>of the Day</span></h2>
     <div class="divider"></div>
     <div id="apod-container" class="apod-container reveal">
@@ -1434,7 +1460,7 @@
   <!-- COMENTARIOS (DISQUS) -->
   <div class="sep-line"><hr/></div>
   <section class="sec" id="comentarios">
-    <p class="section-label">14 — Comentarios</p>
+    <p class="section-label">20 — Comentarios</p>
     <h2 class="section-title">Debate <span>Cósmico</span></h2>
     <div class="divider"></div>
     <div id="disqus_thread" class="comentarios-container reveal"></div>
@@ -1467,7 +1493,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <p>© 2025 Cosmos — Una ventana al universo</p>
+      <p>© 2026 Cosmos — Una ventana al universo</p>
       <p>
         <a href="legal.html" target="_blank" style="color:var(--cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
         <a href="comment-policy.html" target="_blank" style="color:var(--cyan);">Política de Comentarios</a>
