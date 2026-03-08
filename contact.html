@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cosmos">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <title>Cosmos - Contacto</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.min.js"></script>
+</head>
+<body>
+  <canvas id="stars-canvas"></canvas>
+  <nav>
+    <a href="index.html" class="logo">✦ COSMOS</a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#galaxia">Explorar</a></li>
+      <li><a href="about.html">Sobre Nosotros</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <div class="nav-extra">
+      <div class="idioma-selector">
+        <button id="lang-es" class="icono-btn idioma-btn activo">ES</button>
+        <button id="lang-en" class="icono-btn idioma-btn">EN</button>
+      </div>
+      <button id="contraste-toggle" class="icono-btn" title="Alto contraste">👁️</button>
+      <button id="sonido-toggle" class="icono-btn" title="Activar sonido ambiental">🔈</button>
+      <button id="modo-toggle" class="icono-btn" title="Cambiar a modo nebulosa">🌌</button>
+      <button class="hamburger" id="hamburger-btn">☰</button>
+    </div>
+  </nav>
+  <main style="margin-top: 100px; min-height: 70vh;">
+    <section class="sec">
+      <p class="section-label">📬 Contacto</p>
+      <h2 class="section-title">Ponte en <span>contacto</span></h2>
+      <div class="divider"></div>
+      <div style="background: rgba(5,5,32,0.7); border-radius: 30px; padding: 40px; border: 1px solid var(--cyan); max-width: 700px; margin: 0 auto;">
+        <p style="text-align: center; margin-bottom: 30px;">¿Tienes preguntas, sugerencias o quieres colaborar? Escríbenos y te responderemos a la brevedad.</p>
+
+        <form id="contact-form" action="https://formspree.io/f/mpqywqpk" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+          <input type="text" name="_gotcha" style="display: none;">
+          <input type="text" name="nombre" placeholder="Tu nombre" required
+                 style="padding: 15px; border-radius: 30px; border: 2px solid var(--cyan); background: rgba(0,0,0,0.5); color: white; font-size: 1rem;">
+          <input type="email" name="email" placeholder="Tu correo electrónico" required
+                 style="padding: 15px; border-radius: 30px; border: 2px solid var(--cyan); background: rgba(0,0,0,0.5); color: white; font-size: 1rem;">
+          <input type="text" name="_subject" placeholder="Asunto (opcional)"
+                 style="padding: 15px; border-radius: 30px; border: 2px solid var(--cyan); background: rgba(0,0,0,0.5); color: white; font-size: 1rem;">
+          <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="6" required
+                    style="padding: 15px; border-radius: 20px; border: 2px solid var(--cyan); background: rgba(0,0,0,0.5); color: white; font-size: 1rem;"></textarea>
+          <button type="submit" class="btn btn-primary" style="align-self: center; padding: 15px 40px;">Enviar mensaje</button>
+        </form>
+
+        <div id="form-success" style="display: none; text-align: center; margin-top: 30px;">
+          <h3 style="color: var(--cyan);">¡Mensaje enviado!</h3>
+          <p style="color: var(--text);">Gracias por contactarnos, te responderemos pronto.</p>
+        </div>
+        <div id="form-error" style="display: none; text-align: center; margin-top: 30px;">
+          <h3 style="color: var(--nebula3);">¡Ups! Algo salió mal.</h3>
+          <p style="color: var(--text);">Por favor, inténtalo de nuevo más tarde.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <p class="footer-logo">✦ COSMOS</p>
+        <p>Explorando el universo, una estrella a la vez</p>
+        <p>Imágenes: NASA · ESA · Hubble · Wikipedia Commons</p>
+      </div>
+      <div class="footer-lunar" id="footer-lunar">
+        <div style="font-size: 2.5rem; margin-bottom: 5px;" id="fase-icono">🌕</div>
+        <div style="font-weight: 600; color: #fff;" id="fase-nombre">Fase lunar</div>
+        <div style="font-size: 0.9rem; color: var(--cyan); margin: 5px 0;" id="fecha-actual">--/--/----</div>
+        <div style="font-size: 1.2rem; font-family: 'Orbitron'; letter-spacing: 2px;" id="hora-actual">--:--:--</div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2026 Cosmos — Una ventana al universo</p>
+      <p>
+        <a href="legal.html" target="_blank" style="color:var(--cyan);">Términos y Condiciones | Política de Privacidad</a> | 
+        <a href="comment-policy.html" target="_blank" style="color:var(--cyan);">Política de Comentarios</a> |
+        <a href="about.html" style="color:var(--cyan);">Sobre Nosotros</a> |
+        <a href="contact.html" style="color:var(--cyan);">Contacto</a>
+      </p>
+    </div>
+  </footer>
+  <audio id="sonido-ambiente" loop preload="auto" style="display: none;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <script src="js/script.js"></script>
+  <script>
+    (function() {
+      const form = document.getElementById('contact-form');
+      const successDiv = document.getElementById('form-success');
+      const errorDiv = document.getElementById('form-error');
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const action = form.action;
+          try {
+            const response = await fetch(action, {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+              form.style.display = 'none';
+              successDiv.style.display = 'block';
+              errorDiv.style.display = 'none';
+            } else {
+              errorDiv.style.display = 'block';
+              successDiv.style.display = 'none';
+            }
+          } catch (error) {
+            errorDiv.style.display = 'block';
+            successDiv.style.display = 'none';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
