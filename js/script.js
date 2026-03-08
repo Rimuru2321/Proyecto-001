@@ -117,7 +117,7 @@ if (buscador) {
 // === 7. NASA APOD ===
 const apodContainer = document.getElementById('apod-container');
 if (apodContainer) {
-  const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX';
+  const API_KEY = 'C0OrFtO3IkyCp9RwGlnaKatgKYEtK46OcHANPCEX'; // Reemplazar con tu clave
   fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
@@ -424,6 +424,9 @@ document.addEventListener('keydown', (e) => {
     case 'k': targetId = 'calculadora-peso'; break;
     case '6': targetId = 'eventos-2026'; break;
     case 'y': targetId = 'mitos-leyendas'; break;
+    case 'f': targetId = 'efemerides'; break;
+    case 'o': targetId = 'comparador'; break;
+    case 'u': targetId = 'historia-hoy'; break;
     default: return;
   }
   const target = document.getElementById(targetId);
