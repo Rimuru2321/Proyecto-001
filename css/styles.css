@@ -63,12 +63,15 @@ body.alto-contraste .btn-outline {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-width: 0; /* Evita desbordamiento en flex/grid items */
 }
 
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--nebula1) var(--deep);
+  overflow-x: hidden; /* Evita scroll horizontal en móvil */
+  max-width: 100%;
 }
 
 html::-webkit-scrollbar {
@@ -94,14 +97,34 @@ body {
   font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
   transition: background 0.3s, color 0.3s;
   animation: bodyFadeIn 1s ease;
 }
 
 @keyframes bodyFadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
+
+/* ── Anti-desbordamiento global ── */
+img, video, canvas, iframe, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Contenedores con scroll interno no deben desbordar el viewport */
+.comparador-canvas-wrapper,
+.nebula-gallery,
+.planets-grid,
+.misiones-grid,
+.timeline-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+
 
 #stars-canvas {
   position: fixed;

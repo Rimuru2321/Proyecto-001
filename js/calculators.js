@@ -87,41 +87,55 @@ const planetasData = [
 function dibujarComparador() {
   const canvas = document.getElementById('comparador-canvas');
   if (!canvas) return;
-  
+
+  // Ajustar canvas al ancho real del contenedor (responsive)
+  const wrapper = canvas.parentElement;
+  const W = wrapper ? wrapper.clientWidth || 800 : 800;
+  const H = Math.round(W * 0.5);   // ratio 2:1
+  canvas.width  = W;
+  canvas.height = H;
+
   const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+  ctx.clearRect(0, 0, W, H);
+
   // Fondo
   ctx.fillStyle = 'rgba(0,0,0,0.3)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
+  ctx.fillRect(0, 0, W, H);
+
   // Calcular el radio máximo seleccionado
   let maxRadio = 0;
   planetasData.forEach(p => {
     const checkbox = document.getElementById(p.id);
-    if (checkbox && checkbox.checked) {
-      maxRadio = Math.max(maxRadio, p.radio);
-    }
+    if (checkbox && checkbox.checked) maxRadio = Math.max(maxRadio, p.radio);
   });
-  
-  // Escala para que el más grande tenga 130px de radio
-  const escala = 130 / maxRadio;
-  
-  const startX = 100;
-  const stepX = 140;
-  let index = 0;
-  
-  planetasData.forEach(p => {
-    const checkbox = document.getElementById(p.id);
-    if (!checkbox || !checkbox.checked) return;
-    
-    const radioPx = p.radio * escala;
-    const radioFinal = Math.max(radioPx, 5);
-    const radioDibujo = Math.min(radioFinal, 150);
-    
-    const x = startX + index * stepX;
-    const y = canvas.height / 2;
-    
+  if (maxRadio === 0) {
+    ctx.font = `${Math.max(12, W * 0.02)}px "Orbitron", sans-serif`;
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.fillText('Selecciona al menos un planeta', W / 2, H / 2);
+    return;
+  }
+
+  // Escala: el más grande ocupa como máximo H*0.35 de radio
+  const maxRadioPx = H * 0.35;
+  const escala = maxRadioPx / maxRadio;
+
+  // Contar planetas seleccionados para espaciado
+  const seleccionados = planetasData.filter(p => {
+    const cb = document.getElementById(p.id);
+    return cb && cb.checked;
+  });
+  const count = seleccionados.length;
+  const stepX = W / (count + 1);
+
+  seleccionados.forEach((p, index) => {
+    const radioPx  = p.radio * escala;
+    const radioFinal = Math.max(radioPx, 4);
+    const radioDibujo = Math.min(radioFinal, maxRadioPx);
+
+    const x = stepX * (index + 1);
+    const y = H / 2;
+
     ctx.beginPath();
     ctx.arc(x, y, radioDibujo, 0, Math.PI * 2);
     ctx.fillStyle = p.color;
@@ -129,28 +143,28 @@ function dibujarComparador() {
     ctx.shadowBlur = 15;
     ctx.fill();
     ctx.shadowBlur = 0;
-    
+
     ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = Math.max(1, W * 0.002);
     ctx.stroke();
-    
-    ctx.font = 'bold 14px "Orbitron", sans-serif';
+
+    const fs = Math.max(8, Math.round(W * 0.018));
+    ctx.font = `bold ${fs}px "Orbitron", sans-serif`;
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
-    ctx.fillText(p.nombre, x, y + radioDibujo + 25);
-    
-    ctx.font = '12px "Rajdhani", sans-serif';
+    ctx.fillText(p.nombre, x, Math.min(y + radioDibujo + fs + 4, H - fs * 2 - 4));
+
+    ctx.font = `${Math.max(7, fs - 2)}px "Rajdhani", sans-serif`;
     ctx.fillStyle = 'rgba(200,216,240,0.9)';
-    ctx.fillText(`${p.radio * 2} km`, x, y + radioDibujo + 45);
-    
-    index++;
+    ctx.fillText(`${(p.radio * 2).toLocaleString()} km`, x, Math.min(y + radioDibujo + fs * 2 + 6, H - 4));
   });
-  
-  if (index === 0) {
-    ctx.font = '18px "Orbitron", sans-serif';
-    ctx.fillStyle = '#fff';
-    ctx.textAlign = 'center';
-    ctx.fillText('Selecciona al menos un planeta', canvas.width/2, canvas.height/2);
+}
+
+// Re-dibujar al redimensionar la ventana (portrait ↔ landscape en móvil)
+if (typeof ResizeObserver !== 'undefined') {
+  const comparadorCanvas = document.getElementById('comparador-canvas');
+  if (comparadorCanvas) {
+    new ResizeObserver(() => dibujarComparador()).observe(comparadorCanvas.parentElement);
   }
 }
 
