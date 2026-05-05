@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cosmos">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <title>Cosmos - <span data-i18n="about_titulo">Sobre <span>Cosmos</span></span></title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <canvas id="stars-canvas"></canvas>
+  <nav>
+    <a href="index.html" class="logo">✦ COSMOS</a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html" data-i18n="nav_explorar">Inicio</a></li>
+      <li><a href="index.html#galaxia" data-i18n="nav_explorar">Explorar</a></li>
+      <li><a href="about.html" data-i18n="nav_about">Sobre Nosotros</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contacto</a></li>
+    </ul>
+    <div class="nav-extra">
+      <div class="idioma-selector">
+        <button id="lang-es" class="icono-btn idioma-btn activo">ES</button>
+        <button id="lang-en" class="icono-btn idioma-btn">EN</button>
+      </div>
+      <button id="contraste-toggle" class="icono-btn" title="Alto contraste">👁️</button>
+      <button id="sonido-toggle" class="icono-btn" title="Activar sonido ambiental">🔈</button>
+      <button id="modo-toggle" class="icono-btn" title="Cambiar a modo nebulosa">🌌</button>
+      <button class="hamburger" id="hamburger-btn">☰</button>
+    </div>
+  </nav>
+  <main style="margin-top: 100px; min-height: 70vh;">
+    <section class="sec">
+      <p class="section-label">✨ <span data-i18n="nav_about">Sobre Nosotros</span></p>
+      <h2 class="section-title" data-i18n="about_titulo">Conoce el <span>proyecto</span></h2>
+      <div class="divider"></div>
+      <div class="about-content" style="background: rgba(5,5,32,0.7); border-radius: 30px; padding: 40px; border: 1px solid var(--cyan);">
+        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;" data-i18n="about_desc">
+          <strong>COSMOS</strong> nació de una pasión: acercar el universo a todas las personas. Somos un equipo de entusiastas de la astronomía, la ciencia y la divulgación, convencidos de que el conocimiento del cosmos debe estar al alcance de todos.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+          <span data-i18n="about_mision">Nuestra misión</span> es ofrecer información precisa, actualizada y visualmente atractiva sobre galaxias, planetas, estrellas, agujeros negros y fenómenos astronómicos. Además, hemos creado herramientas interactivas como calculadoras de edad y peso planetario, comparadores de tamaños y efemérides personalizadas para que puedas explorar el universo de una manera única.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+          Todo el contenido es revisado y actualizado constantemente con fuentes confiables como NASA, ESA y observatorios internacionales. Creemos en la ciencia abierta y en compartir el asombro que produce mirar al cielo.
+        </p>
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 40px;">
+          <div style="text-align: center;">
+            <i class="fas fa-star" style="font-size: 3rem; color: var(--gold);"></i>
+            <h3 style="color: #fff;">+100</h3>
+            <p>Artículos y datos</p>
+          </div>
+          <div style="text-align: center;">
+            <i class="fas fa-globe" style="font-size: 3rem; color: var(--cyan);"></i>
+            <h3 style="color: #fff;">2 idiomas</h3>
+            <p>Español e Inglés</p>
+          </div>
+          <div style="text-align: center;">
+            <i class="fas fa-rocket" style="font-size: 3rem; color: var(--nebula1);"></i>
+            <h3 style="color: #fff;">2026</h3>
+            <p>Año de lanzamiento</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <p class="footer-logo">✦ COSMOS</p>
+        <p data-i18n="footer_texto">Explorando el universo, una estrella a la vez</p>
+        <p data-i18n="footer_imagenes">Imágenes: NASA · ESA · Hubble · Wikipedia Commons</p>
+      </div>
+      <div class="footer-lunar" id="footer-lunar">
+        <div style="font-size: 2.5rem; margin-bottom: 5px;" id="fase-icono">🌕</div>
+        <div style="font-weight: 600; color: #fff;" id="fase-nombre">Fase lunar</div>
+        <div style="font-size: 0.9rem; color: var(--cyan); margin: 5px 0;" id="fecha-actual">--/--/----</div>
+        <div style="font-size: 1.2rem; font-family: 'Orbitron'; letter-spacing: 2px;" id="hora-actual">--:--:--</div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2026 Cosmos — Una ventana al universo</p>
+      <p>
+        <a href="legal.html" target="_blank" style="color:var(cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
+        <a href="comment-policy.html" target="_blank" style="color:var(cyan);">Política de Comentarios</a> |
+        <a href="about.html" style="color:var(cyan);" data-i18n="nav_about">Sobre Nosotros</a> |
+        <a href="contact.html" style="color:var(cyan);" data-i18n="nav_contact">Contacto</a>
+      </p>
+    </div>
+  </footer>
+  <audio id="sonido-ambiente" loop preload="auto" style="display: none;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="manifest" href="manifest.json"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cosmos">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <title>COSMOS - El Universo a tu alcance</title>
+  <!-- Metaetiquetas para SEO y compartir -->
+  <meta name="description" content="Explora el universo en COSMOS: galaxias, planetas, agujeros negros, mitología astronómica, calculadoras interactivas (edad y peso planetario), fase lunar en tiempo real, efemérides y eventos astronómicos 2026. La guía definitiva del cosmos.">
+  <meta name="keywords" content="astronomía, galaxia, Vía Láctea, planetas, agujero negro, mitología, constelaciones, eventos astronómicos 2026, cosmos, universo">
+  <meta property="og:title" content="COSMOS - El Universo a tu alcance" />
+  <meta property="og:description" content="Explora galaxias, planetas, agujeros negros, mitología astronómica y calculadoras interactivas. La guía definitiva del cosmos." />
+  <meta property="og:image" content="https://rimuru2321.github.io/COSMOS/img/og-image.jpg" />
+  <meta property="og:url" content="https://rimuru2321.github.io/COSMOS/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Enlaces a CSS y fuentes -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.min.js"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- AVISO MODO ESCRITORIO -->
+  <div id="aviso-modo-escritorio" class="aviso-escritorio" style="display: none;">
+    <div class="aviso-contenido">
+      <span class="aviso-icono">📱</span>
+      <p>Para una mejor experiencia, activa el <strong>modo escritorio</strong> en tu navegador.</p>
+      <button class="aviso-cerrar" onclick="cerrarAviso()">✕</button>
+    </div>
+  </div>
+
+  <!-- Canvas para estrellas -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#inicio" class="logo">✦ COSMOS</a>
+    <ul class="nav-links" id="nav-menu">
+      <li class="dropdown">
+        <a href="#galaxia" data-i18n="nav_explorar">Explorar ▾</a>
+        <div class="dropdown-menu">
+          <!-- LA GALAXIA -->
+          <div class="dropdown-category">🌌 LA GALAXIA</div>
+          <a href="#galaxia-que-es" data-i18n="nav_galaxia">01. Vía Láctea</a>
+          <a href="#galaxia-estructura" data-i18n="nav_estructura">01.1 Estructura</a>
+          <a href="#galaxia-datos" data-i18n="nav_datos">01.2 Datos</a>
+          <a href="#tipos-galaxias" data-i18n="nav_tipos_galaxias">01.3 Tipos de galaxias</a>
+          <a href="#datos-via-lactea" data-i18n="nav_datos_via">01.4 Datos Vía Láctea</a>
+          <a href="#galaxias-primitivas" data-i18n="nav_galaxias_primitivas">01.5 Galaxias primitivas</a>
+          <a href="#sonificacion" data-i18n="nav_sonificacion">01.6 Sonificación</a>
+          <a href="#curiosidades-extra" data-i18n="nav_curiosidades_extra">01.7 Curiosidades extra</a>
+          <!-- SISTEMA SOLAR -->
+          <div class="dropdown-category">🪐 SISTEMA SOLAR</div>
+          <a href="#planetas" data-i18n="nav_planetas">02. Planetas</a>
+          <a href="#luna" data-i18n="nav_luna">02.5 Luna</a>
+          <a href="#agujero-negro" data-i18n="nav_agujero_negro">03. Agujero Negro</a>
+          <a href="#sistema-solar" data-i18n="nav_sistema_solar">04. Sistema Solar</a>
+          <a href="#nebulosas" data-i18n="nav_nebulosas">05. Nebulosas</a>
+          <!-- EXPLORACIÓN -->
+          <div class="dropdown-category">🚀 EXPLORACIÓN</div>
+          <a href="#misiones" data-i18n="nav_misiones">06. Misiones</a>
+          <a href="#glosario" data-i18n="nav_glosario">07. Glosario</a>
+          <a href="#constelaciones" data-i18n="nav_constelaciones">08. Constelaciones</a>
+          <a href="#curiosidades" data-i18n="nav_curiosidades">09. Curiosidades</a>
+          <!-- CULTURA -->
+          <div class="dropdown-category">📜 CULTURA</div>
+          <a href="#mitos-leyendas" data-i18n="nav_mitos">10. Mitos y leyendas</a>
+          <a href="#eventos-2026" data-i18n="nav_eventos">11. Eventos 2026</a>
+          <!-- HERRAMIENTAS -->
+          <div class="dropdown-category">🛠️ HERRAMIENTAS</div>
+          <a href="#calculadora-edad" data-i18n="nav_calculadora">12. Edad Planetaria</a>
+          <a href="#calculadora-peso" data-i18n="nav_peso">13. Peso Planetario</a>
+          <a href="#comparador" data-i18n="nav_comparador">14. Comparador de tamaños</a>
+          <a href="#historia-hoy" data-i18n="nav_historia">15. Hoy en la historia</a>
+          <a href="#efemerides" data-i18n="nav_efemerides">16. Efemérides</a>
+          <a href="#timeline" data-i18n="nav_timeline">17. Línea de Tiempo</a>
+          <a href="#quiz" data-i18n="nav_quiz">18. Quiz</a>
+          <!-- ACTUALIDAD -->
+          <div class="dropdown-category">🌍 ACTUALIDAD</div>
+          <a href="#clima-espacial" data-i18n="nav_clima">19. Clima Espacial</a>
+          <a href="#noticias" data-i18n="nav_noticias">20. Noticias</a>
+          <a href="#apod" data-i18n="nav_apod">21. NASA APOD</a>
+          <a href="#comentarios" data-i18n="nav_comentarios">22. Comentarios</a>
+        </div>
+      </li>
+      <li><a href="#planetas" data-i18n="nav_planetas">Planetas</a></li>
+      <li><a href="#agujero-negro" data-i18n="nav_agujero_negro">Agujero Negro</a></li>
+      <li><a href="#nebulosas" data-i18n="nav_nebulosas">Nebulosas</a></li>
+      <li><a href="#curiosidades" data-i18n="nav_curiosidades">Datos</a></li>
+      <li><a href="#quiz" data-i18n="nav_quiz">Quiz</a></li>
+    </ul>
+    <div class="nav-extra">
+      <div class="idioma-selector">
+        <button id="lang-es" class="icono-btn idioma-btn activo">ES</button>
+        <button id="lang-en" class="icono-btn idioma-btn">EN</button>
+      </div>
+      <button id="contraste-toggle" class="icono-btn" title="Alto contraste">👁️</button>
+      <button id="sonido-toggle" class="icono-btn" title="Activar sonido ambiental">🔈</button>
+      <button id="modo-toggle" class="icono-btn" title="Cambiar a modo nebulosa">🌌</button>
+      <button class="hamburger" id="hamburger-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Panel de atajos -->
+  <div class="atajos-panel" id="atajos-panel">
+    <button class="atajos-toggle" id="atajos-toggle">⌨️ Atajos</button>
+    <div class="atajos-contenido" id="atajos-contenido">
+      <h4 data-i18n="atajos_titulo">Atajos de teclado</h4>
+      <ul>
+        <li><kbd>P</kbd> - <span data-i18n="atajo_p">Planetas</span></li>
+        <li><kbd>N</kbd> - <span data-i18n="atajo_n">Nebulosas</span></li>
+        <li><kbd>A</kbd> - <span data-i18n="atajo_a">Agujero Negro</span></li>
+        <li><kbd>C</kbd> - <span data-i18n="atajo_c">Curiosidades</span></li>
+        <li><kbd>Q</kbd> - <span data-i18n="atajo_q">Quiz</span></li>
+        <li><kbd>H</kbd> - <span data-i18n="atajo_h">Inicio</span></li>
+        <li><kbd>T</kbd> - <span data-i18n="atajo_t">Línea de Tiempo</span></li>
+        <li><kbd>M</kbd> - <span data-i18n="atajo_m">Misiones</span></li>
+        <li><kbd>W</kbd> - <span data-i18n="atajo_w">Clima Espacial</span></li>
+        <li><kbd>R</kbd> - <span data-i18n="atajo_r">Noticias</span></li>
+        <li><kbd>E</kbd> - <span data-i18n="atajo_e">Edad Planetaria</span></li>
+        <li><kbd>K</kbd> - <span data-i18n="atajo_k">Peso Planetario</span></li>
+        <li><kbd>6</kbd> - <span data-i18n="atajo_6">Eventos 2026</span></li>
+        <li><kbd>Y</kbd> - <span data-i18n="atajo_y">Mitos y leyendas</span></li>
+        <li><kbd>F</kbd> - <span data-i18n="atajo_f">Efemérides</span></li>
+        <li><kbd>O</kbd> - <span data-i18n="atajo_o">Comparador</span></li>
+        <li><kbd>U</kbd> - <span data-i18n="atajo_u">Hoy en la historia</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MODAL DE TÉRMINOS -->
+  <div id="modal-terminos" class="modal">
+    <div class="modal-contenido">
+      <h2 data-i18n="modal_bienvenido">Bienvenido a Cosmos</h2>
+      <p data-i18n="modal_terminos">Antes de continuar, necesitamos que aceptes nuestros <strong>Términos y Condiciones</strong> y nuestra <strong>Política de Privacidad</strong>.</p>
+      <div class="modal-botones">
+        <a href="legal.html" target="_blank" class="btn btn-outline" data-i18n="modal_leer">Leer términos</a>
+        <button id="btn-aceptar" class="btn btn-primary" data-i18n="modal_aceptar">Aceptar y continuar</button>
+      </div>
+      <p class="modal-legal" data-i18n="modal_legal">Al hacer clic en "Aceptar", confirmas que has leído y aceptas nuestras políticas.</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div id="inicio">
+    <div class="nebula-bg"></div>
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">✦ Explora el universo ✦</p>
+    <h1 class="hero-title">
+      <span class="line1" data-i18n="hero_title_line1">COSMOS</span>
+      <span class="line2" data-i18n="hero_title_line2">La Vía Láctea y más allá</span>
+    </h1>
+    <p class="hero-desc" data-i18n="hero_desc">
+      Adéntrate en los misterios del universo. Desde la majestuosa Vía Láctea hasta los enigmáticos agujeros negros y las nebulosas de colores, descubre los secretos que guarda el cosmos.
+    </p>
+    <div class="hero-cta">
+      <a href="#galaxia" class="btn btn-primary" data-i18n="hero_btn_explorar">Explorar Ahora</a>
+      <a href="#curiosidades" class="btn btn-outline" data-i18n="hero_btn_datos">Datos Curiosos</a>
+    </div>
+    <div class="hero-scroll">
+      <span data-i18n="hero_scroll">Desplázate</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- ANUNCIO 1 - Después del hero -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="sep-line"><hr/></div>
+  <!-- ==================== SECCIÓN GALAXIA ==================== -->
+  <section class="sec" id="galaxia">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('La Vía Láctea')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('La Vía Láctea')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('La Vía Láctea')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="section_galaxia_label">01 — La Galaxia</p>
+    <h2 class="section-title" data-i18n="section_galaxia_title">La <span>Vía Láctea</span></h2>
+    <div class="divider"></div>
+    <div id="galaxia-que-es" class="galaxy-grid reveal">
+      <div class="galaxy-image">
+        <img src="img/via.jpg" alt="Vista artística de la Vía Láctea" loading="lazy"/>
+      </div>
+      <div>
+        <p data-i18n="galaxia_text1" style="font-size:1.05rem;line-height:1.9;color:rgba(200,216,240,0.85);margin-bottom:18px;">
+          La <strong>Vía Láctea</strong> es nuestra galaxia espiral barrada. Su nombre proviene de la franja luminosa que dibuja en el cielo nocturno, compuesta por cientos de miles de millones de estrellas demasiado lejanas para distinguirse individualmente.
+        </p>
+        <p data-i18n="galaxia_text2" style="font-size:1.05rem;line-height:1.9;color:rgba(200,216,240,0.85);">
+          Tiene una estructura de <strong>brazos espirales</strong> que irradian desde un denso bulbo central donde habita el agujero negro supermasivo <strong>Sagitario A*</strong>. Nuestro Sistema Solar se ubica en el Brazo de Orión, a unos 26,000 años luz del núcleo galáctico.
+        </p>
+      </div>
+    </div>
+    <div id="galaxia-estructura" style="margin-top: 60px;">
+      <h3 style="color:var(--cyan); font-family:'Orbitron';" data-i18n="galaxia_estructura_titulo">Estructura galáctica</h3>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <ul style="list-style: none; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 20px;" data-i18n="galaxia_estructura_items">
+          <li>💫 <strong>Disco:</strong> contiene estrellas jóvenes y brazos espirales.</li>
+          <li>⚪ <strong>Bulbo:</strong> núcleo central, alta densidad estelar y el agujero negro.</li>
+          <li>🪐 <strong>Halo:</strong> esfera de cúmulos globulares y materia oscura.</li>
+          <li>🌠 <strong>Brazo de Orión:</strong> aquí se encuentra nuestro Sistema Solar.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="galaxia-datos" style="margin-top: 40px;">
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-num">~300B</span>
+          <span class="stat-label" data-i18n="stat_estrellas">Estrellas estimadas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">100.000</span>
+          <span class="stat-label" data-i18n="stat_diametro">Años luz de diámetro</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">13.600M</span>
+          <span class="stat-label" data-i18n="stat_edad">Años de antigüedad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOS DE GALAXIAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="tipos-galaxias">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Tipos de galaxias')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Tipos de galaxias')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Tipos de galaxias')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="tipos_galaxia_label">01.1 — Tipos de galaxias</p>
+    <h2 class="section-title" data-i18n="tipos_galaxia_titulo">Más allá de la <span>espiral</span></h2>
+    <div class="divider"></div>
+    <div class="galaxy-types-grid reveal">
+      <div class="type-card">
+        <img src="img/galaxia-espiral.jpg" alt="Galaxia espiral" loading="lazy">
+        <h3 data-i18n="type_card_espiral">🌀 Espirales</h3>
+        <p data-i18n="type_card_espiral_desc">Como nuestra Vía Láctea. Tienen un núcleo central brillante y brazos curvos envueltos en polvo y gas donde nacen estrellas.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="espiral" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-eliptica.jpg" alt="Galaxia elíptica" loading="lazy">
+        <h3 data-i18n="type_card_eliptica">⚪ Elípticas</h3>
+        <p data-i18n="type_card_eliptica_desc">Forma ovalada, sin brazos definidos. Contienen estrellas viejaS y poco gas. Van desde formas casi esféricas hasta alargadas.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="eliptica" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-irregular.jpg" alt="Galaxia irregular" loading="lazy">
+        <h3 data-i18n="type_card_irregular">🔮 Irregulares</h3>
+        <p data-i18n="type_card_irregular_desc">Sin forma definida. Suelen ser el resultado de perturbaciones gravitacionales o colisiones con otras galaxias.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="irregular" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="type-card">
+        <img src="img/galaxia-lenticular.jpg" alt="Galaxia lenticular" loading="lazy">
+        <h3 data-i18n="type_card_lenticular">🔄 Lenticulares</h3>
+        <p data-i18n="type_card_lenticular_desc">Una mezcla entre espirales y elípticas: tienen disco pero sin brazos espirales evidentes.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="lenticular" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+    </div>
+    <p class="type-note" data-i18n="galaxy_types_note">* Se estima que en el universo observable hay entre <strong>200 mil millones y 2 billones de galaxias</strong>.</p>
+  </section>
+
+  <!-- DATOS SORPRENDENTES DE LA VÍA LÁCTEA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="datos-via-lactea">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Datos de la Vía Láctea')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Datos de la Vía Láctea')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Datos de la Vía Láctea')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="milkyway_facts_label">01.2 — Datos sorprendentes</p>
+    <h2 class="section-title" data-i18n="milkyway_facts_titulo">Secretos de <span>nuestra galaxia</span></h2>
+    <div class="divider"></div>
+    <div class="milkyway-facts-grid reveal">
+      <div class="fact-item">
+        <img src="img/via-lactea-plana.jpg" alt="Vía Láctea plana" loading="lazy">
+        <h3 data-i18n="fact_plana_titulo">📏 Prácticamente plana</h3>
+        <p data-i18n="fact_plana_desc">100.000 años luz de ancho pero solo <strong>1.000 años luz de espesor</strong>. ¡Es como un CD gigante!</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/ano-galactico.jpg" alt="Año galáctico" loading="lazy">
+        <h3 data-i18n="fact_ano_galactico_titulo">⏱️ El año galáctico</h3>
+        <p data-i18n="fact_ano_galactico_desc">El Sol tarda entre <strong>225 y 250 millones de años</strong> en dar una vuelta completa al centro de la galaxia. La última vez que el Sol estuvo en esta posición, los dinosaurios dominaban la Tierra.</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/burbujas-fermi.jpg" alt="Burbujas de Fermi" loading="lazy">
+        <h3 data-i18n="fact_burbujas_titulo">🫀 Latidos del centro</h3>
+        <p data-i18n="fact_burbujas_desc">El centro galáctico genera <strong>burbujas de Fermi</strong>: enormes estructuras de gas caliente que se extienden por encima y debajo del plano galáctico, alimentadas por vientos de 2 millones de millas por hora.</p>
+      </div>
+      <div class="fact-item">
+        <img src="img/galaxia-canibal.jpg" alt="Galaxia caníbal" loading="lazy">
+        <h3 data-i18n="fact_galaxia_canibal_titulo">🍽️ Galaxia caníbal</h3>
+        <p data-i18n="fact_galaxia_canibal_desc">La Vía Láctea ha crecido "tragándose" galaxias enanas. Ciertas estrellas antiguas son evidencia de estas fusiones pasadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALAXIAS DEL UNIVERSO PRIMITIVO -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="galaxias-primitivas">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Galaxias primitivas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Galaxias primitivas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Galaxias primitivas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="primitiva_label">01.3 — Galaxias primitivas</p>
+    <h2 class="section-title" data-i18n="primitiva_titulo">Galaxias del <span>universo primitivo</span></h2>
+    <div class="divider"></div>
+    <div class="primitive-container reveal">
+      <img src="img/galaxia-primitiva.jpg" alt="Galaxia del universo primitivo" loading="lazy">
+      <p data-i18n="primitiva_desc">Cuando el universo tenía solo entre <strong>1.000 y 1.500 millones de años</strong> (apenas el 10% de su edad actual), las galaxias experimentaron un "estirón" masivo, adquiriendo la mayor parte de su masa estelar y polvo.</p>
+      <div class="primitive-highlight">
+        <h4 data-i18n="primitiva_highlight_titulo">🔭 Descubrimiento sorprendente (ALMA)</h4>
+        <p data-i18n="primitiva_highlight_desc">Estudios recientes de 118 galaxias distantes revelaron que muchas eran mucho más maduras de lo esperado: cerca del <strong>20% ya contenía grandes cantidades de polvo</strong> y elementos pesados, considerados subproductos de estrellas moribundas.</p>
+        <p data-i18n="primitiva_highlight_desc2">Algunas ya mostraban discos giratorios que eventualmente formarían estructuras espirales, desafiando la teoría de que todas las galaxias primitivas estaban "maltrechas" por colisiones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SONIFICACIÓN -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="sonificacion">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Sonificación de galaxias')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Sonificación de galaxias')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Sonificación de galaxias')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="sonificacion_label">01.4 — Sonificación</p>
+    <h2 class="section-title" data-i18n="sonificacion_titulo">El universo <span>sonoro</span></h2>
+    <div class="divider"></div>
+    <div class="sonificacion-container reveal">
+      <img src="img/sonificacion.webp" alt="Representación de sonificación" loading="lazy">
+      <p data-i18n="sonificacion_desc">Gracias a la <strong>sonificación</strong>, una técnica que convierte datos científicos en sonidos, podemos "escuchar" las galaxias. Más que una curiosidad, esta herramienta permite detectar patrones ocultos en grandes volúmenes de datos y hacer la ciencia más accesible para personas con discapacidad visual.</p>
+      <div class="sonificacion-tech">
+        <h4 data-i18n="sonificacion_tech_titulo">🎧 ViewCube y SoniCube</h4>
+        <p data-i18n="sonificacion_tech_desc">Estas aplicaciones traducen cubos de datos espectroscópicos en sonidos, usando <strong>sonido binaural</strong> que simula cómo percibimos el sonido en 3D. Así, al "escuchar" una galaxia, podemos identificar variaciones en la edad de sus estrellas en diferentes regiones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURIOSIDADES EXTRA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="curiosidades-extra">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Más curiosidades')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Más curiosidades')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Más curiosidades')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="curiosidades_extra_label">01.5 — Datos alucinantes</p>
+    <h2 class="section-title" data-i18n="curiosidades_extra_titulo">El cosmos <span>insólito</span></h2>
+    <div class="divider"></div>
+    <div class="extra-curiosidades-grid reveal">
+      <div class="extra-card">
+        <img src="img/nube-alcohol.webp" alt="Nube de alcohol en el espacio" loading="lazy">
+        <h3 data-i18n="extra_card_alcohol">🍺 Nubes de alcohol</h3>
+        <p data-i18n="extra_card_alcohol_desc">Sagitario B, una nube gigante en la Vía Láctea a 26.000 años luz, contiene <strong>10 trillones de litros de alcohol</strong>.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/oceanos-cosmicos.jpg" alt="Océanos cósmicos" loading="lazy">
+        <h3 data-i18n="extra_card_ocean">💧 Océanos cósmicos</h3>
+        <p data-i18n="extra_card_ocean_desc">Se estima que hay <strong>140 trillones de veces más agua</strong> en el universo que en todos los océanos de la Tierra.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/nebulosa-boomerang.jpg" alt="Nebulosa Boomerang" loading="lazy">
+        <h3 data-i18n="extra_card_boomerang">❄️ El lugar más frío</h3>
+        <p data-i18n="extra_card_boomerang_desc">La Nebulosa Boomerang alcanza los <strong>-272°C</strong>, solo un grado por encima del cero absoluto.</p>
+      </div>
+      <div class="extra-card">
+        <img src="img/cmb.jpg" alt="Radiación cósmica de fondo" loading="lazy">
+        <h3 data-i18n="extra_card_cmb">📺 El eco del Big Bang</h3>
+        <p data-i18n="extra_card_cmb_desc">El 1% de la "nieve" en televisores analógicos es interferencia de la <strong>radiación cósmica de fondo</strong>, el eco del Big Bang.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MITOS Y LEYENDAS AMPLIADA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="mitos-leyendas">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Mitos y leyendas del cosmos')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Mitos y leyendas del cosmos')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Mitos y leyendas del cosmos')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="mitos_label">10 — Mitos y leyendas</p>
+    <h2 class="section-title" data-i18n="mitos_titulo">Mitos y <span>leyendas</span></h2>
+    <div class="divider"></div>
+
+    <!-- Mitología de constelaciones -->
+    <h3 class="subsection-title" data-i18n="mitos_constelaciones_titulo">🌌 Constelaciones y sus historias</h3>
+    <div class="mitos-constelaciones-grid reveal">
+      <!-- Orión -->
+      <div class="mito-card">
+        <img src="img/orion-mito.png" alt="Orión el cazador" loading="lazy">
+        <h4 data-i18n="mito_orion">Orión</h4>
+        <p data-i18n="mito_orion_desc">En la mitología griega, Orión era un gigante cazador, hijo de Poseidón. Fue colocado en el cielo por Zeus después de su muerte. Lo acompaña su perro Sirio (la estrella más brillante).</p>
+        <div class="mito-dato" data-i18n="mito_orion_dato">🔭 Estrella principal: Betelgeuse (roja) y Rigel (azul).</div>
+      </div>
+      <!-- Casiopea -->
+      <div class="mito-card">
+        <img src="img/casiopea-mito.jpg" alt="Reina Casiopea" loading="lazy">
+        <h4 data-i18n="mito_casiopea">Casiopea</h4>
+        <p data-i18n="mito_casiopea_desc">Reina de Etiopía, vanidosa y presumida, fue castigada por Poseidón a dar vueltas alrededor del polo norte, sentada en un trono, a veces boca abajo como castigo.</p>
+        <div class="mito-dato" data-i18n="mito_casiopea_dato">🌟 Forma una "W" o "M" en el cielo según la época.</div>
+      </div>
+      <!-- Andrómeda -->
+      <div class="mito-card">
+        <img src="img/andromeda-mito.webp" alt="Andrómeda encadenada" loading="lazy">
+        <h4 data-i18n="mito_andromeda">Andrómeda</h4>
+        <p data-i18n="mito_andromeda_desc">Princesa encadenada a una roca como sacrificio para un monstruo marino. Fue rescatada por Perseo, quien la convirtió en constelación junto a sus padres Cefeo y Casiopea.</p>
+        <div class="mito-dato" data-i18n="mito_andromeda_dato">🌌 Alberga la galaxia de Andrómeda (M31), la más cercana a la Vía Láctea.</div>
+      </div>
+    </div>
+
+    <!-- Leyendas de eclipses -->
+    <h3 class="subsection-title" style="margin-top: 60px;" data-i18n="eclipses_titulo">🌑 Eclipses en las culturas del mundo</h3>
+    <div class="eclipses-grid reveal">
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🐉</span>
+        <h4 data-i18n="eclipse_card_china">China: El dragón devora el Sol</h4>
+        <p data-i18n="eclipse_card_china_desc">Creían que un dragón celestial atacaba al Sol durante un eclipse. La gente tocaba tambores y hacía ruido para asustarlo y salvarlo.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌕🐆</span>
+        <h4 data-i18n="eclipse_card_inca">Incas: Jaguar lunar</h4>
+        <p data-i18n="eclipse_card_inca_desc">Pensaban que un jaguar atacaba a la Luna, haciéndola sangrar (de ahí el color rojo). Para espantarlo, agitaban lanzas y gritaban.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">👹</span>
+        <h4 data-i18n="eclipse_card_mesopotamia">Mesopotamia: Demonios atacan</h4>
+        <p data-i18n="eclipse_card_mesopotamia_desc">Creían que siete demonios causaban los eclipses. El rey era sustituido temporalmente por un sustituto para protegerlo.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌍🔥</span>
+        <h4 data-i18n="eclipse_card_hindu">Hindúes: El demonio Rahu</h4>
+        <p data-i18n="eclipse_card_hindu_desc">Según la mitología hindú, el demonio Rahu intenta tragarse el Sol y la Luna, pero al ser decapitado, la cabeza escapa y causa los eclipses.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🦅</span>
+        <h4 data-i18n="eclipse_card_norse">Nórdicos: Lobos Sköll y Hati</h4>
+        <p data-i18n="eclipse_card_norse_desc">Los lobos gigantes Sköll (persigue al Sol) y Hati (persigue a la Luna) atrapan a sus presas durante los eclipses.</p>
+      </div>
+      <div class="eclipse-card">
+        <span class="eclipse-icon">🌿</span>
+        <h4 data-i18n="eclipse_card_maya">Mayas: Lucha de dioses</h4>
+        <p data-i18n="eclipse_card_maya_desc">Los eclipses eran vistos como una lucha entre dioses, un augurio de guerra o cambio dinástico.</p>
+      </div>
+    </div>
+
+    <!-- Origen de los nombres de los planetas -->
+    <h3 class="subsection-title" style="margin-top: 60px;" data-i18n="planetas_nombres_titulo">🪐 Nombres de los planetas</h3>
+    <div class="planetas-nombres-grid reveal">
+      <div class="nombre-card">
+        <span class="nombre-icon">☿</span>
+        <h4 data-i18n="planeta_mercurio">Mercurio</h4>
+        <p data-i18n="planeta_mercurio_desc">Dios romano del comercio, los viajeros y los ladrones. Rápido como el planeta en su órbita. (Equivalente griego: Hermes).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♀️</span>
+        <h4 data-i18n="planeta_venus">Venus</h4>
+        <p data-i18n="planeta_venus_desc">Diosa del amor y la belleza. El planeta más brillante, asociado a la feminidad. (Afrodita).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">🌍</span>
+        <h4 data-i18n="planeta_tierra">Tierra</h4>
+        <p data-i18n="planeta_tierra_desc">Del latín "Terra", diosa primigenia de la tierra. No proviene de la mitología clásica, sino de la personificación del planeta.</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♂️</span>
+        <h4 data-i18n="planeta_marte">Marte</h4>
+        <p data-i18n="planeta_marte_desc">Dios de la guerra. Su color rojo recuerda a la sangre y a la violencia. (Ares).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♃</span>
+        <h4 data-i18n="planeta_jupiter">Júpiter</h4>
+        <p data-i18n="planeta_jupiter_desc">Rey de los dioses. El planeta más grande, soberano del sistema solar. (Zeus).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">🪐</span>
+        <h4 data-i18n="planeta_saturno">Saturno</h4>
+        <p data-i18n="planeta_saturno_desc">Dios de la agricultura y el tiempo. Padre de Júpiter, devoraba a sus hijos. (Cronos).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">⛢</span>
+        <h4 data-i18n="planeta_urano">Urano</h4>
+        <p data-i18n="planeta_urano_desc">Dios del cielo, esposo de Gea (la Tierra). Padre de los titanes. (Urano en griego es Ouranos).</p>
+      </div>
+      <div class="nombre-card">
+        <span class="nombre-icon">♆</span>
+        <h4 data-i18n="planeta_neptuno">Neptuno</h4>
+        <p data-i18n="planeta_neptuno_desc">Dios de los mares. Su color azul evoca el océano. (Poseidón).</p>
+      </div>
+    </div>
+    <p class="mitos-nota" data-i18n="nombres_planetas_nota">* Los nombres romanos fueron adoptados por la astronomía occidental y se mantienen hasta hoy.</p>
+  </section>
+
+  <!-- EVENTOS 2026 -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="eventos-2026">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Eventos astronómicos 2026')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Eventos astronómicos 2026')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Eventos astronómicos 2026')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="eventos_label">11 — Calendario 2026</p>
+    <h2 class="section-title" data-i18n="eventos_titulo">Eventos <span>astronómicos</span></h2>
+    <div class="divider"></div>
+    <div class="eventos-grid reveal">
+      <!-- Enero -->
+      <div class="evento-card">
+        <div class="evento-mes">ENERO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🔭</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_enero_fecha">10 de enero</div>
+            <div class="evento-titulo" data-i18n="evento_enero_titulo">Oposición de Júpiter</div>
+            <div class="evento-desc" data-i18n="evento_enero_desc">El gigante gaseoso alcanza su máximo brillo y tamaño, ideal para observar con telescopio.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Febrero -->
+      <div class="evento-card">
+        <div class="evento-mes">FEBRERO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🪐</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_febrero_fecha">28 de febrero</div>
+            <div class="evento-titulo" data-i18n="evento_febrero_titulo">Gran alineación planetaria</div>
+            <div class="evento-desc" data-i18n="evento_febrero_desc">Seis planetas (Mercurio, Venus, Marte, Júpiter, Saturno y Urano) se alinearán en el cielo.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Marzo -->
+      <div class="evento-card">
+        <div class="evento-mes">MARZO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌑</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_marzo_fecha">3 de marzo</div>
+            <div class="evento-titulo" data-i18n="evento_marzo_titulo">Eclipse lunar total</div>
+            <div class="evento-desc" data-i18n="evento_marzo_desc">"Luna de Sangre" visible en el Pacífico y zonas cercanas. La Luna se teñirá de rojo.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Abril -->
+      <div class="evento-card">
+        <div class="evento-mes">ABRIL</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">☄️</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_abril_fecha">Abril (fecha variable)</div>
+            <div class="evento-titulo" data-i18n="evento_abril_titulo">Cometa C/2025 R3 (PANSTARRS)</div>
+            <div class="evento-desc" data-i18n="evento_abril_desc">Posiblemente el cometa más brillante del año, visible a simple vista.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Mayo -->
+      <div class="evento-card">
+        <div class="evento-mes">MAYO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌕</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_mayo_fecha">31 de mayo</div>
+            <div class="evento-titulo" data-i18n="evento_mayo_titulo">Blue Micromoon</div>
+            <div class="evento-desc" data-i18n="evento_mayo_desc">Luna llena más pequeña del año (microluna) y además "azul" (segunda luna llena del mes).</div>
+          </div>
+        </div>
+      </div>
+      <!-- Junio -->
+      <div class="evento-card">
+        <div class="evento-mes">JUNIO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌌</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_junio_fecha">21 de junio</div>
+            <div class="evento-titulo" data-i18n="evento_junio_titulo">Solsticio de verano</div>
+            <div class="evento-desc" data-i18n="evento_junio_desc">Día más largo del año en el hemisferio norte. Noches cortas pero ideales para observar planetas.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Julio -->
+      <div class="evento-card">
+        <div class="evento-mes">JULIO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🪐</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_julio_fecha">Julio (todo el mes)</div>
+            <div class="evento-titulo" data-i18n="evento_julio_titulo">Visibilidad de Saturno</div>
+            <div class="evento-desc" data-i18n="evento_julio_desc">Saturno en oposición (mejor momento para observar sus anillos).</div>
+          </div>
+        </div>
+      </div>
+      <!-- Agosto -->
+      <div class="evento-card">
+        <div class="evento-mes">AGOSTO</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌑☄️</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_agosto_fecha">12 de agosto</div>
+            <div class="evento-titulo" data-i18n="evento_agosto_titulo">Eclipse solar total</div>
+            <div class="evento-desc" data-i18n="evento_agosto_desc">Visible en España y Portugal. ¡Un evento histórico!</div>
+            <div class="evento-fecha" style="margin-top:8px;" data-i18n="evento_perseidas_fecha">Agosto (mediados)</div>
+            <div class="evento-titulo" data-i18n="evento_perseidas_titulo">Perseidas</div>
+            <div class="evento-desc" data-i18n="evento_perseidas_desc">Hasta 90 meteoros por hora, sin interferencia lunar.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Septiembre -->
+      <div class="evento-card">
+        <div class="evento-mes">SEPTIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🌍</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_septiembre_fecha">22 de septiembre</div>
+            <div class="evento-titulo" data-i18n="evento_septiembre_titulo">Equinoccio de otoño</div>
+            <div class="evento-desc" data-i18n="evento_septiembre_desc">Noche y día de igual duración. Inicio del otoño en el hemisferio norte.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Octubre -->
+      <div class="evento-card">
+        <div class="evento-mes">OCTUBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">🔭</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_octubre_fecha">Octubre (todo el mes)</div>
+            <div class="evento-titulo" data-i18n="evento_octubre_titulo">Observación de galaxias</div>
+            <div class="evento-desc" data-i18n="evento_octubre_desc">Andrómeda (M31) visible a simple vista en cielos oscuros.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Noviembre -->
+      <div class="evento-card">
+        <div class="evento-mes">NOVIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">☄️</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_noviembre_fecha">17-18 de noviembre</div>
+            <div class="evento-titulo" data-i18n="evento_noviembre_titulo">Lluvia de Leónidas</div>
+            <div class="evento-desc" data-i18n="evento_noviembre_desc">Hasta 15 meteoros por hora, con luna en cuarto creciente.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Diciembre -->
+      <div class="evento-card">
+        <div class="evento-mes">DICIEMBRE</div>
+        <div class="evento-destacado">
+          <span class="evento-icon">❄️</span>
+          <div>
+            <div class="evento-fecha" data-i18n="evento_diciembre_fecha">13-14 de diciembre</div>
+            <div class="evento-titulo" data-i18n="evento_diciembre_titulo">Geminidas</div>
+            <div class="evento-desc" data-i18n="evento_diciembre_desc">Una de las mejores lluvias de meteoros del año (hasta 120 por hora).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="eventos-nota" data-i18n="eventos_nota">* Las fechas y visibilidad pueden variar según tu ubicación. Consulta aplicaciones de astronomía para detalles locales.</p>
+  </section>
+
+  <!-- PLANETAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec sec-wide" id="planetas">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Los planetas del Sistema Solar')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Los planetas del Sistema Solar')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Los planetas del Sistema Solar')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="sistema_solar_label">02 — El Sistema Solar</p>
+    <h2 class="section-title" data-i18n="planetas_titulo">Los <span>Planetas</span></h2>
+    <div class="divider"></div>
+
+    <div class="buscador-planetas">
+      <input type="text" id="buscador" placeholder="Buscar planeta..." class="buscador-input" data-i18n="buscador_placeholder">
+    </div>
+
+    <div class="planets-grid reveal" id="planets-grid">
+      <!-- Mercurio -->
+      <div class="planet-card" data-nombre="mercurio">
+        <img class="planet-img" src="img/mercurio.jpg" alt="Superficie gris y craterizada de Mercurio" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_rocoso1">Planeta Rocoso · I</p>
+          <h3 class="planet-name" data-i18n="planeta_mercurio">Mercurio</h3>
+          <p class="planet-desc" data-i18n="planeta_mercurio_desc">El más pequeño y cercano al Sol. Sin atmósfera, sus temperaturas oscilan entre -180°C y 430°C en el mismo planeta.</p>
+          <span class="planet-tag" style="background:rgba(180,120,60,0.2);color:#f0a060;">57.9M km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="mercurio" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Venus -->
+      <div class="planet-card" data-nombre="venus">
+        <img class="planet-img" src="img/venus.jpg" alt="Superficie de Venus cubierta de nubes amarillentas" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_rocoso2">Planeta Rocoso · II</p>
+          <h3 class="planet-name" data-i18n="planeta_venus">Venus</h3>
+          <p class="planet-desc" data-i18n="planeta_venus_desc">El planeta más caliente (462°C) cubierto de nubes de ácido sulfúrico. Gira en sentido inverso al resto de planetas.</p>
+          <span class="planet-tag" style="background:rgba(220,180,60,0.2);color:#f0d060;">108.2M km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="venus" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Tierra -->
+      <div class="planet-card" data-nombre="tierra">
+        <img class="planet-img" src="img/tierra.jpg" alt="Planeta Tierra visto desde el espacio con continentes verdes y azules" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_rocoso3">Planeta Rocoso · III</p>
+          <h3 class="planet-name" data-i18n="planeta_tierra">Tierra</h3>
+          <p class="planet-desc" data-i18n="planeta_tierra_desc">Nuestro hogar. El único planeta conocido con vida. El 71% de su superficie es agua y posee una luna natural estabilizadora.</p>
+          <span class="planet-tag" style="background:rgba(0,150,200,0.2);color:var(--cyan);">149.6M km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="tierra" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Marte -->
+      <div class="planet-card" data-nombre="marte">
+        <img class="planet-img" src="img/marte.jpg" alt="Superficie rocosa rojiza de Marte" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_rocoso4">Planeta Rocoso · IV</p>
+          <h3 class="planet-name" data-i18n="planeta_marte">Marte</h3>
+          <p class="planet-desc" data-i18n="planeta_marte_desc">El Planeta Rojo con el volcán más alto del sistema solar: Olympus Mons (21 km). Principal objetivo de futura colonización humana.</p>
+          <span class="planet-tag" style="background:rgba(200,60,60,0.2);color:#f08080;">227.9M km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="marte" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Júpiter -->
+      <div class="planet-card" data-nombre="jupiter">
+        <img class="planet-img" src="img/jupiter.jpg" alt="Gigante gaseoso Júpiter con sus bandas de nubes y la Gran Mancha Roja" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_gaseoso1">Gigante Gaseoso · V</p>
+          <h3 class="planet-name" data-i18n="planeta_jupiter">Júpiter</h3>
+          <p class="planet-desc" data-i18n="planeta_jupiter_desc">El más grande del sistema solar. Su Gran Mancha Roja es una tormenta activa hace más de 400 años. Tiene 95 lunas conocidas.</p>
+          <span class="planet-tag" style="background:rgba(200,140,80,0.2);color:#f0b070;">778.5M km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="jupiter" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Saturno -->
+      <div class="planet-card" data-nombre="saturno">
+        <img class="planet-img" src="img/saturno.jpg" alt="Saturno con sus característicos anillos brillantes" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_gaseoso2">Gigante Gaseoso · VI</p>
+          <h3 class="planet-name" data-i18n="planeta_saturno">Saturno</h3>
+          <p class="planet-desc" data-i18n="planeta_saturno_desc">Sus anillos de hielo y roca son únicos en el sistema solar. Es tan poco denso que flotaría en el agua. Tiene 146 lunas.</p>
+          <span class="planet-tag" style="background:rgba(200,180,100,0.2);color:#f0d090;">1.43B km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="saturno" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Urano -->
+      <div class="planet-card" data-nombre="urano">
+        <img class="planet-img" src="img/urano.jpg" alt="Urano, un planeta de color verde-azulado y sin anillos prominentes" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_hielo1">Gigante de Hielo · VII</p>
+          <h3 class="planet-name" data-i18n="planeta_urano">Urano</h3>
+          <p class="planet-desc" data-i18n="planeta_urano_desc">Rota de lado con un eje inclinado 98°. Sus vientos alcanzan 900 km/h y su color azul-verde proviene del metano atmosférico.</p>
+          <span class="planet-tag" style="background:rgba(100,200,200,0.2);color:#80e0e0;">2.87B km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="urano" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <!-- Neptuno -->
+      <div class="planet-card" data-nombre="neptuno">
+        <img class="planet-img" src="img/neptuno.jpg" alt="Neptuno, de color azul intenso con manchas oscuras" loading="lazy"/>
+        <div class="planet-info">
+          <p class="planet-type" data-i18n="planet_type_hielo2">Gigante de Hielo · VIII</p>
+          <h3 class="planet-name" data-i18n="planeta_neptuno">Neptuno</h3>
+          <p class="planet-desc" data-i18n="planeta_neptuno_desc">El más lejano y ventoso: tormentas de 2,100 km/h. Un año neptuniano dura 165 años terrestres. Tiene 16 lunas conocidas.</p>
+          <span class="planet-tag" style="background:rgba(60,80,220,0.2);color:#8090f5;">4.50B km del Sol</span>
+          <button class="btn btn-outline btn-mas-info" data-info="neptuno" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANUNCIO 2 - Después de planetas -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- NUESTRA LUNA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="luna">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Nuestra Luna')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Nuestra Luna')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Nuestra Luna')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="luna_label">02.5 — Nuestra Luna</p>
+    <h2 class="section-title" data-i18n="luna_fases_titulo">El satélite que <span>nos acompaña</span></h2>
+    <div class="divider"></div>
+
+    <div class="luna-grid reveal">
+      <!-- Columna izquierda: imagen principal -->
+      <div class="luna-image">
+        <img src="img/luna.png" alt="La Luna llena sobre la superficie terrestre" loading="lazy"/>
+      </div>
+      <!-- Columna derecha: datos clave -->
+      <div class="luna-datos">
+        <div class="luna-stat">
+          <span class="luna-num">384,400 km</span>
+          <span class="luna-label" data-i18n="luna_datos_distancia">Distancia media desde la Tierra</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">3,474 km</span>
+          <span class="luna-label" data-i18n="luna_datos_diametro">Diámetro</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">27.3 días</span>
+          <span class="luna-label" data-i18n="luna_datos_periodo">Período orbital</span>
+        </div>
+        <div class="luna-stat">
+          <span class="luna-num">-23°C (día) / -233°C (noche)</span>
+          <span class="luna-label" data-i18n="luna_datos_temp">Temperatura superficial</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto explicativo -->
+    <div class="luna-texto reveal">
+      <p data-i18n="luna_texto_desc">
+        La <strong>Luna</strong> es el único satélite natural de la Tierra y el quinto más grande del sistema solar. 
+        Su superficie está cubierta de cráteres, mares de basalto y montañas. Se formó hace unos 4,500 millones de años, 
+        probablemente tras el impacto de un cuerpo del tamaño de Marte contra la Tierra primitiva.
+      </p>
+      <p data-i18n="luna_texto_desc2">
+        Su influencia sobre nuestro planeta es enorme: regula las mareas, estabiliza el eje de rotación terrestre 
+        y ha sido fuente de mitos, calendarios y exploración. En 1969, la misión <strong>Apolo 11</strong> dejó la 
+        primera huella humana en su superficie.
+      </p>
+    </div>
+
+    <!-- Galería de fases lunares -->
+    <h3 style="color:var(--cyan); font-family:'Orbitron'; margin: 40px 0 20px;" data-i18n="fases_luna_titulo">Fases de la Luna</h3>
+    <div class="fases-grid reveal">
+      <div class="fase-card">
+        <img src="img/nueva.png" alt="Luna nueva" loading="lazy">
+        <p data-i18n="luna_fase_nueva">Luna nueva</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/creciente.png" alt="Luna creciente" loading="lazy" onerror="this.style.display='none'">
+        <p data-i18n="luna_fase_creciente">Creciente</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/cuarto.png" alt="Cuarto creciente" loading="lazy" onerror="this.style.display='none'">
+        <p data-i18n="luna_fase_cuarto">Cuarto creciente</p>
+      </div>
+      <div class="fase-card">
+        <img src="img/nueva.png" alt="Luna llena" loading="lazy" onerror="this.style.display='none'" style="filter:invert(1) brightness(2)">
+        <p data-i18n="luna_fase_llena">Luna llena</p>
+      </div>
+    </div>
+
+    <!-- LUNA ROJA (LUNA DE SANGRE) -->
+    <div class="luna-roja-container reveal">
+      <h3 style="color:var(--nebula3); font-family:'Orbitron'; margin: 60px 0 20px; text-align: center;" data-i18n="luna_roja_titulo">
+        🌑 LUNA DE SANGRE 🌑
+      </h3>
+      <div class="luna-roja-grid">
+        <!-- Columna izquierda: explicación científica -->
+        <div class="luna-roja-card ciencia">
+          <h4 data-i18n="luna_roja_ciencia_titulo">🔬 ¿Por qué se ve roja?</h4>
+          <p data-i18n="luna_roja_ciencia_desc">
+            Durante un <strong>eclipse lunar total</strong>, la Tierra se interpone entre el Sol y la Luna. 
+            La luz solar atraviesa la atmósfera terrestre, que dispersa los colores azules y verdes (como en el atardecer), 
+            pero deja pasar la luz roja, que se refracta hacia la superficie lunar. Por eso la Luna adquiere ese tono cobrizo o rojizo.
+          </p>
+          <p data-i18n="luna_roja_ciencia_desc2">
+            No es un evento mágico ni sobrenatural, sino un fenómeno óptico causado por nuestra atmósfera. 
+            Mientras más partículas de polvo o ceniza haya en el aire (como después de una erupción volcánica), más intenso será el rojo.
+          </p>
+        </div>
+        <!-- Columna derecha: mitos y leyendas -->
+        <div class="luna-roja-card mitos">
+          <h4 data-i18n="luna_roja_mitos_titulo">📜 Mitos y leyendas</h4>
+          <ul data-i18n="luna_roja_mitos_desc">
+            <li><strong>Incas:</strong> Creían que un jaguar atacaba a la Luna y hacía que sangrara. Para espantarlo, agitaban lanzas y hacían ruido.</li>
+            <li><strong>Mesopotámicos:</strong> Pensaban que siete demonios atacaban la Luna, y sustituían temporalmente al rey para protegerlo.</li>
+            <li><strong>Mayas:</strong> Veían la Luna roja como una lucha entre dioses y un augurio de guerra.</li>
+            <li><strong>Hupa (California):</strong> Creían que las mascotas hambrientas de la Luna (pumas y serpientes) la atacaban si no las alimentaban.</li>
+            <li><strong>Tradición judeocristiana:</strong> En la Biblia se menciona como señal del fin de los tiempos: <em>"El sol se convertirá en tinieblas, y la luna en sangre"</em> (Joel 2:31, Hechos 2:20).</li>
+            <li><strong>Supersticiones populares:</strong> Se dice que las embarazadas no deben mirarla para evitar malformaciones, que cortarse el pelo esa noche lo fortalece, o que puede aumentar la fertilidad y la pasión.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Dato curioso adicional -->
+      <div class="luna-roja-dato">
+        <p data-i18n="luna_roja_colon">✨ <strong>¿Sabías que...?</strong> Cristóbal Colón utilizó un eclipse lunar (Luna de sangre) en 1504 para asustar a los nativos de Jamaica y conseguir alimentos. Sabía que ocurriría por sus tablas astronómicas y lo usó a su favor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGUJERO NEGRO -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="agujero-negro">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Sagitario A* - El agujero negro central')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Sagitario A* - El agujero negro central')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Sagitario A* - El agujero negro central')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="agujero_negro_label">03 — Agujero Negro</p>
+    <h2 class="section-title" data-i18n="agujero_titulo">Sagitario <span>A*</span></h2>
+    <div class="divider"></div>
+    <div class="bh-layout reveal">
+      <div>
+        <p data-i18n="agujero_desc" style="font-size:1.05rem;line-height:1.9;color:rgba(200,216,240,0.85);margin-bottom:24px;">
+          En el corazón de nuestra galaxia existe un <strong>agujero negro supermasivo</strong> llamado <strong>Sagitario A*</strong>. Con una masa de 4 millones de soles, distorsiona el espacio-tiempo a su alrededor de formas que desafían cualquier comprensión humana.
+        </p>
+        <ul class="fact-list">
+          <li><span class="fact-icon">⚫</span><span class="fact-text" data-i18n="agujero_masa"><strong>Masa colosal:</strong> 4 millones de masas solares concentradas en un radio de unos 44 millones de kilómetros.</span></li>
+          <li><span class="fact-icon">🌀</span><span class="fact-text" data-i18n="agujero_horizonte"><strong>Horizonte de eventos:</strong> El punto de no retorno absoluto. Ni la luz puede escapar de su atracción gravitacional.</span></li>
+          <li><span class="fact-icon">⏱️</span><span class="fact-text" data-i18n="agujero_tiempo"><strong>Distorsión temporal:</strong> Cerca de un agujero negro el tiempo transcurre más lento, tal como predijo Einstein con la relatividad general.</span></li>
+          <li><span class="fact-icon">📸</span><span class="fact-text" data-i18n="agujero_imagen"><strong>Primera imagen real:</strong> En 2022 el Telescopio del Horizonte de Eventos capturó la primera imagen de Sagitario A* a 26,000 años luz.</span></li>
+          <li><span class="fact-icon">💫</span><span class="fact-text" data-i18n="agujero_acrecion"><strong>Disco de acreción:</strong> La materia en espiral genera temperaturas de miles de millones de grados emitiendo intensas radiaciones de alta energía.</span></li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="black-hole-anim">
+          <div class="bh-glow"></div>
+          <div class="bh-ring ring3"></div>
+          <div class="bh-ring ring2"></div>
+          <div class="bh-ring ring1"></div>
+          <div class="bh-core"></div>
+        </div>
+        <img class="bh-img" src="img/black.jpg" alt="Primera imagen real de un agujero negro (M87) por el Event Horizon Telescope" loading="lazy"/>
+        <p style="font-size:0.73rem;text-align:center;color:rgba(200,216,240,0.4);margin-top:8px;letter-spacing:1px;" data-i18n="agujero_foto_desc">Primera fotografía real de un agujero negro — M87 (EHT, 2019)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANUNCIO 3 - Después de agujero negro -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- SISTEMA SOLAR -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="sistema-solar">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Nuestro Sistema Solar')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Nuestro Sistema Solar')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Nuestro Sistema Solar')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="sistema_solar_04_label">04 — Sistema Solar</p>
+    <h2 class="section-title" data-i18n="solar_titulo">Nuestro <span>Sistema Solar</span></h2>
+    <div class="divider"></div>
+    <div class="solar-img-wrap reveal">
+      <img src="img/sistema solar.png" alt="Representación artística del Sistema Solar con los planetas alineados" style="background:#020215;padding:14px 0;" loading="lazy"/>
+    </div>
+    <div class="solar-facts reveal">
+      <div class="solar-card">
+        <div class="solar-card-icon">☀️</div>
+        <div class="solar-card-title" data-i18n="solar_sol">El Sol</div>
+        <p class="solar-card-text" data-i18n="solar_sol_desc">Contiene el 99.86% de toda la masa del Sistema Solar. Convierte 600 millones de toneladas de hidrógeno en helio por segundo mediante fusión nuclear.</p>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-icon">🌌</div>
+        <div class="solar-card-title" data-i18n="solar_tamano">Tamaño del Sistema</div>
+        <p class="solar-card-text" data-i18n="solar_tamano_desc">Desde el Sol hasta la heliopausa hay ~18.000 millones de km. La sonda Voyager 1, lanzada en 1977, tardó 35 años en cruzar ese límite.</p>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-icon">🪨</div>
+        <div class="solar-card-title" data-i18n="solar_cinturon">Cinturón de Asteroides</div>
+        <p class="solar-card-text" data-i18n="solar_cinturon_desc">Entre Marte y Júpiter hay millones de asteroides. El más grande es el planeta enano Ceres, con 940 km de diámetro, que también alberga agua en su interior.</p>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-icon">🧊</div>
+        <div class="solar-card-title" data-i18n="solar_oort">Nube de Oort</div>
+        <p class="solar-card-text" data-i18n="solar_oort_desc">Una esfera de cometas helados que rodea el Sistema Solar hasta 100.000 UA del Sol. Es la reserva de los cometas de largo período que visitan el Sol.</p>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-icon">🌍</div>
+        <div class="solar-card-title" data-i18n="solar_enanos">Planetas Enanos</div>
+        <p class="solar-card-text" data-i18n="solar_enanos_desc">Plutón, Ceres, Eris, Haumea y Makemake son los 5 planetas enanos oficiales. Plutón fue reclasificado en 2006, generando un gran debate científico.</p>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-icon">🛸</div>
+        <div class="solar-card-title" data-i18n="solar_exploracion">Exploración Espacial</div>
+        <p class="solar-card-text" data-i18n="solar_exploracion_desc">NASA, ESA y otras agencias han enviado sondas a todos los planetas. Las misiones Mars rovers y la telescopía James Webb continúan expandiendo nuestro conocimiento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEBULOSAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="nebulosas">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Nebulosas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Nebulosas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Nebulosas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="nebulosas_label">05 — Nebulosas</p>
+    <h2 class="section-title" data-i18n="nebulosas_titulo">Nubes <span>Cósmicas</span></h2>
+    <div class="divider"></div>
+    <p data-i18n="nebulosas_desc" style="max-width:700px;line-height:1.9;color:rgba(200,216,240,0.85);margin-bottom:10px;">
+      Las <strong>nebulosas</strong> son enormes nubes de gas y polvo interestelar: la cuna donde nacen nuevas estrellas y el legado de las que mueren. Sus colores espectaculares son la huella de distintos elementos químicos ionizados por la radiación estelar.
+    </p>
+    <div class="nebula-gallery reveal">
+      <div class="nebula-item">
+        <img src="img/nebulosa.jpg" alt="Nebulosa del Cangrejo: filamentos de gas en expansión" loading="lazy"/>
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_cangrejo">Nebulosa del Cangrejo</h4>
+          <p data-i18n="nebulosa_cangrejo_desc">Remanente de supernova observada en el año 1054. Ubicada a 6,500 años luz.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_cangrejo" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <div class="nebula-item">
+        <img src="img/pilares.avif" alt="Pilares de la Creación: columnas de gas en la Nebulosa del Águila" loading="lazy"/>
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_pilares">Pilares de la Creación</h4>
+          <p data-i18n="nebulosa_pilares_desc">En la Nebulosa del Águila. Columnas de gas donde nacen nuevas estrellas constantemente.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_pilares" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <div class="nebula-item">
+        <img src="img/orion.jpg" alt="Nebulosa de Orión con tonos rojos y azules" loading="lazy"/>
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_orion">Nebulosa de Orión (M42)</h4>
+          <p data-i18n="nebulosa_orion_desc">La más cercana visible a simple vista desde la Tierra, a 1,344 años luz de distancia.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_orion" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <div class="nebula-item">
+        <img src="img/eta.webp" alt="Eta Carinae rodeada de una nebulosa bipolar" loading="lazy"/>
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_eta">Eta Carinae</h4>
+          <p data-i18n="nebulosa_eta_desc">Una de las estrellas más masivas y brillantes, envuelta en su propia nube de gas y polvo.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_eta" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <div class="nebula-item">
+        <img src="img/campo.jpg" alt="Campo Ultra Profundo del Hubble con miles de galaxias" loading="lazy"/>
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_hubble">Campo Ultra Profundo Hubble</h4>
+          <p data-i18n="nebulosa_hubble_desc">~10,000 galaxias en una sola imagen. Muestra el universo hace 13 mil millones de años.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_hubble" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+      <div class="nebula-item">
+        <img src="img/planetaria.jpg" alt="Nebulosa del Ojo de Gato con estructura simétrica" loading="lazy">
+        <div class="nebula-caption">
+          <h4 data-i18n="nebulosa_planetaria">Nebulosa Planetaria</h4>
+          <p data-i18n="nebulosa_planetaria_desc">El destino final de estrellas como el Sol: una cáscara gaseosa expulsada al morir la estrella.</p>
+          <button class="btn btn-outline btn-mas-info" data-info="neb_planetaria" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISIONES ESPACIALES -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="misiones">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Misiones espaciales')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Misiones espaciales')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Misiones espaciales')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="misiones_label">06 — Misiones Espaciales</p>
+    <h2 class="section-title" data-i18n="misiones_titulo">Exploración <span>Humana</span></h2>
+    <div class="divider"></div>
+    <div class="misiones-grid reveal">
+      <div class="mision-card">
+        <img src="img/apolo 11.jpg" alt="Astronauta en la Luna durante la misión Apolo 11" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_apolo">Apolo 11</h3>
+        <p class="mision-fecha">1969</p>
+        <p data-i18n="mision_apolo_desc">Primera misión en llevar humanos a la Luna. Neil Armstrong y Buzz Aldrin caminaron sobre la superficie lunar.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/voyager.png" alt="Sonda Voyager en el espacio interestelar" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_voyager">Voyager 1 y 2</h3>
+        <p class="mision-fecha">1977</p>
+        <p data-i18n="mision_voyager_desc">Sondas que exploraron los planetas exteriores y ahora viajan en el espacio interestelar, llevando el Disco de Oro.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/telescopio.webp" alt="Telescopio espacial Hubble en órbita" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_hubble">Telescopio Hubble</h3>
+        <p class="mision-fecha">1990</p>
+        <p data-i18n="mision_hubble_desc">Ha revolucionado la astronomía con imágenes increíbles del universo profundo y descubrimientos clave.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/estacion.jpg" alt="Estación Espacial Internacional en órbita terrestre" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_iss">Estación Espacial Internacional</h3>
+        <p class="mision-fecha">1998-presente</p>
+        <p data-i18n="mision_iss_desc">Laboratorio en órbita donde se realizan experimentos en microgravedad y se estudia la vida en el espacio.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/james.jpg" alt="Telescopio espacial James Webb" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_webb">James Webb</h3>
+        <p class="mision-fecha">2021</p>
+        <p data-i18n="mision_webb_desc">El telescopio más potente, observando el universo en infrarrojo para ver las primeras galaxias.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/perseverance.webp" alt="Rover Perseverance en la superficie de Marte" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_perseverance">Perseverance</h3>
+        <p class="mision-fecha">2021</p>
+        <p data-i18n="mision_perseverance_desc">Rover de la NASA en Marte, busca signos de vida pasada y recoge muestras para una futura misión de retorno.</p>
+      </div>
+      <div class="mision-card">
+        <img src="img/artemis.png" alt="Misión Artemis II - Nave Orion" class="mision-img" loading="lazy">
+        <h3 data-i18n="mision_artemis">🚀 Artemis II</h3>
+        <p class="mision-fecha">2026 - ¡HISTÓRICO!</p>
+        <p data-i18n="mision_artemis_desc">¡Primera misión tripulada en 60 años! Los astronautas Reid Wiseman, Victor Glover, Christina Koch y Jeremy Hansen se convirtieron en los humanos que más lejos han viajado (más de 1,400,000 km de la Tierra), alcanzando la cara oculta de la Luna.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOSARIO -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="glosario">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Glosario astronómico')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Glosario astronómico')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Glosario astronómico')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="glosario_label">07 — Glosario</p>
+    <h2 class="section-title" data-i18n="glosario_titulo">Términos <span>Astronómicos</span></h2>
+    <div class="divider"></div>
+    <div class="glosario-grid reveal">
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_agujero">Agujero negro</h3>
+        <p data-i18n="glosario_agujero_desc">Región del espacio con una gravedad tan intensa que nada, ni siquiera la luz, puede escapar.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_supernova">Supernova</h3>
+        <p data-i18n="glosario_supernova_desc">Explosión cataclísmica de una estrella al final de su vida, que puede llegar a brillar más que una galaxia entera.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_exoplaneta">Exoplaneta</h3>
+        <p data-i18n="glosario_exoplaneta_desc">Planeta que orbita una estrella diferente al Sol. Se han descubierto miles en nuestra galaxia.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_materia_oscura">Materia oscura</h3>
+        <p data-i18n="glosario_materia_oscura_desc">Forma de materia invisible que no emite radiación, pero cuya presencia se deduce por efectos gravitacionales. Constituye el 27% del universo.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_energia_oscura">Energía oscura</h3>
+        <p data-i18n="glosario_energia_oscura_desc">Fuerza misteriosa que causa la expansión acelerada del universo. Representa el 68% del cosmos.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_nebulosa">Nebulosa</h3>
+        <p data-i18n="glosario_nebulosa_desc">Nube de gas y polvo interestelar, lugar de nacimiento de estrellas o remanente de su muerte.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_pulsar">Púlsar</h3>
+        <p data-i18n="glosario_pulsar_desc">Estrella de neutrones que gira rápidamente y emite radiación periódica, como un faro cósmico.</p>
+      </div>
+      <div class="glosario-item">
+        <h3 data-i18n="glosario_cuasar">Cuásar</h3>
+        <p data-i18n="glosario_cuasar_desc">Núcleo activo de una galaxia distante, alimentado por un agujero negro supermasivo, extremadamente luminoso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSTELACIONES -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="constelaciones">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Constelaciones')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Constelaciones')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Constelaciones')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="constelaciones_label">08 — Constelaciones</p>
+    <h2 class="section-title" data-i18n="constelaciones_titulo">Mapas <span>Estelares</span></h2>
+    <div class="divider"></div>
+    <div class="constelaciones-grid reveal">
+      <div class="constelacion-card">
+        <img src="img/orion.jpg" alt="Constelación de Orión con sus estrellas principales" loading="lazy">
+        <h3 data-i18n="constelacion_orion">Orión</h3>
+        <p data-i18n="constelacion_orion_desc">El Cazador. Sus estrellas más brillantes son Betelgeuse y Rigel. Visible en invierno.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="const_orion" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="constelacion-card">
+        <img src="img/osa.webp" alt="Constelación de la Osa Mayor con el asterismo del Carro" loading="lazy">
+        <h3 data-i18n="constelacion_osa_mayor">Osa Mayor</h3>
+        <p data-i18n="constelacion_osa_mayor_desc">Contiene el famoso asterismo "El Carro". Ayuda a encontrar la Estrella Polar.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="const_osa" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="constelacion-card">
+        <img src="img/casiopea.jpg" alt="Constelación de Casiopea en forma de W" loading="lazy">
+        <h3 data-i18n="constelacion_casiopea">Casiopea</h3>
+        <p data-i18n="constelacion_casiopea_desc">Forma una "W" en el cielo. Alberga remanentes de supernova y cúmulos estelares.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="const_casiopea" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+      <div class="constelacion-card">
+        <img src="img/cisne.webp" alt="Constelación del Cisne con la estrella Deneb" loading="lazy">
+        <h3 data-i18n="constelacion_cisne">Cisne (Cygnus)</h3>
+        <p data-i18n="constelacion_cisne_desc">Con la estrella Deneb. La Nebulosa Norteamérica se encuentra en esta región.</p>
+        <button class="btn btn-outline btn-mas-info" data-info="const_cisne" style="margin-top:15px; width:100%; font-size:0.7rem;" data-i18n="btn_mas_info">Más información</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURIOSIDADES -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="curiosidades">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Curiosidades del cosmos')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Curiosidades del cosmos')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Curiosidades del cosmos')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="curiosidades_label">09 — Datos Asombrosos</p>
+    <h2 class="section-title" data-i18n="curiosidades_titulo">Curiosidades del <span>Cosmos</span></h2>
+    <div class="divider"></div>
+    <div class="curiosidades-grid reveal">
+      <div class="curio-card">
+        <span class="curio-num">01</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad1">El Universo tiene 13,800 millones de años</h3>
+          <p data-i18n="curiosidad1_desc">Desde el Big Bang hasta hoy, el cosmos ha evolucionado formando galaxias, estrellas y sistemas planetarios. La Vía Láctea misma tiene unos 13,600 millones de años de edad.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">02</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad2">Más estrellas que granos de arena</h3>
+          <p data-i18n="curiosidad2_desc">Se estima que el universo observable contiene entre 10²³ y 10²⁴ estrellas, más que todos los granos de arena en todas las playas y desiertos de la Tierra combinados.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">03</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad3">El universo se expande aceleradamente</h3>
+          <p data-i18n="curiosidad3_desc">Las galaxias más lejanas se alejan de nosotros a velocidades superiores a la velocidad de la luz debido a la propia expansión del espacio-tiempo. Esta expansión se acelera por la energía oscura.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">04</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad4">El 95% del universo es invisible</h3>
+          <p data-i18n="curiosidad4_desc">Solo el 5% del universo es materia ordinaria. El 27% es materia oscura y el 68% es energía oscura: dos grandes misterios que la física moderna no comprende aún completamente.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">05</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad5">La Vía Láctea chocará con Andrómeda</h3>
+          <p data-i18n="curiosidad5_desc">En unos 4,500 millones de años nuestra galaxia colisionará con la Galaxia de Andrómeda. Las dos se fusionarán en una nueva galaxia elíptica que los astrónomos llaman "Milkomeda".</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">06</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad6">Somos literalmente polvo de estrellas</h3>
+          <p data-i18n="curiosidad6_desc">El carbono, nitrógeno, oxígeno y demás elementos en nuestros cuerpos fueron forjados en el interior de estrellas que explotaron mucho antes del nacimiento de nuestro Sol.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">07</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad7">Existen 2 billones de galaxias</h3>
+          <p data-i18n="curiosidad7_desc">El universo observable contiene al menos 2 × 10¹² galaxias. Cada una puede albergar cientos de miles de millones de estrellas, muchas con sus propios sistemas planetarios y quizás vida.</p>
+        </div>
+      </div>
+      <div class="curio-card">
+        <span class="curio-num">08</span>
+        <div class="curio-content">
+          <h3 data-i18n="curiosidad8">La señal "¡Wow!" de 1977</h3>
+          <p data-i18n="curiosidad8_desc">El radioastrónomo Jerry Ehman detectó una señal de radio intensa e inexplicable proveniente del espacio. Anotó "Wow!" al margen de los datos. Jamás fue repetida ni explicada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DE EDAD PLANETARIA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="calculadora-edad">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Calculadora de edad planetaria')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de edad planetaria')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de edad planetaria')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="calculadora_edad_label">12 — Calculadora de Edad</p>
+    <h2 class="section-title" data-i18n="calculadora_edad_titulo">Calculadora de <span>Edad Planetaria</span></h2>
+    <div class="divider"></div>
+    <div class="calculadora-container reveal">
+      <div class="calculadora-input">
+        <label for="edad-terrestre" data-i18n="calc_edad_label">Ingresa tu edad en años terrestres:</label>
+        <input type="number" id="edad-terrestre" min="0" max="150" value="25" step="1">
+        <button id="calcular-edad" class="btn btn-primary" data-i18n="calc_btn_calcular">Calcular</button>
+      </div>
+      <div class="calculadora-resultados" id="resultados-edad">
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DE PESO EN OTROS PLANETAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="calculadora-peso">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Calculadora de peso planetario')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Calculadora de peso planetario')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Calculadora de peso planetario')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="calculadora_peso_label">13 — Calculadora de Peso</p>
+    <h2 class="section-title" data-i18n="calculadora_peso_titulo">Calculadora de <span>peso planetario</span></h2>
+    <div class="divider"></div>
+    <div class="calculadora-container reveal">
+      <div class="calculadora-input">
+        <label for="peso-terrestre" data-i18n="calc_peso_label">Ingresa tu peso en la Tierra (kg):</label>
+        <input type="number" id="peso-terrestre" min="0" max="500" value="70" step="0.1">
+        <button id="calcular-peso" class="btn btn-primary" data-i18n="calc_btn_calcular">Calcular</button>
+      </div>
+      <div class="calculadora-resultados" id="resultados-peso">
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARADOR DE TAMAÑOS DE PLANETAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="comparador">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Comparador de tamaños de planetas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Comparador de tamaños de planetas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Comparador de tamaños de planetas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="comparador_label">14 — Comparador de tamaños</p>
+    <h2 class="section-title" data-i18n="comparador_titulo">Tamaños de <span>planetas</span></h2>
+    <div class="divider"></div>
+    <div class="comparador-container reveal">
+      <div class="comparador-controles">
+        <div class="comparador-checkbox"><input type="checkbox" id="showSun" checked> <label for="showSun" data-i18n="comparador_sol">☀️ Sol</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showMercurio" checked> <label for="showMercurio" data-i18n="comparador_mercurio">☿ Mercurio</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showVenus" checked> <label for="showVenus" data-i18n="comparador_venus">♀️ Venus</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showTierra" checked> <label for="showTierra" data-i18n="comparador_tierra">🌍 Tierra</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showMarte" checked> <label for="showMarte" data-i18n="comparador_marte">♂️ Marte</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showJupiter" checked> <label for="showJupiter" data-i18n="comparador_jupiter">♃ Júpiter</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showSaturno" checked> <label for="showSaturno" data-i18n="comparador_saturno">🪐 Saturno</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showUrano" checked> <label for="showUrano" data-i18n="comparador_urano">⛢ Urano</label></div>
+        <div class="comparador-checkbox"><input type="checkbox" id="showNeptuno" checked> <label for="showNeptuno" data-i18n="comparador_neptuno">♆ Neptuno</label></div>
+      </div>
+      <div class="comparador-btns">
+        <button id="comparador-actualizar" class="btn btn-primary" data-i18n="comparador_actualizar">Actualizar</button>
+        <button id="comparador-todos" class="btn btn-outline" data-i18n="comparador_todos">Todos</button>
+        <button id="comparador-ninguno" class="btn btn-outline" data-i18n="comparador_ninguno">Ninguno</button>
+      </div>
+      <div class="comparador-canvas-wrapper">
+        <canvas id="comparador-canvas" width="800" height="400"></canvas>
+      </div>
+      <p class="comparador-escala" data-i18n="comparador_escala">* Tamaños relativos (escala logarítmica). El Sol está reducido.</p>
+    </div>
+  </section>
+
+  <!-- HOY EN LA HISTORIA -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="historia-hoy">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Hoy en la historia astronómica')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Hoy en la historia astronómica')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Hoy en la historia astronómica')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="historia_label">15 — Hoy en la historia</p>
+    <h2 class="section-title" data-i18n="historia_hoy_titulo">Astronomía <span>en este día</span></h2>
+    <div class="divider"></div>
+    <div id="historia-container" class="historia-container reveal">
+      <div class="historia-cargando" data-i18n="historia_cargando">Cargando eventos históricos...</div>
+    </div>
+  </section>
+
+  <!-- EFEMÉRIDES -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="efemerides">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Efemérides astronómicas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Efemérides astronómicas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Efemérides astronómicas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="efemerides_label">16 — Efemérides</p>
+    <h2 class="section-title" data-i18n="efemerides_titulo">Sol, Luna y <span>planetas visibles</span></h2>
+    <div class="divider"></div>
+    <div id="efemerides-container" class="efemerides-container reveal">
+      <p class="efemerides-cargando" data-i18n="efemerides_cargando">Solicitando ubicación para calcular las efemérides...</p>
+    </div>
+  </section>
+
+  <!-- LÍNEA DE TIEMPO -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="timeline">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Línea de tiempo del universo')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Línea de tiempo del universo')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Línea de tiempo del universo')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="timeline_label">17 — Línea de Tiempo</p>
+    <h2 class="section-title" data-i18n="historia_titulo">Historia del <span>Universo</span></h2>
+    <div class="divider"></div>
+    <div class="timeline-container reveal">
+      <div class="timeline-track"></div>
+      <div class="timeline-info">
+        <p id="timeline-desc">Haz clic en un evento para ver más detalles.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISOR 3D -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="visor-3d">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Visor 3D del Sistema Solar')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Visor 3D del Sistema Solar')"><i class="fab fa-facebook"></i></a>
+    </div>
+    <p class="section-label" data-i18n="visor_label">16.5 — Visor 3D</p>
+    <h2 class="section-title" data-i18n="visor_titulo">Sistema Solar <span>3D Interactivo</span></h2>
+    <div class="divider"></div>
+    <div id="solar-system-3d" class="reveal" style="width: 100%; height: 600px; border-radius: 15px; position: relative; border: 1px solid rgba(108, 10, 239, 0.3); background: radial-gradient(circle at center, rgba(10,0,21,0.8) 0%, rgba(1,1,13,0.95) 100%);">
+      <p style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:white;">Cargando Visor 3D...</p>
+    </div>
+
+    <div style="text-align:center; margin-top:15px; color:var(--text);">
+      <p data-i18n="visor_desc">🖱️ Arrastra para rotar · ⚙️ Haz scroll para hacer zoom</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="quiz">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Quiz astronómico')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Quiz astronómico')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Quiz astronómico')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="quiz_label">18 — Quiz</p>
+    <h2 class="section-title" data-i18n="quiz_titulo">Quiz <span>Galáctico</span></h2>
+    <div class="divider"></div>
+    <div class="quiz-container reveal">
+      <div id="pregunta-actual" class="quiz-pregunta"></div>
+      <div id="opciones-container" class="quiz-opciones"></div>
+      <div class="quiz-controls">
+        <span id="puntuacion" class="quiz-score">Aciertos: 0 / 0</span>
+        <button id="siguiente-pregunta" class="btn btn-primary" style="display: none;" data-i18n="quiz_siguiente">Siguiente</button>
+        <button id="reiniciar-quiz" class="btn btn-outline" style="display: none;" data-i18n="quiz_reiniciar">Reiniciar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIMA ESPACIAL -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="clima-espacial">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Clima espacial en tiempo real')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Clima espacial en tiempo real')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Clima espacial en tiempo real')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="clima_espacial_label">19 — Clima Espacial</p>
+    <h2 class="section-title" data-i18n="clima_espacial_titulo">Tormentas Solares y <span>Viento Solar</span></h2>
+    <div class="divider"></div>
+    <div id="clima-container" class="clima-container reveal">
+      <p class="clima-cargando" data-i18n="clima_cargando">Cargando datos del clima espacial...</p>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="noticias">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('Últimas noticias astronómicas')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('Últimas noticias astronómicas')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('Últimas noticias astronómicas')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="noticias_label">20 — Noticias</p>
+    <h2 class="section-title" data-i18n="noticias_titulo">Descubrimientos <span>Recientes</span></h2>
+    <div class="divider"></div>
+    <div id="noticias-container" class="noticias-grid reveal">
+      <p class="noticias-cargando" data-i18n="noticias_cargando">Cargando noticias...</p>
+    </div>
+  </section>
+
+  <!-- APOD -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="apod">
+    <div class="share-section">
+      <span data-i18n="compartir">Compartir:</span>
+      <a href="#" class="share-btn twitter" onclick="shareOnTwitter('NASA APOD')"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn facebook" onclick="shareOnFacebook('NASA APOD')"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn('NASA APOD')"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p class="section-label" data-i18n="apod_label">21 — NASA APOD</p>
+    <h2 class="section-title" data-i18n="apod_titulo">Astronomy Picture <span>of the Day</span></h2>
+    <div class="divider"></div>
+    <div id="apod-container" class="apod-container reveal">
+      <p style="text-align:center;" data-i18n="apod_cargando">Cargando imagen del día...</p>
+    </div>
+  </section>
+
+  <!-- COMENTARIOS -->
+  <div class="sep-line"><hr/></div>
+  <section class="sec" id="comentarios">
+    <p class="section-label" data-i18n="comentarios_label">22 — Comentarios</p>
+    <h2 class="section-title">Debate <span>Cósmico</span></h2>
+    <div class="divider"></div>
+    <div id="disqus_thread" class="comentarios-container reveal">
+      <!-- Disqus fallback para entorno local -->
+      <div class="debate-fallback" id="debate-fallback" style="text-align:center; padding: 60px 30px; background: rgba(0,0,0,0.3); border-radius: 20px; border: 1px solid rgba(108,10,239,0.3);">
+        <div style="font-size: 3rem; margin-bottom: 20px;">💬</div>
+        <h3 style="color: var(--cyan); font-family: 'Orbitron', sans-serif; margin-bottom: 15px;">Debate Cósmico</h3>
+        <p style="color: rgba(200,216,240,0.8); max-width: 500px; margin: 0 auto 20px; line-height: 1.8;">Los comentarios están disponibles en la versión online del sitio. Visita <strong style="color: var(--cyan);">rimuru2321.github.io/COSMOS</strong> para participar en el debate cósmico.</p>
+        <a href="https://rimuru2321.github.io/COSMOS/#comentarios" target="_blank" class="btn btn-primary" style="display: inline-block; margin-top: 10px;">🚀 Ir al sitio online</a>
+      </div>
+    </div>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+  <!-- ANUNCIO 4 - Antes del footer -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- BOTÓN QR -->
+  <div class="qr-panel" id="qr-panel">
+    <button class="qr-toggle" id="qr-toggle">📱 Compartir</button>
+    <div class="qr-contenido" id="qr-contenido">
+      <h4 data-i18n="qr_compartir">Escanea para compartir</h4>
+      <img src="img/qr-cosmos.png" alt="QR de Cosmos" style="width:150px; height:150px; border-radius:10px;">
+      <p style="font-size:0.8rem; margin-top:8px;">https://rimuru2321.github.io/COSMOS/</p>
+    </div>
+  </div>
+
+  <!-- FOOTER ACTUALIZADO -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <p class="footer-logo">✦ COSMOS</p>
+        <p data-i18n="footer_texto">Explorando el universo, una estrella a la vez</p>
+        <p data-i18n="footer_imagenes">Imágenes: NASA · ESA · Hubble · Wikipedia Commons</p>
+      </div>
+      <div class="footer-lunar" id="footer-lunar">
+        <div style="font-size: 2.5rem; margin-bottom: 5px;" id="fase-icono">🌕</div>
+        <div style="font-weight: 600; color: #fff;" id="fase-nombre">Fase lunar</div>
+        <div style="font-size: 0.9rem; color: var(--cyan); margin: 5px 0;" id="fecha-actual">--/--/----</div>
+        <div style="font-size: 1.2rem; font-family: 'Orbitron'; letter-spacing: 2px;" id="hora-actual">--:--:--</div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2026 Cosmos — Una ventana al universo</p>
+      <p>
+        <a href="legal.html" target="_blank" style="color:var(--cyan);" data-i18n="footer_legal">Términos y Condiciones | Política de Privacidad</a> | 
+        <a href="comment-policy.html" target="_blank" style="color:var(--cyan);">Política de Comentarios</a> |
+        <a href="about.html" style="color:var(--cyan);">Sobre Nosotros</a> |
+        <a href="contact.html" style="color:var(--cyan);">Contacto</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- MODAL DE INFORMACIÓN DE PLANETAS -->
+  <div id="modal-info" class="modal">
+    <div class="modal-contenido" style="max-width: 600px;">
+      <h2 id="modal-info-titulo" style="color: var(--cyan); margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">Nombre Planeta</h2>
+      <img id="modal-info-img" src="" alt="Planeta" style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(108, 10, 239, 0.5); box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+      <div id="modal-info-desc" style="text-align: left; font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 25px; max-height: 300px; overflow-y: auto; padding-right: 15px;">
+        <!-- Info goes here -->
+      </div>
+      <div class="modal-botones">
+        <button id="btn-cerrar-info" class="btn btn-primary" data-i18n="btn_cerrar">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio oculto -->
+  <audio id="sonido-ambiente" loop preload="auto" style="display: none;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <script src="lang/es.js"></script>
+  <script src="lang/en.js"></script>
+  <script src="data/astronomy-events.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/calculators.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/bot.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/i18n.js"></script>
+
+<!-- COSMOBOT AI -->
+<div id="cosmobot-container">
+  <div id="cosmobot-button">
+    <i class="fas fa-robot"></i>
+  </div>
+  <div id="cosmobot-chat">
+    <div id="cosmobot-header">
+      <span>🤖 CosmoBot</span>
+      <button id="cosmobot-close">✕</button>
+    </div>
+    <div id="cosmobot-messages">
+      <div class="bot-message">🌟 ¡Hola! Soy CosmoBot, tu asistente de astronomía. Pregúntame sobre el universo, planetas, estrellas... 🚀</div>
+    </div>
+    <div id="cosmobot-input-area">
+      <input type="text" id="cosmobot-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+      <button id="cosmobot-send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div id="cosmobot-thinking"></div>
+  </div>
+</div>
+
+    <script src="js/3d-viewer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
