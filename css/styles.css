@@ -3651,4 +3651,215 @@ body {
   height: 45px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(0, 229, 255, 0.5));
   box-shadow: 0 0 15px #fff, 0 0 30px var(--cyan);
-}
+}
+
+/* ==================================================
+   RESPONSIVE MÓVIL COMPLETO
+   ================================================== */
+
+/* Ocultar cursor cósmico en touch */
+@media (hover: none) and (pointer: coarse) {
+  .cosmic-cursor { display: none !important; }
+  body { cursor: auto !important; }
+}
+
+/* Scroll suave en iOS */
+html { -webkit-overflow-scrolling: touch; }
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav { padding: 0 15px; }
+  .idioma-selector { margin-right: 2px; }
+  .idioma-btn { padding: 0 5px; font-size: 0.8rem; }
+  .nav-extra { gap: 3px; }
+
+  /* HERO */
+  .hero-title { font-size: clamp(2.4rem, 9vw, 4rem); }
+  .hero-desc  { font-size: 0.95rem; }
+  .hero-cta   { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-cta .btn { width: 100%; max-width: 280px; text-align: center; }
+
+  /* SECCIONES */
+  .sec { padding: 60px 18px; }
+  .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+  /* GALAXIA */
+  .galaxy-grid { grid-template-columns: 1fr; gap: 30px; }
+
+  /* PLANETAS: 2 columnas en tablet */
+  .planets-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .planet-card .planet-desc { font-size: 0.78rem; line-height: 1.5; }
+  .planet-info { padding: 14px; }
+
+  /* VISOR 3D */
+  #visor-3d { height: 300px !important; }
+  #canvas-3d { height: 300px !important; }
+
+  /* MODAL DE PLANETA */
+  .modal-contenido {
+    max-width: 92vw !important;
+    padding: 1.5rem 1.2rem;
+    border-radius: 20px;
+    margin: 0 10px;
+  }
+  #modal-info-img { height: 180px; }
+  #modal-info-desc { max-height: 200px; font-size: 0.88rem; }
+
+  /* EFEMÉRIDES */
+  .efemerides-grid { grid-template-columns: 1fr !important; gap: 14px; }
+
+  /* LÍNEA DE TIEMPO */
+  .timeline-track { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .timeline-event { font-size: 0.72rem; padding: 6px 10px; }
+
+  /* COMPARADOR */
+  .comparador-controles { flex-direction: column; gap: 10px; }
+  .comparador-canvas-wrapper canvas { max-width: 100%; }
+
+  /* MISIONES */
+  .misiones-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* GLOSARIO */
+  .glosario-grid { grid-template-columns: 1fr; }
+
+  /* QUIZ */
+  .quiz-opciones { grid-template-columns: 1fr !important; }
+  .quiz-opcion   { padding: 12px 16px; font-size: 0.88rem; }
+
+  /* HISTORIA HOY */
+  .historia-container { padding: 20px 16px; }
+
+  /* NEBULOSAS */
+  .nebula-gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* CONSTELACIONES */
+  .constelaciones-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* CALCULADORAS */
+  .calculadora-resultados { grid-template-columns: repeat(2, 1fr); }
+
+  /* CLIMA ESPACIAL */
+  .clima-grid { grid-template-columns: 1fr; }
+
+  /* COSMOBOT */
+  #cosmobot-container { bottom: 70px; right: 12px; }
+  #cosmobot-chat { width: min(90vw, 320px); }
+
+  /* ATAJOS Y QR */
+  .atajos-panel { bottom: 8px; left: 8px; }
+  .qr-panel     { bottom: 8px; right: 8px; }
+  .atajos-toggle, .qr-toggle { padding: 7px 12px; font-size: 0.85rem; }
+
+  /* FOOTER */
+  .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-links   { flex-wrap: wrap; justify-content: center; gap: 8px; }
+
+  /* BOTONES MÁS INFORMACIÓN — tap target ≥ 44px */
+  .btn-mas-info { min-height: 44px; font-size: 0.75rem; }
+
+  /* COMPARTIR */
+  .share-section { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .share-section a, .share-section button { min-width: 44px; min-height: 44px; }
+
+  /* LUNA */
+  .luna-grid { grid-template-columns: 1fr; gap: 20px; }
+  .fases-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Móvil pequeño (≤ 480px) ── */
+@media (max-width: 480px) {
+
+  /* HERO */
+  .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); letter-spacing: -1px; }
+  .hero-desc  { font-size: 0.88rem; }
+
+  /* SECCIÓN */
+  .sec { padding: 45px 14px; }
+
+  /* PLANETAS: 1 columna en móvil */
+  .planets-grid { grid-template-columns: 1fr; }
+  .planet-card  { border-radius: 14px; }
+
+  /* VISOR 3D pantalla completa */
+  #visor-3d { height: 260px !important; border-radius: 14px; }
+
+  /* MODAL a pantalla completa */
+  .modal-contenido {
+    max-width: 100vw !important;
+    min-height: 60vh;
+    border-radius: 20px 20px 0 0 !important;
+    padding: 1.2rem 1rem;
+    margin: auto 0 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  #modal-info { align-items: flex-end; }
+  #modal-info-img { height: 160px; }
+
+  /* NEBULOSAS */
+  .nebula-gallery { grid-template-columns: 1fr; }
+
+  /* MISIONES */
+  .misiones-grid { grid-template-columns: 1fr; }
+
+  /* CONSTELACIONES */
+  .constelaciones-grid { grid-template-columns: 1fr; }
+
+  /* CALCULADORA */
+  .calculadora-resultados { grid-template-columns: 1fr; }
+
+  /* FASES LUNA */
+  .fases-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* COSMOBOT: chat full width en móvil */
+  #cosmobot-chat {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 20px 20px 0 0;
+    z-index: 2000;
+  }
+  #cosmobot-messages { height: 250px; }
+
+  /* IDIOMA */
+  .idioma-btn { font-size: 0.75rem; padding: 0 4px; }
+
+  /* STATS */
+  .stats-row { grid-template-columns: 1fr; }
+
+  /* GLOSARIO */
+  .glosario-grid { grid-template-columns: 1fr; }
+
+  /* TIPOS DE GALAXIA */
+  .galaxy-types-grid { grid-template-columns: 1fr; }
+
+  /* QR y ATAJOS: más pequeños */
+  .atajos-contenido { max-width: 200px; font-size: 0.78rem; }
+  .qr-contenido img { width: 130px; height: 130px; }
+
+  /* BUSCADOR PLANETAS */
+  .buscador-input { font-size: 0.9rem; padding: 10px 16px; }
+
+  /* TIMELINE */
+  .timeline-event { font-size: 0.68rem; padding: 5px 8px; }
+
+  /* EFEMÉRIDES */
+  .efemerides-card h3 { font-size: 1rem; }
+  .efemerides-item { font-size: 0.82rem; }
+}
+
+/* ── Muy pequeño (≤ 360px, e.g. Galaxy S) ── */
+@media (max-width: 360px) {
+  .hero-title { font-size: 1.8rem; }
+  .btn { padding: 11px 22px; font-size: 0.7rem; }
+  .planets-grid { grid-template-columns: 1fr; }
+  .sec { padding: 35px 10px; }
+  nav  { padding: 0 10px; }
+  .logo { font-size: 1rem; }
+}
+
